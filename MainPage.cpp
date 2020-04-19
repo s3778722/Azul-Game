@@ -29,9 +29,9 @@ int main(void){
             std::cout << "Name: Muditha Kanishka Dulshan Kodithuwakku" << std::endl;
             std::cout << "Student ID: s3813354" << std::endl;
             std::cout << "Email: s3813354@student.rmit.edu.au" << std::endl;
-            std::cout << "Name: " << std::endl;
-            std::cout << "Student ID: " << std::endl;
-            std::cout << "Email: " << std::endl;
+            std::cout << "Name: Han Chien Leow " << std::endl;
+            std::cout << "Student ID: s3778722" << std::endl;
+            std::cout << "Email: s3778722@student.rmit.edu.au " << std::endl;
             std::cout << "----------------------------------" << std::endl;
             std::cout << std::endl;
         }
