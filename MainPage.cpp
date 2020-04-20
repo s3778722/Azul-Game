@@ -1,5 +1,7 @@
 #include <iostream>
 
+void printCredits();
+
 int main(void){
 
     std::cout << "Welcome to Azul! -------------------" << std::endl;
@@ -25,18 +27,28 @@ int main(void){
             // load game
         }
         else if(userInput == 3){
-            std::cout << "----------------------------------" << std::endl;
-            std::cout << "Name: Muditha Kanishka Dulshan Kodithuwakku" << std::endl;
-            std::cout << "Student ID: s3813354" << std::endl;
-            std::cout << "Email: s3813354@student.rmit.edu.au" << std::endl;
-            std::cout << "Name: Han Chien Leow " << std::endl;
-            std::cout << "Student ID: s3778722" << std::endl;
-            std::cout << "Email: s3778722@student.rmit.edu.au " << std::endl;
-            std::cout << "----------------------------------" << std::endl;
-            std::cout << std::endl;
+            printCredits();
         }
         else if(userInput == 4){
             return EXIT_SUCCESS;
         }
     }
+}
+
+void printCredits(){
+    std::cout << "----------------------------------" << std::endl;
+    std::cout << "Name: Muditha Kanishka Dulshan Kodithuwakku" << std::endl;
+    std::cout << "Student ID: s3813354" << std::endl;
+    std::cout << "Email: s3813354@student.rmit.edu.au" << std::endl;
+    std::cout << std::endl;
+    std::cout << "Name: Han Chien Leow " << std::endl;
+    std::cout << "Student ID: s3778722" << std::endl;
+    std::cout << "Email: s3778722@student.rmit.edu.au " << std::endl;
+    std::cout << "----------------------------------" << std::endl;
+    std::cout << std::endl;
+    std::cout << "Name:  " << std::endl;
+    std::cout << "Student ID: " << std::endl;
+    std::cout << "Email:  " << std::endl;
+    std::cout << "----------------------------------" << std::endl;
+    std::cout << std::endl;
 }
