@@ -2,7 +2,7 @@
 
 void printCredits();
 
-int main(void){
+int main(int argc, char const *argv[]){//use this to get the random seed
 
     std::cout << "Welcome to Azul! -------------------" << std::endl;
 
@@ -16,6 +16,7 @@ int main(void){
         std::cout << "3. Credits (Show student information)" << std::endl;
         std::cout << "4. Quit" << std::endl;
         std::cout << std::endl;
+        std::cout << "> ";
         std::cin >> userInput;
         std::cout << std::endl;
 
