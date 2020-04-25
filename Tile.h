@@ -1,11 +1,12 @@
 #ifndef TILE_H
 #define TILE_H
-#include <iostream>
+
 typedef char Colour;
 
 class Tile {
 public:
     Tile(Colour colour);
+    ~Tile();
     Colour getColour();
     void setColour(Colour colour);
     
