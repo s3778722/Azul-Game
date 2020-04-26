@@ -1,16 +1,19 @@
 #include "Tile.h"
 
-Tile::Tile(Colour colour)
+
+Tile::Tile(Colour colour) //constructor
 {
   this->colour = colour;
 }
 
-Colour Tile::getColour()
+Tile::~Tile() {} //destructor
+
+Colour Tile::getColour() //get Colour
 {
   return this->colour;
 }
 
-void Tile::setColour(Colour colour)
+void Tile::setColour(Colour colour) //set Colour
 {
 	this->colour = colour;
 }
