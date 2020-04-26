@@ -1,38 +1,51 @@
-factory 1 s s s s s
-factory 2 s s s s s
-factory 3 s s s s s
-factory 4 s s s s s
-factory 5 s s s s s
+// game state data
+s s s s s // factory 1
+s s s s s // factory 2
+s s s s s // factory 3
+s s s s s // factory 4
+s s s s s // factory 5
 
-tile_bag r r b y b y g
-tile lid r r b y b y g
+r r b y b y g // Tile Bag
+r r b y b y g // Box Lid
 
-p1 playerName1
+// player 1 save data
+playerName1 
 false // refers that its not their turn
+
+// Player Patters
 r
 yy
 ...
-bbb..
+bbb.
 .....
 
+// Player Mosaic/GameBoard
 . r . y .
 . r . y .
 . r . y .
 . r . y .
 . r . y .
 
-p2 playerName2
+// Broken tiles
+r r b y b y g 
+
+// player 2 save data
+playerName2
 true // refers that it is their turn
 
+// Player Patters
 r
 yy
 ...
-bbb..
+bbb.
 .....
 
+// Player Mosaic/GameBoard
 . r . y .
 . r . y .
 . r . y .
 . r . y .
 . r . y .
 
+// Broken tiles
+r r b y b y g
