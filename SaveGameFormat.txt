@@ -5,18 +5,31 @@ factory 4 s s s s s
 factory 5 s s s s s
 
 p1 playerName1
-. r . y .
-. r . y .
-. r . y .
-. r . y .
-. r . y .
+false // refers that its not their turn
+r
+yy
+...
+bbb..
+.....
 
+. r . y .
+. r . y .
+. r . y .
+. r . y .
+. r . y .
 
 p2 playerName2
-. r . y .
-. r . y .
-. r . y .
-. r . y .
-. r . y .
+true // refers that it is their turn
 
+r
+yy
+...
+bbb..
+.....
+
+. r . y .
+. r . y .
+. r . y .
+. r . y .
+. r . y .
 
