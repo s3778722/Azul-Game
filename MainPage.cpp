@@ -1,8 +1,22 @@
 #include <iostream>
 
-void printCredits();
 
-int main(int argc, char const *argv[]){//use this to get the random seed
+class CMDArgs {
+public:
+
+   bool haveSeed = false;
+   int randomSeed = 0; // set up the random seed it needs to be when the game isn't given a seed
+};
+
+void printCredits();
+void processArgs(int argc, char** argv, CMDArgs* cmdArgs);
+
+int main(int argc, char** argv){
+
+    CMDArgs cmdArgs;
+    processArgs(argc, argv, &cmdArgs);
+
+    // cmdArgs.randomSeed //this is the random seed given to through the command line interface
 
     std::cout << "Welcome to Azul! -------------------" << std::endl;
 
@@ -52,4 +66,12 @@ void printCredits(){
     std::cout << "Email:  s3688949@student.rmit.edu.au" << std::endl;
     std::cout << "----------------------------------" << std::endl;
     std::cout << std::endl;
+}
+
+void processArgs(int argc, char** argv, CMDArgs* cmdArgs){
+
+    if(argc >=2){
+        cmdArgs->randomSeed = std::stoi(argv[1]);
+        cmdArgs->haveSeed = true;
+    }
 }
