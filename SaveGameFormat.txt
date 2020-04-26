@@ -4,6 +4,9 @@ factory 3 s s s s s
 factory 4 s s s s s
 factory 5 s s s s s
 
+tile_bag r r b y b y g
+tile lid r r b y b y g
+
 p1 playerName1
 false // refers that its not their turn
 r
