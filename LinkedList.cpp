@@ -34,7 +34,7 @@ int LinkedList::getSize(){
 }
 
 //return the index of a tile
-Tile* LinkedList::get(int i){
+Tile* LinkedList::getTile(int i){
     Node* current = head;
     Tile* returnValue = nullptr;
     if (i >= 0 && i < getSize()){
@@ -92,6 +92,26 @@ void LinkedList::removeBack(){
         }
         tail = toRemove;
         count--;
+    }
+}
+void LinkedList::removeTileAt(int i)
+{  
+    if (i == 0){
+       removeFront;
+    }
+    else if (i == this->getSize()-1){
+        removeBack;
+    }
+    else{
+        Node* node = this->head;
+        Node* temp = nullptr;
+        for(int j = 0; j < i; j++){
+            temp = node;
+            node = node->next;
+        }
+        temp->next = node->next;
+        delete node;
+        --count;
     }
 }
 

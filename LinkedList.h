@@ -9,7 +9,7 @@ public:
     ~LinkedList(); //destructor
 
     int getSize();
-    Tile* LinkedList::get(int i);
+    Tile* LinkedList::getTile(int i);
     void clear();
 
     void addFront(Tile* tile);
@@ -17,6 +17,7 @@ public:
 
     void removeFront();
     void removeBack();
+    void removeTileAt(int i);
     void removeTile(Tile* tile);
     bool containsTile(Tile* tile);
     std::string toString();
