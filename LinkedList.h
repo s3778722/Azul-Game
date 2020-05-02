@@ -18,6 +18,7 @@ public:
     void removeFront();
     void removeBack();
     void removeTile(Tile* tile);
+    bool containsTile(Tile* tile);
     std::string toString();
 
 private:

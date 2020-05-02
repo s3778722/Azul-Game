@@ -96,8 +96,30 @@ void LinkedList::removeBack(){
 }
 
 void LinkedList::removeTile(Tile* tile) {
-    //TODO
+    if (head != nullptr) {
+        Node* tileToRemove = head;
+        while (tileToRemove != nullptr && !(tileToRemove->tile->matchTile(tile))){
+            tileToRemove = tileToRemove->next;
+        }
+        if (tileToRemove != nullptr) {
+            delete tileToRemove;
+            count--;
+        }
+    }
 }
+bool LinkedList::containsTile(Tile* tile){
+    bool contained = false;
+    Node* tileToCheck = head;
+
+    while(tileToCheck != nullptr && !contained){
+        if(tileToCheck->tile->matchTile(tile)){
+            contained = true;
+        }
+        tileToCheck = tileToCheck->next;
+    }
+    return contained;
+}
+
 std::string LinkedList::toString(){
     //TODO
 }
