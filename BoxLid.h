@@ -8,8 +8,13 @@ class BoxLid {
 public:
     BoxLid();
     ~BoxLid();
+
+    int size();
+    void addTile(Tile tile);
+    void clearAll();
     
 private:
+    std::vector<Tile> boxLidVector;
 
 };
 

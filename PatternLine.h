@@ -6,7 +6,12 @@ public:
     PatternLine();
     ~PatternLine();
     
+    void addTile();
+    void removeTile();
+    int getNegativePoints();
+    
 private:
+    
 };
 
 #endif // PATTERNLINE_H
