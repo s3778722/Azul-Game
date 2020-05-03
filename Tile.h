@@ -1,7 +1,7 @@
 #ifndef TILE_H
 #define TILE_H
 
-typedef char Colour;
+#include "TileCode.h"
 
 class Tile {
 public:
