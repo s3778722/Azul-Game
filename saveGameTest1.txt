@@ -1,0 +1,45 @@
+
+. . . .
+U U B B
+L L Y R
+R R R U
+U L B Y
+
+R R Y Y L L U U B B // Tile Bag need more
+B B U F // Box Lid
+
+playerName1 
+true
+6
+
+.
+..
+...
+.BBB
+....U
+
+. . . R .
+. . . L .
+. . . B .
+. . . . .
+. . . . .
+
+R 
+
+playerName2
+false
+4
+
+.
+..
+...
+UUUU
+.....
+
+Y . . . .
+U . . . .
+R . . . .
+. . . . .
+. . . . .
+
+L
