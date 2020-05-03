@@ -33,7 +33,7 @@ int LinkedList::getSize(){
    return this->count;
 }
 
-//return the index of a tile
+//return the tile at the index
 Tile* LinkedList::getTile(int i){
     Node* current = head;
     Tile* returnValue = nullptr;

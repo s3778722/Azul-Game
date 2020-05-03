@@ -10,11 +10,11 @@ public:
     ~BoxLid();
 
     int size();
-    void addTile(Tile tile);
+    void addTile(Tile* tile);
     void clearAll();
     
 private:
-    std::vector<Tile> boxLidVector;
+    std::vector<Tile*> boxLidVector;
 
 };
 
