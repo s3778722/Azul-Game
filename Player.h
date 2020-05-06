@@ -8,9 +8,9 @@ public:
     Player();
     Player(std::string name); 
     Player(std::string name, int score, bool isTurn);
-    int Player::getScore();
-    std::string Player::getName();
-    bool Player::getTurn();
+    int getScore();
+    std::string getName();
+    bool getTurn();
     
 private:
     std::string name;

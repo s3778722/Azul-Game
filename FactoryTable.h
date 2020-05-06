@@ -2,7 +2,8 @@
 #define FACTORY_TABLE H
 
 #include <vector>
-
+#include <string> // remove this later
+#include <iostream>
 #include "Tile.h"
 
 class FactoryTable{
@@ -12,7 +13,8 @@ public:
     FactoryTable();
     FactoryTable(std::vector<std::vector<Tile>> TableState);
     std::vector<std::vector<Tile>> getTable();
-    std::vector<Tile> FactoryTable::getFactory(int factoryNo);
+    std::vector<Tile>getFactory(int factoryNo);
+    void DisplayFactories();
 
 private:
 
