@@ -20,6 +20,11 @@ int Player::getScore(){
 
 }
 
+void Player::addPoints(int points){
+    this->score += points;
+}
+
+
 std::string Player::getName(){
 
     return this->name;

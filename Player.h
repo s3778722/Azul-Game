@@ -10,7 +10,9 @@ public:
     Player(std::string name, int score, bool isTurn);
     int getScore();
     std::string getName();
-    bool getTurn();
+    bool getTurn();    
+    void addPoints(int points);
+
     
 private:
     std::string name;
