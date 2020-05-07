@@ -1,5 +1,5 @@
-output:BoxLid.o FactoryTable.o Mosaics.o Node.o PatternLine.o Player.o Tile.o TileBag.o GameModel.o MainPage.o
-	g++ -Wall -Werror -std=c++14 BoxLid.o FactoryTable.o Mosaics.o Node.o PatternLine.o Player.o Tile.o TileBag.o GameModel.o MainPage.o -o Azul -g
+output:BoxLid.o FactoryTable.o Node.o PatternLine.o Player.o Tile.o TileBag.o GameModel.o MainPage.o
+	g++ -Wall -Werror -std=c++14 BoxLid.o FactoryTable.o Node.o PatternLine.o Player.o Tile.o TileBag.o GameModel.o MainPage.o -o Azul -g
 
 BoxLid.o: BoxLid.cpp
 	g++ -g -c BoxLid.cpp
@@ -7,8 +7,8 @@ BoxLid.o: BoxLid.cpp
 FactoryTable.o: FactoryTable.cpp
 	g++ -g -c FactoryTable.cpp
 
-Mosaics.o: Mosaics.cpp
-	g++ -g -c Mosaics.cpp
+Mosaics.o: Mosaic.cpp
+	g++ -g -c Mosaic.cpp
 
 Node.o: Node.cpp
 	g++ -g -c Node.cpp

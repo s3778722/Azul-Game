@@ -2,7 +2,7 @@
 #define PLAYER_H
 
 #include <string>
-#include "Mosaics.h"
+//#include "Mosaics.h"
 
 class Player{
 public:
@@ -19,7 +19,7 @@ private:
     std::string name;
     int score;
     bool isTurn;
-    Mosaic moziac;
+    //Mosaic moziac;
 
 };
 #endif //PLAYER_H
