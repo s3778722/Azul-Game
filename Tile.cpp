@@ -6,6 +6,9 @@ Tile::Tile(Colour colour) //constructor
   this->colour = colour;
 }
 
+Tile::Tile(Tile& other) :
+  Tile(other.colour){}
+
 Tile::~Tile() {} //destructor
 
 Colour Tile::getColour() //get Colour

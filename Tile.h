@@ -6,6 +6,7 @@
 class Tile {
 public:
     Tile(Colour colour);
+    Tile(Tile& other);
     ~Tile();
     Colour getColour();
     void setColour(Colour colour);
