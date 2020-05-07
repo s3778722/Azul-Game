@@ -22,7 +22,7 @@ void GameModel::DisplayGameboard(Player* player){
     cout << "== Start Round ===" << endl;
     cout << "TURN FOR PLAYER:" << player->getName() <<  endl;
     cout << "Factories:" << endl;
-    Factories->DisplayFactories();
+    //Factories->DisplayFactories();
     cout << "Mosaic for :" << endl;
     cout << "Broken:" << endl;
 
