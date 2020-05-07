@@ -10,7 +10,7 @@ public:
     ~Tile();
     Colour getColour();
     void setColour(Colour colour);
-    bool Tile::matchTile(Tile *t);
+    bool matchTile(Tile *t);
     
 private:
     Colour colour;

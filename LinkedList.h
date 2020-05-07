@@ -2,6 +2,7 @@
 #define LINKEDLIST_H
 #include "Tile.h"
 #include "Node.h"
+#include <string>
 
 class LinkedList{
 public:
@@ -9,7 +10,7 @@ public:
     ~LinkedList(); //destructor
 
     int getSize();
-    Tile* LinkedList::getTile(int i);
+    Tile* getTile(int i);
     void clear();
 
     void addFront(Tile* tile);

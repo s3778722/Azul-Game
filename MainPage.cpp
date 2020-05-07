@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include <string>
+#include "GameModel.h"
 
 class CMDArgs {
 public:
@@ -36,6 +37,14 @@ int main(int argc, char** argv){
 
         if(userInput == 1){
             std::cout << "Starting a New Game" << std::endl;
+            std::string player1Name;
+            std::string player2Name;
+            std::cout << "Enter the name for player 1:" << std::endl;
+            std::cin >> player1Name;
+            std::cout << "\nEnter the name for player 2:" << std::endl;
+            std::cin >> player2Name;
+            GameModel* Game = new GameModel(player1Name, player2Name);
+            Game->Play();
             //create a new game
         }
         else if(userInput == 2){

@@ -21,3 +21,9 @@ void BoxLid::addTile(Tile* tile){
 void BoxLid::clearAll(){
     boxLidVector.clear();
 }
+
+std::string BoxLid::toString(){
+
+    return "a";
+
+}
