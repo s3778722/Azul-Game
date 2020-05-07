@@ -6,3 +6,5 @@
 assignment2_20s1v1.0.pdf
 mainPage
 .gitignore
+
+*.o

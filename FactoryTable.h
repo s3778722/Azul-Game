@@ -11,14 +11,16 @@ class FactoryTable{
 public: 
 
     FactoryTable();
-    FactoryTable(std::vector<std::vector<Tile>>* TableState);
-    std::vector<std::vector<Tile>>* getTable();
-    std::vector<Tile>getFactory(int factoryNo);
+    FactoryTable(std::vector< std::vector<Tile*> > TableState);
+    std::vector< std::vector<Tile*> > getTable();
+    std::vector<Tile*>getFactory(int factoryNo);
     void DisplayFactories();
+    int getSize();
 
 private:
 
-    std::vector<std::vector<Tile>>* Table;
+    std::vector< std::vector<Tile*> > tileFactoryTable; // done by dulshan
+    // std::vector<std::vector<Tile>>* Table;
 
 };
 
