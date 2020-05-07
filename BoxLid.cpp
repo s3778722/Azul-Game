@@ -24,6 +24,6 @@ void BoxLid::clearAll(){
 
 std::string BoxLid::toString(){
 
-    return "f off";
+    return "a";
 
 }
