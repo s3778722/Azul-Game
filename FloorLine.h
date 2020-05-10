@@ -2,6 +2,7 @@
 #define FLOORLINE_H
 
 #include "LinkedList.h"
+#include "iostream"
 
 class FloorLine {
 public:
@@ -11,6 +12,7 @@ public:
     void addTile(Tile* tile);
     Tile* removeTile(); // removes the tile from the front
     int getNegativePoints();
+    void displayFloorLine();
     
 private:
     LinkedList* floorLine;

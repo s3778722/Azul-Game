@@ -3,6 +3,7 @@
 
 #include <string>
 //#include "Mosaics.h"
+#include "FloorLine.h"
 #include <iostream>
 
 class Player{
@@ -22,6 +23,7 @@ private:
     int score;
     bool isTurn;
     //Mosaic moziac;
+    FloorLine* playerFloorLine;
 
 };
 #endif //PLAYER_H

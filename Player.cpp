@@ -3,6 +3,10 @@
 Player::Player(std::string name){
 
     this->name = name;
+    this->playerFloorLine = new FloorLine();
+
+    playerFloorLine->addTile(new Tile(YELLOW));
+    playerFloorLine->addTile(new Tile(BLACK));
 
 }
 
@@ -38,5 +42,10 @@ bool Player::getTurn(){
 void Player::displayGameboard(){
 
     std::cout << "GAMEBOARD GOES HERE" << std::endl;
+
+    //the floorline stuff
+    std::cout << "Broken:";
+    playerFloorLine->displayFloorLine();
+    
 
 }

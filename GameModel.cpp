@@ -13,20 +13,18 @@ GameModel::GameModel(std::string player1Name, std::string player2Name){
 
 void GameModel::Play(){
 
-    cout << "Let's Play!\n" << endl;
+    std::cout << "Let's Play!\n" << std::endl;
     DisplayGameboard(player1);
 
 }
 
 void GameModel::DisplayGameboard(Player* player){
 
-    cout << "== Start Round ===" << endl;
-    cout << "TURN FOR PLAYER:" << player->getName() <<  endl;
-    cout << "Factories:" << endl;
+    std::cout << "== Start Round ===" << std::endl;
+    std::cout << "TURN FOR PLAYER:" << player->getName() <<  std::endl;
+    std::cout << "Factories:" << std::endl;
     Factories->DisplayFactories();
-    cout << "Mosaic for " << player->getName() << ":" << endl;
-    //Player->displayGameboard();
-    cout << "Broken:" << endl;
-    // DISPLAYBROKEN LINE function. ASDFLJASDLFJALSDKJFALKSDF
+    std::cout << "Mosaic for " << player->getName() << ":" << std::endl;
+    player->displayGameboard();
 
 }
