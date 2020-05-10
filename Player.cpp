@@ -3,6 +3,9 @@
 Player::Player(std::string name){
 
     this->name = name;
+    mosiac = new Mosiac();
+    
+
 
 }
 
@@ -37,6 +40,16 @@ bool Player::getTurn(){
 
 void Player::displayGameboard(){
 
-    std::cout << "GAMEBOARD GOES HERE" << std::endl;
+    for (int i = 0; i < 5; i++){
+
+    std::cout << i <<"1:";
+
+        for (int j = 0; j < 5; j++){
+            std::cout << "|| " << mosiac->getMosiac().at(i).at(j)->getColour();
+        }
+        std::cout << std::endl;        
+    }
+
+    std::cout << std::endl;
 
 }

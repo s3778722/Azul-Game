@@ -2,8 +2,8 @@
 #define PLAYER_H
 
 #include <string>
-//#include "Mosaics.h"
 #include <iostream>
+#include "Mosaic.h"
 
 class Player{
 public:
@@ -21,7 +21,7 @@ private:
     std::string name;
     int score;
     bool isTurn;
-    //Mosaic moziac;
+    Mosiac* mosiac;
 
 };
 #endif //PLAYER_H

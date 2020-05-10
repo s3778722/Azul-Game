@@ -13,8 +13,8 @@ public:
     
     GameModel();
     GameModel(std::string player1, std::string player2);
-    void Play();
-    void DisplayGameboard(Player* player);
+    void play();
+    void displayGameboard(Player* player);
 
 private:
 

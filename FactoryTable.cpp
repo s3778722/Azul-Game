@@ -34,7 +34,7 @@ std::vector<Tile*> FactoryTable::getFactory(int factoryNo){
 
 }
 
-void FactoryTable::DisplayFactories(){
+void FactoryTable::displayFactories(){
 
     for (unsigned int i = 0; i < tileFactoryTable.size(); i++){
 

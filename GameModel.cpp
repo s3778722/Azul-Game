@@ -4,29 +4,25 @@ GameModel::GameModel(std::string player1Name, std::string player2Name){
 
     player1 = new Player(player1Name);
     player2 = new Player(player2Name);
-
     Factories = new FactoryTable();
-    // lid = new BoxLid();
-    //CREATE BROKEN LINE ASKDFJALKSDHFLAKSDJFLAKSJDFLAKSJDF
 
 }
 
-void GameModel::Play(){
+void GameModel::play(){
 
     cout << "Let's Play!\n" << endl;
-    DisplayGameboard(player1);
+    displayGameboard(player1);
 
 }
 
-void GameModel::DisplayGameboard(Player* player){
+void GameModel::displayGameboard(Player* player){
 
     cout << "== Start Round ===" << endl;
     cout << "TURN FOR PLAYER:" << player->getName() <<  endl;
     cout << "Factories:" << endl;
-    Factories->DisplayFactories();
+    Factories->displayFactories();
     cout << "Mosaic for " << player->getName() << ":" << endl;
-    //Player->displayGameboard();
+    player->displayGameboard();
     cout << "Broken:" << endl;
-    // DISPLAYBROKEN LINE function. ASDFLJASDLFJALSDKJFALKSDF
 
 }

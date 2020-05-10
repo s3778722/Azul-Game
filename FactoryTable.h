@@ -2,7 +2,6 @@
 #define FACTORY_TABLE H
 
 #include <vector>
-#include <string> // remove this later
 #include <iostream>
 #include "Tile.h"
 
@@ -14,13 +13,12 @@ public:
     FactoryTable(std::vector< std::vector<Tile*> > TableState);
     std::vector< std::vector<Tile*> > getTable();
     std::vector<Tile*>getFactory(int factoryNo);
-    void DisplayFactories();
+    void displayFactories();
     int getSize();
 
 private:
 
     std::vector< std::vector<Tile*> > tileFactoryTable; // done by dulshan
-    // std::vector<std::vector<Tile>>* Table;
 
 };
 

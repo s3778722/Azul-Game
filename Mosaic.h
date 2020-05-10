@@ -1,4 +1,5 @@
 #include <array>
+#include <iostream>
 #include "Tile.h"
 
 class Mosiac {
@@ -6,13 +7,13 @@ public:
 
     Mosiac();
     ~Mosiac();
-    std::array<std::array<Tile,5>,5> getMosiac();
-    void setMosiac(std::array<std::array<Tile,5>,5> array);
+    std::array<std::array<Tile*,5>,5> getMosiac();
+    void setMosiac(std::array<std::array<Tile*,5>,5> array);
     void displayMosaic();
 
     
 private:
 
-    std::array<std::array<Tile,5>,5> mosiacArray;
+    std::array<std::array<Tile*,5>,5> mosiacArray;
     
 };
