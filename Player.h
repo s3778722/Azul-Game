@@ -2,6 +2,8 @@
 #define PLAYER_H
 
 #include <string>
+#include "Mosaic.h"
+#include "FloorLine.h"
 #include <iostream>
 #include "Mosaic.h"
 
@@ -22,6 +24,7 @@ private:
     int score;
     bool isTurn;
     Mosiac* mosiac;
+    FloorLine* playerFloorLine;
 
 };
 #endif //PLAYER_H

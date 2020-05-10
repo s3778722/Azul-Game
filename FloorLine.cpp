@@ -48,3 +48,16 @@ int FloorLine::getNegativePoints(){ // think of a way to make this better.... ni
         return 0;
     }
 }
+
+void FloorLine::displayFloorLine(){
+    int size = floorLine->getSize();
+    if(size != 0){
+        for(int i=0; i<size; i++){
+            std::cout << floorLine->getTile(i)->getColour() << " ";
+        }
+        std::cout << std::endl;
+    }
+    else{
+        std::cout << std::endl;
+    }
+}

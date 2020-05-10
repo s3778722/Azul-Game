@@ -4,9 +4,6 @@
 #include "FactoryTable.h"
 #include "BoxLid.h"
 
-using std::cout;
-using std::endl;
-
 class GameModel{
 
 public:

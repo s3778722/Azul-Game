@@ -6,6 +6,10 @@ Player::Player(std::string name){
     mosiac = new Mosiac();
     
 
+    this->playerFloorLine = new FloorLine();
+
+    playerFloorLine->addTile(new Tile(YELLOW));
+    playerFloorLine->addTile(new Tile(BLACK));
 
 }
 
@@ -51,5 +55,10 @@ void Player::displayGameboard(){
     }
 
     std::cout << std::endl;
+
+    //the floorline stuff
+    std::cout << "Broken:";
+    playerFloorLine->displayFloorLine();
+    
 
 }
