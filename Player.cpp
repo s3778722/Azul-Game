@@ -56,12 +56,12 @@ void Player::displayGameboard(){
             std::cout << "  ";
         }
         for(int j=0; j<i+1; j++){
-            std::cout << patternLineGrid[4][3]->getColour()<< " "; // here i can't get patternLineGrid[4][4]->getColour() this is what gives me the seg fault  //patternLineGrid[4][3]==>patternLineGrid[i][j]
+            std::cout << patternLineGrid[i][j]->getColour()<< " ";
         }
         std::cout << "|| ";
         //mosaic stuff here
         for(int j=0; j<5; j++){
-            std::cout << mosaicGrid[4][3]->getColour()<< " "; // here i can't get mosaicGrid[4][4]->getColour() this is what gives me the seg fault
+            std::cout << mosaicGrid[i][j]->getColour()<< " ";
         }
         std::cout << std::endl;
     }

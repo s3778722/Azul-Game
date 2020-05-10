@@ -2,11 +2,10 @@
 
 Mosaic::Mosaic(){
     for(int j=0; j<5; j++){
-        Tile* subArray[5];
+        this->mosaicArray[j] = new Tile*[5];
         for(int i=0;i<5; i++){
-            subArray[i] = new Tile(NO_TILE);
+            this->mosaicArray[j][i] = new Tile();
         }
-        this->mosaicArray[j] = subArray;
     }
 }
 

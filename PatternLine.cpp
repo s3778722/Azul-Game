@@ -2,11 +2,10 @@
 
 PatternLine::PatternLine(){
     for(int i=0; i<5; i++){ // 5 -> the dimention of the board
-        Tile* subArray[i+1];
+        this->tilePatternArray[i] = new Tile*[i+1];
         for(int j=0;j<i+1; j++){
-            subArray[j] = new Tile();
+            this->tilePatternArray[i][j] = new Tile();
         }
-        this->tilePatternArray[i] = subArray;
     }
 }
 
