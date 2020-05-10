@@ -13,11 +13,12 @@ void FloorLine::addTile(Tile* tile){
 }
 
 Tile* FloorLine::removeTile(){
-    Tile* returnTile;
+    Tile* returnTile = nullptr;
     if(floorLine->getSize() != 0){
         returnTile = floorLine->getTile(0); // this is thinking that the linked list goes from 0 onwards in indexing
         floorLine->removeFront();
     }
+    return returnTile;
 }
 
 int FloorLine::getNegativePoints(){ // think of a way to make this better.... nicer
@@ -45,5 +46,18 @@ int FloorLine::getNegativePoints(){ // think of a way to make this better.... ni
     }
     else{
         return 0;
+    }
+}
+
+void FloorLine::displayFloorLine(){
+    int size = floorLine->getSize();
+    if(size != 0){
+        for(int i=0; i<size; i++){
+            std::cout << floorLine->getTile(i)->getColour() << " ";
+        }
+        std::cout << std::endl;
+    }
+    else{
+        std::cout << std::endl;
     }
 }

@@ -44,7 +44,7 @@ int main(int argc, char** argv){
             std::cout << "\nEnter the name for player 2:" << std::endl;
             std::cin >> player2Name;
             GameModel* Game = new GameModel(player1Name, player2Name);
-            Game->Play();
+            Game->play();
             //create a new game
         }
         else if(userInput == 2){

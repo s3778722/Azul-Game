@@ -1,54 +1,54 @@
 
 #include "FactoryTable.h"
 
-FactoryTable::FactoryTable(){
-
-    Table =  new std::vector<std::vector<Tile>>;
-
+FactoryTable::FactoryTable():
+    tileFactoryTable()
+{
     for (int i = 0; i < 6; i++) { //6 right now is the number of factories we're going to make
         
-        std::vector<Tile>* factory = new std::vector<Tile>;
+        std::vector<Tile*> factory;
 
         for (int j = 0;  j < 4; j++) { //initalising the factory to '.'
-            factory->push_back(Tile('.')); 
-            std::cout << factory->at(j).getColour() << std::endl;
-            std::cout << factory->size() << std::endl;
+            factory.push_back(new Tile('.'));
         }
 
-        Table->push_back(*factory);
-        std::cout << Table->size() << std::endl;
+        tileFactoryTable.push_back(factory);
   }
 }
 
-FactoryTable::FactoryTable(std::vector<std::vector<Tile>>* TableState){
+FactoryTable::FactoryTable(std::vector< std::vector<Tile*> > TableState){
 
-    this->Table = TableState;
-
-}
-
-std::vector<std::vector<Tile>>* FactoryTable::getTable(){
-
-    return Table;
+    this->tileFactoryTable = TableState;
 
 }
 
-std::vector<Tile> FactoryTable::getFactory(int factoryNo){
+std::vector< std::vector<Tile*> > FactoryTable::getTable(){
 
-    return Table->at(factoryNo);
+    return tileFactoryTable;
 
 }
 
-void FactoryTable::DisplayFactories(){
+std::vector<Tile*> FactoryTable::getFactory(int factoryNo){
 
-    std::cout << Table->size() << std::endl;
+    return tileFactoryTable[factoryNo];
 
-    // for (int i = 0; i < Table->size(); i++){
+}
 
-    //     // for (int j = 0; j < Table->at(i).size(); j++){
-    //     //     std::cout << Table->at(i).at(j) << std::endl;
-    //     // }
-    //     std::cout << std::endl;        
-    // }
+void FactoryTable::displayFactories(){
 
+    for (unsigned int i = 0; i < tileFactoryTable.size(); i++){
 
+    std::cout << i <<":";
+
+        for (unsigned int j = 0; j < tileFactoryTable.at(i).size(); j++){
+            std::cout << " " << tileFactoryTable.at(i).at(j)->getColour();
+        }
+        std::cout << std::endl;        
+    }
+
+    std::cout << std::endl;
+}
+
+int FactoryTable::getSize(){
+    return 0;
 }

@@ -2,22 +2,24 @@
 
 PatternLine::PatternLine(){
     for(int i=0; i<5; i++){ // 5 -> the dimention of the board
-        Tile* subArray[i+1];
-        this->tilePatternArray[i] = subArray;
+        this->tilePatternArray[i] = new Tile*[i+1];
+        for(int j=0;j<i+1; j++){
+            this->tilePatternArray[i][j] = new Tile();
+        }
     }
 }
 
 PatternLine::PatternLine(PatternLine& other){
 }
 
-PatternLine::~PatternLine(){ // not sure if this is needed so check later
+PatternLine::~PatternLine(){ // not sure if this is needed so check later - not needed since nothing is in the heap
     for(int i=0; i<5; i++){
         for(int j=0; j<i; j++){
         // delete[] tilePatternArray[i];
             delete tilePatternArray[i][j];
         }
     }
-    delete[] tilePatternArray;
+    // delete[] tilePatternArray;
 }
 
 void PatternLine::removeTiles(int lineNumber){
@@ -29,3 +31,7 @@ void PatternLine::removeTiles(int lineNumber){
 Tile*** PatternLine::getTilePatternLine(){
     return tilePatternArray;
 }
+
+// int PatternLine::getPatternLineSizeIndi(int lineNumber){
+
+// }
