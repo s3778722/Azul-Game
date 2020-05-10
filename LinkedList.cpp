@@ -141,5 +141,13 @@ bool LinkedList::containsTile(Tile* tile){
 }
 
 std::string LinkedList::toString(){
-    //TODO
+    std::string linkedListString = "";
+    
+    for(int i = 0; i < getSize(); i++) {
+        linkedListString += getTile(i)->getColour();
+        if(i < getSize() - 1) {
+            linkedListString += ", ";
+        }
+    }
+    return linkedListString;
 }
