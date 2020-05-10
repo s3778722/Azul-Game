@@ -1,37 +1,38 @@
 #include "Mosaic.h"
 
-Mosiac::Mosiac():
-    mosiacArray()
-{
-
-    for (int i = 0; i < 5; i++){
-
-        for (int j = 0;  j < 5; j++) { //initalising the mosiac to '.'
-                mosiacArray[i][j] = (new Tile('.'));
-                std::cout << mosiacArray[i][j]->getColour();
-            }
-            std::cout << std::endl;
+Mosaic::Mosaic(){
+    for(int j=0; j<5; j++){
+        Tile* subArray[5];
+        for(int i=0;i<5; i++){
+            subArray[i] = new Tile(NO_TILE);
+        }
+        this->mosaicArray[j] = subArray;
     }
 }
 
-Mosiac::~Mosiac(){
+Mosaic::~Mosaic(){
+    for(int i=0; i<5; i++){
+        for(int j=0; j<5; j++){
+        // delete[] tilePatternArray[i];
+            delete mosaicArray[i][j];
+        }
+    }
+
+}
+
+Tile*** Mosaic::getMosaic(){
+
+    return mosaicArray;
 
 
 }
 
-std::array<std::array<Tile*,5>,5> getMosiac(){
-
-    return mosiacArray;
-
-
-}
-
-void setMosiac(std::array<std::array<Tile*,5>,5> array){
+void Mosaic::setMosaic(Tile** array){
 
 }
 
 
-void displayMosaic(){
+void Mosaic::displayMosaic(){
 
 
 

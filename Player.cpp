@@ -3,13 +3,12 @@
 Player::Player(std::string name){
 
     this->name = name;
-    mosiac = new Mosiac();
-    
-
+    this->mosaic = new Mosaic();
     this->playerFloorLine = new FloorLine();
+    this->playerPatternLine = new PatternLine();
 
-    playerFloorLine->addTile(new Tile(YELLOW));
-    playerFloorLine->addTile(new Tile(BLACK));
+    playerFloorLine->addTile(new Tile(YELLOW));//remove later
+    playerFloorLine->addTile(new Tile(BLACK));//remove later
 
 }
 
@@ -44,17 +43,21 @@ bool Player::getTurn(){
 
 void Player::displayGameboard(){
 
-    for (int i = 0; i < 5; i++){
+    Tile*** patternLineGrid = playerPatternLine->getTilePatternLine();
+    Tile*** mosaicGrid = mosaic->getMosaic(); //use this to access the mosaic and print the stuff
 
-    std::cout << i <<"1:";
-
-        for (int j = 0; j < 5; j++){
-            std::cout << "|| " << mosiac->getMosiac().at(i).at(j)->getColour();
+    for(int i=0;i<5;i++){
+        
+        for(int s=0;s<4-i;s++){
+            std::cout << "  ";
         }
-        std::cout << std::endl;        
+        for(int j=0; j<i+1; j++){
+            std::cout << patternLineGrid[i][j] << " ";
+        
+        }
     }
 
-    std::cout << std::endl;
+    // std::cout << std::endl;
 
     //the floorline stuff
     std::cout << "Broken:";

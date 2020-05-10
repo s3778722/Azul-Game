@@ -1,19 +1,25 @@
+#ifndef MOSAIC_H
+#define MOSAIC_H
+
 #include <array>
 #include <iostream>
 #include "Tile.h"
 
-class Mosiac {
+class Mosaic {
 public:
 
-    Mosiac();
-    ~Mosiac();
-    std::array<std::array<Tile*,5>,5> getMosiac();
-    void setMosiac(std::array<std::array<Tile*,5>,5> array);
+    Mosaic();
+    ~Mosaic();
+    Tile*** getMosaic();
+    void setMosaic(Tile** array);
     void displayMosaic();
 
     
 private:
 
-    std::array<std::array<Tile*,5>,5> mosiacArray;
+    Tile** mosaicArray[5];
+    // std::array<std::array<Tile*,5>,5> mosaicArray;
     
 };
+
+#endif //MOSAIC_H

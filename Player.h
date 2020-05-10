@@ -2,10 +2,10 @@
 #define PLAYER_H
 
 #include <string>
-#include "Mosaic.h"
 #include "FloorLine.h"
 #include <iostream>
 #include "Mosaic.h"
+#include "PatternLine.h"
 
 class Player{
 public:
@@ -23,8 +23,9 @@ private:
     std::string name;
     int score;
     bool isTurn;
-    Mosiac* mosiac;
+    Mosaic* mosaic;
     FloorLine* playerFloorLine;
+    PatternLine* playerPatternLine;
 
 };
 #endif //PLAYER_H
