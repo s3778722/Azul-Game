@@ -48,7 +48,8 @@ int main(int argc, char** argv){
             //create a new game
         }
         else if(userInput == 2){
-            // load game
+            //GameModel* Game = new GameModel(player,player,factories,boxlid,tilebag,floorline)
+            //Game->play();
         }
         else if(userInput == 3){
             printCredits();
@@ -75,6 +76,12 @@ void printCredits(){
     std::cout << "Email:  s3688949@student.rmit.edu.au" << std::endl;
     std::cout << "----------------------------------" << std::endl;
     std::cout << std::endl;
+}
+
+void printError(){
+
+    std::cout << "Please enter a valid option." << std::endl;
+
 }
 
 void processArgs(int argc, char** argv, CMDArgs* cmdArgs){
