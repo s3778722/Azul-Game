@@ -43,7 +43,7 @@ all: Azul
 clean:
 	rm -f Azul *.o
 
-Azul: BoxLid.o FactoryTable.o Node.o PatternLine.o Player.o Tile.o TileBag.o GameModel.o MainPage.o FloorLine.o LinkedList.o
+Azul: BoxLid.o FactoryTable.o Node.o PatternLine.o Player.o Tile.o TileBag.o GameModel.o MainPage.o FloorLine.o LinkedList.o Mosaic.o
 # Azul: BoxLid.o FactoryTable.o Node.o PatternLine.o Player.o Tile.o TileBag.o GameModel.o MainPage.o FloorLine.o LinkedList.o Mosaic.o TileCode.o
 	g++ -Wall -Werror -std=c++14 -g -O -o $@ $^
 

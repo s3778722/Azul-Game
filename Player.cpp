@@ -12,6 +12,10 @@ Player::Player(std::string name){
 
 }
 
+Player::~Player(){
+    //TODO
+}
+
 Player::Player(std::string name, int score, bool isTurn){
 
     this->name = name;
@@ -47,14 +51,19 @@ void Player::displayGameboard(){
     Tile*** mosaicGrid = mosaic->getMosaic(); //use this to access the mosaic and print the stuff
 
     for(int i=0;i<5;i++){
-        
+        std::cout << i+1 << ": ";
         for(int s=0;s<4-i;s++){
             std::cout << "  ";
         }
         for(int j=0; j<i+1; j++){
-            std::cout << patternLineGrid[i][j] << " ";
-        
+            std::cout << patternLineGrid[4][3]->getColour()<< " "; // here i can't get patternLineGrid[4][4]->getColour() this is what gives me the seg fault  //patternLineGrid[4][3]==>patternLineGrid[i][j]
         }
+        std::cout << "|| ";
+        //mosaic stuff here
+        for(int j=0; j<5; j++){
+            std::cout << mosaicGrid[4][3]->getColour()<< " "; // here i can't get mosaicGrid[4][4]->getColour() this is what gives me the seg fault
+        }
+        std::cout << std::endl;
     }
 
     // std::cout << std::endl;

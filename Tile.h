@@ -5,6 +5,7 @@
 
 class Tile {
 public:
+    Tile();
     Tile(Colour colour);
     Tile(Tile& other);
     ~Tile();

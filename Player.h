@@ -10,6 +10,7 @@
 class Player{
 public:
     Player();
+    ~Player();
     Player(std::string name); 
     Player(std::string name, int score, bool isTurn);
     int getScore();
