@@ -34,3 +34,9 @@ bool Player::getTurn(){
 
     return this->isTurn;
 }
+
+void Player::displayGameboard(){
+
+    std::cout << "GAMEBOARD GOES HERE" << std::endl;
+
+}

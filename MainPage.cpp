@@ -52,8 +52,6 @@ int main(int argc, char** argv){
         }
         else if(userInput == 3){
             printCredits();
-            FactoryTable* Factories = new FactoryTable();//remove later
-            Factories->DisplayFactories();//remove later
         }
         else if(userInput == 4){
             return EXIT_SUCCESS;

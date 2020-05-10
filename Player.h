@@ -3,6 +3,7 @@
 
 #include <string>
 //#include "Mosaics.h"
+#include <iostream>
 
 class Player{
 public:
@@ -13,6 +14,7 @@ public:
     std::string getName();
     bool getTurn();    
     void addPoints(int points);
+    void displayGameboard();
 
     
 private:

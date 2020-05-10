@@ -18,7 +18,7 @@ public:
 
 private:
 
-    // FactoryTable* Factories;
+    FactoryTable* Factories;
     Player* player1;
     Player* player2;
     // BoxLid* lid;
