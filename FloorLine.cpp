@@ -13,11 +13,12 @@ void FloorLine::addTile(Tile* tile){
 }
 
 Tile* FloorLine::removeTile(){
-    Tile* returnTile;
+    Tile* returnTile = nullptr;
     if(floorLine->getSize() != 0){
         returnTile = floorLine->getTile(0); // this is thinking that the linked list goes from 0 onwards in indexing
         floorLine->removeFront();
     }
+    return returnTile;
 }
 
 int FloorLine::getNegativePoints(){ // think of a way to make this better.... nicer

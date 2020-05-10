@@ -97,10 +97,10 @@ void LinkedList::removeBack(){
 void LinkedList::removeTileAt(int i)
 {  
     if (i == 0){
-       removeFront;
+       removeFront();
     }
     else if (i == this->getSize()-1){
-        removeBack;
+        removeBack();
     }
     else{
         Node* node = this->head;
@@ -142,4 +142,5 @@ bool LinkedList::containsTile(Tile* tile){
 
 std::string LinkedList::toString(){
     //TODO
+    return "ToDo";
 }

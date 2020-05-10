@@ -26,7 +26,8 @@ std::vector<Tile*> FactoryTable::getFactory(int factoryNo){
 
 void FactoryTable::DisplayFactories(){
 
-    std::cout << this->getSize() << std::endl;
+    std::cout << tileFactoryTable.size() << std::endl;
+    // std::cout << this->getSize() << std::endl;
 
 }
 
