@@ -1,16 +1,27 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "GameModel.h"
+
+Player* player1;
+Player* player2;
+
 
 class CMDArgs {
 public:
 
    bool haveSeed = false;
    int randomSeed = 0; // set up the random seed it needs to be when the game isn't given a seed
+
+private:
+    
 };
 
 void printCredits();
 void processArgs(int argc, char** argv, CMDArgs* cmdArgs);
+void loadGame(std::string fileName);
+void createGame();
+void newGame();
 
 int main(int argc, char** argv){
 
@@ -48,6 +59,12 @@ int main(int argc, char** argv){
             //create a new game
         }
         else if(userInput == 2){
+            // load game
+            std::string fileName;
+            std::cin >> fileName;
+            std::ifstream gameFile;
+            gameFile.open(fileName);
+            loadGame(fileName);
             //GameModel* Game = new GameModel(player,player,factories,boxlid,tilebag,floorline)
             //Game->play();
         }
@@ -76,6 +93,11 @@ void printCredits(){
     std::cout << "Email:  s3688949@student.rmit.edu.au" << std::endl;
     std::cout << "----------------------------------" << std::endl;
     std::cout << std::endl;
+    std::cout << "Name: Angelique Marcelin" << std::endl;
+    std::cout << "Student ID: s3602636" << std::endl;
+    std::cout << "Email:  s3602636@student.rmit.edu.au" << std::endl;
+    std::cout << "----------------------------------" << std::endl;
+    std::cout << std::endl;
 }
 
 void printError(){
@@ -91,3 +113,48 @@ void processArgs(int argc, char** argv, CMDArgs* cmdArgs){
         cmdArgs->haveSeed = true;
     }
 }
+
+void loadGame(std::string fileName) {
+    /*
+    • The player’s name and scores ( 2 player game only)
+    • The state of the factories and player mosaic’s
+    • The order of the tiles in both bags
+    • The current player - the next player to take a turn
+    */
+
+    std::string playerName1;
+    std::string playerName2;
+    int playerScore1;
+    int playerScore2;
+    bool p1 = true;
+    bool p2 = false;
+
+    //Will need to filter through the gameformat text to find these variables
+    std::ifstream input( fileName );
+    int lineNum = 0;
+    for( std::string line; getline( input, line ); )
+    {
+        //if ( lineNum > )
+        lineNum++;
+    }
+        
+
+    //Create new players from variables in loaded game
+    player1 = new Player(playerName1, playerScore1, p1);
+    player2 = new Player(playerName2, playerScore2, p2);
+
+   new gameModel(player1, player2);
+    
+}
+
+void newGame() {
+    std::string pName1;
+    std::string pName2;
+
+    player1 = new Player(pName1, 0, true);
+    player2 = new Player(pName2, 0, false);
+
+   new gameModel(player1, player2);
+
+}
+
