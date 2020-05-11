@@ -19,7 +19,7 @@ private:
 
 void printCredits();
 void processArgs(int argc, char** argv, CMDArgs* cmdArgs);
-void loadGame(std::string fileName);
+GameModel* loadGame(std::string fileName, GameModel* Game);
 void createGame();
 void newGame();
 
@@ -64,9 +64,12 @@ int main(int argc, char** argv){
             std::cin >> fileName;
             std::ifstream gameFile;
             gameFile.open(fileName);
-            loadGame(fileName);
-            //GameModel* Game = new GameModel(player,player,factories,boxlid,tilebag,floorline)
-            //Game->play();
+
+            GameModel* Game = nullptr;
+            loadGame(fileName, Game);
+
+            //Play game
+            Game->play();
         }
         else if(userInput == 3){
             printCredits();
@@ -114,7 +117,7 @@ void processArgs(int argc, char** argv, CMDArgs* cmdArgs){
     }
 }
 
-void loadGame(std::string fileName) {
+GameModel* loadGame(std::string fileName, GameModel* Game) {
     /*
     • The player’s name and scores ( 2 player game only)
     • The state of the factories and player mosaic’s
@@ -122,11 +125,11 @@ void loadGame(std::string fileName) {
     • The current player - the next player to take a turn
     */
 
-    std::string playerName1;
-    std::string playerName2;
-    int playerScore1;
-    int playerScore2;
-    bool p1 = true;
+    std::string playerName1 = "";
+    std::string playerName2 = "";
+    int playerScore1 = 0;
+    int playerScore2 = 0;
+    bool p1 = false;
     bool p2 = false;
 
     //Will need to filter through the gameformat text to find these variables
@@ -137,24 +140,13 @@ void loadGame(std::string fileName) {
         //if ( lineNum > )
         lineNum++;
     }
-        
+   
+    Player* player1 = new Player(playerName1,playerScore1,p1 );
+    Player* player2 = new Player(playerName2,playerScore2,p2 );
 
-    //Create new players from variables in loaded game
-    player1 = new Player(playerName1, playerScore1, p1);
-    player2 = new Player(playerName2, playerScore2, p2);
 
-   new gameModel(player1, player2);
-    
+    Game = new GameModel(player1, player2);
+    return Game; 
 }
 
-void newGame() {
-    std::string pName1;
-    std::string pName2;
-
-    player1 = new Player(pName1, 0, true);
-    player2 = new Player(pName2, 0, false);
-
-   new gameModel(player1, player2);
-
-}
 

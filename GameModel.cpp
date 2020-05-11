@@ -8,6 +8,12 @@ GameModel::GameModel(std::string player1Name, std::string player2Name){
 
 }
 
+GameModel::GameModel(Player* player1, Player* player2){
+
+    Factories = new FactoryTable();
+
+}
+
 void GameModel::play(){
 
     std::cout << "Let's Play!\n" << std::endl;
