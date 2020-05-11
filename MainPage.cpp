@@ -66,7 +66,7 @@ int main(int argc, char** argv){
             gameFile.open(fileName);
 
             GameModel* Game = nullptr;
-            loadGame(fileName, Game);
+            Game = loadGame(fileName, Game);
 
             //Play game
             Game->play();
@@ -133,12 +133,42 @@ GameModel* loadGame(std::string fileName, GameModel* Game) {
     bool p2 = false;
 
     //Will need to filter through the gameformat text to find these variables
-    std::ifstream input( fileName );
+    std::ifstream input( "SaveGameFormat.txt" );
     int lineNum = 0;
     for( std::string line; getline( input, line ); )
     {
-        //if ( lineNum > )
+        if (lineNum == 10){
+            playerName1 = line;
+            std::cout << "playername:" << playerName1 << ". is set" << std::endl;
+        }
+
+        if (lineNum == 11){
+            bool p1 = std::stoi(line.c_str());
+            std::cout << "turn for above: " << p1 << ". is set" << std::endl;
+        }
+
+        if (lineNum == 12){
+            int playerScore1 = std::stoi(line.c_str());
+            std::cout << "score for above: " << playerScore1 << ". is set" << std::endl;
+        }
+
+        if (lineNum == 28){
+            playerName2 = line;
+            std::cout << "playername:" << playerName2 << ". is set" << std::endl;
+        }
+
+        if (lineNum == 29){
+            bool p2 = std::stoi(line.c_str());
+            std::cout << "turn for above: " << p2 << ". is set" << std::endl;
+        }
+
+        if (lineNum == 30){
+            int playerScore2 = std::stoi(line.c_str());
+            std::cout << "score for above: " << playerScore2 << ". is set" << std::endl;
+        }
+
         lineNum++;
+        
     }
    
     Player* player1 = new Player(playerName1,playerScore1,p1 );

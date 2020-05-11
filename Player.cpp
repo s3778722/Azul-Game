@@ -21,6 +21,11 @@ Player::Player(std::string name, int score, bool isTurn){
     this->name = name;
     this->score = score;
     this->isTurn = isTurn;
+    this->mosaic = new Mosaic();
+    this->playerFloorLine = new FloorLine();
+    this->playerPatternLine = new PatternLine();
+    playerFloorLine->addTile(new Tile(YELLOW));//remove later
+    playerFloorLine->addTile(new Tile(BLACK));//remove later
 
 }
 

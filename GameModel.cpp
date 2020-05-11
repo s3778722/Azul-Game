@@ -8,8 +8,13 @@ GameModel::GameModel(std::string player1Name, std::string player2Name){
 
 }
 
-GameModel::GameModel(Player* player1, Player* player2){
+GameModel::GameModel(Player* player1load, Player* player2load){
 
+    std::cout << "IN HER";
+
+    player1 = player1load;
+    std::cout << player1->getName();
+    player2 = player2load;
     Factories = new FactoryTable();
 
 }
