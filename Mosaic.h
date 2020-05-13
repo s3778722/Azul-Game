@@ -14,6 +14,9 @@ public:
     void setMosaic(Tile** array);
     void displayMosaic();
 
+    void mosaicPattern();//sampleidea
+    bool Mosaic::hasFullRow();
+
     
 private:
 
