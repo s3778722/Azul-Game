@@ -29,6 +29,7 @@ Tile*** Mosaic::getMosaic(){
 void Mosaic::setMosaic(Tile** array){
 }
 
+//tested with Uppercase letter to be displayed and it is working
 void Mosaic::displayMosaic(){
     for (int i = 0; i < 5; i++)
     {
@@ -66,6 +67,8 @@ void Mosaic::initMosaicPattern(){
             counter++;
         }
     }*/
+
+    //Tested and it is working
     std::string pattern = "byrullbyruulbyrrulbyyrulb";
     int counter = 0;
     for (int i = 0; i < 5; i++){
