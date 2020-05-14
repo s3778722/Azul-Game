@@ -45,12 +45,9 @@ void GameModel::displayGameboard(Player* player){
 }
 
 void GameModel::saveGame(std::string saveFileName){
-    if (std::ifstream(saveFileName)){
-        //remove the file if it exists
-    }
-
     std::ofstream saveFile(saveFileName);
-
+    saveFile.clear();//not sure if this is needed but i'll put here
+    
     for (int i = 0; i < Factories->getSize(); i++){ //factories
         for(int j=0; j<Factories->getFactory(i).size(); j++){
             saveFile << Factories->getTable().at(i).at(j)->getColour();
