@@ -24,7 +24,7 @@ PatternLine::~PatternLine(){ // not sure if this is needed so check later - not 
 
 void PatternLine::removeTiles(int lineNumber){
     for(int i=0; i<lineNumber; i++){
-        tilePatternArray[lineNumber][i] = nullptr;
+        tilePatternArray[lineNumber-1][i] = nullptr;
     }
 }
 
@@ -35,3 +35,13 @@ Tile*** PatternLine::getTilePatternLine(){
 // int PatternLine::getPatternLineSizeIndi(int lineNumber){
 
 // }
+
+bool PatternLine::isPatternLineFull(int lineNumber){
+    bool isFull = true;
+    for(int j=0;j<lineNumber;j++){
+        if(tilePatternArray[lineNumber-1][j]->getColour() == '.'){
+            isFull = false;
+        }
+    }
+    return isFull; 
+}
