@@ -47,16 +47,7 @@ int main(int argc, char** argv){
         std::cout << std::endl;
 
         if(userInput == 1){
-            std::cout << "Starting a New Game" << std::endl;
-            std::string player1Name;
-            std::string player2Name;
-            std::cout << "Enter the name for player 1:" << std::endl;
-            std::cin >> player1Name;
-            std::cout << "\nEnter the name for player 2:" << std::endl;
-            std::cin >> player2Name;
-            GameModel* Game = new GameModel(player1Name, player2Name);
-            Game->play();
-            //create a new game
+            newGame();
         }
         else if(userInput == 2){
             // load game
@@ -78,6 +69,21 @@ int main(int argc, char** argv){
             return EXIT_SUCCESS;
         }
     }
+}
+
+void newGame(){
+    std::cout << "Starting a New Game" << std::endl;
+    std::string player1Name;
+    std::string player2Name;
+    std::cout << "Enter the name for player 1:" << std::endl;
+    std::cout << ">";
+    std::cin >> player1Name;
+    std::cout << "\nEnter the name for player 2:" << std::endl;
+    std::cout << ">";
+    std::cin >> player2Name;
+    GameModel* Game = new GameModel(player1Name, player2Name);
+    Game->play();
+    //create a new game
 }
 
 void printCredits(){
@@ -178,5 +184,6 @@ GameModel* loadGame(std::string fileName, GameModel* Game) {
     Game = new GameModel(player1, player2);
     return Game; 
 }
+
 
 

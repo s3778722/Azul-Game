@@ -13,6 +13,7 @@ public:
     Tile* removeTile(); // removes the tile from the front
     int getNegativePoints();
     void displayFloorLine();
+    LinkedList* getFloorLine();
     
 private:
     LinkedList* floorLine;

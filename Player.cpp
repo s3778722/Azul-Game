@@ -79,3 +79,15 @@ void Player::displayGameboard(){
     
 
 }
+
+FloorLine* Player::getFloorLine(){
+    return playerFloorLine;
+}
+
+PatternLine* Player::getPatternLine(){
+    return playerPatternLine;
+}
+
+Mosaic* Player::getMosaic(){
+    return mosaic;
+}
