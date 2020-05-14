@@ -1,13 +1,14 @@
 #include "Mosaic.h"
 
 Mosaic::Mosaic(){
+    /*
     for(int j=0; j<5; j++){
         this->mosaicArray[j] = new Tile*[5];
         for(int i=0;i<5; i++){
             this->mosaicArray[j][i] = new Tile(); 
         }
-    }
-    mosaicPattern();
+    }*/
+    initMosaicPattern();
     displayMosaic();
 }
 
@@ -26,7 +27,6 @@ Tile*** Mosaic::getMosaic(){
 }
 
 void Mosaic::setMosaic(Tile** array){
-
 }
 
 void Mosaic::displayMosaic(){
@@ -36,14 +36,14 @@ void Mosaic::displayMosaic(){
         {
             if(islower(mosaicArray[i][j]->getColour()))
             {
-                mosaicArray[i][j] = new Tile();
+                mosaicArray[i][j]->setColour(NO_TILE);
             }
         }
     }
 }
 
 //sample idea
-void Mosaic::mosaicPattern(){
+void Mosaic::initMosaicPattern(){
     /*
     for(int i = 0; i < 5; i++){
         this->mosaicArray[i][i] = new Tile('b');
@@ -57,9 +57,19 @@ void Mosaic::mosaicPattern(){
         this->mosaicArray[i][i-4] = new Tile('y');
     }
     */
+   /*
     std::string pattern = "byrullbyruulbyrrulbyyrulb";
     int counter = 0;
     for (int i = 0; i < 5; i++){
+        for(int j = 0; j<5; j++){
+            this->mosaicArray[i][j] = new Tile(pattern[counter]);
+            counter++;
+        }
+    }*/
+    std::string pattern = "byrullbyruulbyrrulbyyrulb";
+    int counter = 0;
+    for (int i = 0; i < 5; i++){
+        this->mosaicArray[i] = new Tile*[5];
         for(int j = 0; j<5; j++){
             this->mosaicArray[i][j] = new Tile(pattern[counter]);
             counter++;
