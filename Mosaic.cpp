@@ -30,7 +30,6 @@ void Mosaic::setMosaic(Tile** array){
 }
 
 void Mosaic::displayMosaic(){
-    //char a[] = {'B','Y','R','U','L'};
     for (int i = 0; i < 5; i++)
     {
         for (int j = 0; j < 5; j++)
@@ -68,7 +67,30 @@ void Mosaic::mosaicPattern(){
     }
 }
 
-
+/**
+ * Set full as false
+ *  For each row, count = 0
+ *      For each column if mosaicarray is uppercase, count+1
+ *          if count is 4
+ *              set full as true;
+ *  Return full
+ *  END
+ **/
+bool Mosaic::hasFullRow(){
+    bool full = false;
+    for(int row = 0; row < 5; row++){
+        int count = 0;
+        for(int column = 0; column<5; column++){
+            if(isupper(mosaicArray[row][column]->getColour())){
+                count++;
+            }
+            if (count == 4){
+                full = true;
+            }
+        }
+    }
+    return full;
+}
 /**
  * If patternlinefullrow == true
  * forloop

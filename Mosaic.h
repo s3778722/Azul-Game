@@ -15,7 +15,7 @@ public:
     void displayMosaic();
 
     void mosaicPattern();//sampleidea
-   // bool Mosaic::hasFullRow();
+    bool hasFullRow();
 
     
 private:
