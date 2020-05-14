@@ -6,7 +6,9 @@ Mosaic::Mosaic(){
         for(int i=0;i<5; i++){
             this->mosaicArray[j][i] = new Tile();
         }
-    }
+    }  
+    mosaicPattern();
+    displayMosaic();
 }
 
 Mosaic::~Mosaic(){
@@ -20,38 +22,42 @@ Mosaic::~Mosaic(){
 }
 
 Tile*** Mosaic::getMosaic(){
-
     return mosaicArray;
-
-
 }
 
 void Mosaic::setMosaic(Tile** array){
 
 }
 
-
 void Mosaic::displayMosaic(){
-}
-
-//sample idea
-/*
-void Mosaic::mosaicPattern(){
-    for(int i = 0; i < 5; i++){
-        for (int j = 1; j < 5; ++j){
-            this->mosaicArray[i][i] =    'b';
-            this->mosaicArray[i][i+j] =  'y';
-            this->mosaicArray[i][i+j] =  'r';
-            this->mosaicArray[i][i+j] =  'b';
-            this->mosaicArray[i][i+j] =  'l';
-            this->mosaicArray[i][i-j] =  'l';
-            this->mosaicArray[i][i-j] =  'b';
-            this->mosaicArray[i][i-j] =  'r';
-            this->mosaicArray[j][i-j] =  'y';
+    //char a[] = {'B','Y','R','U','L'};
+    for (int i = 0; i < 5; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if(islower(mosaicArray[i][j]->getColour()))
+            {
+                mosaicArray[i][j] = new Tile();
+            }
         }
     }
 }
-*/
+
+//sample idea
+void Mosaic::mosaicPattern(){
+    for(int i = 0; i < 5; i++){
+        this->mosaicArray[i][i] = new Tile('b');
+        this->mosaicArray[i][i+1] = new Tile('y');
+        this->mosaicArray[i][i+2] = new Tile('r');
+        this->mosaicArray[i][i+3] = new Tile('u');
+        this->mosaicArray[i][i+4] = new Tile('l');
+        this->mosaicArray[i][i-1] = new Tile('l');
+        this->mosaicArray[i][i-2] = new Tile('u');
+        this->mosaicArray[i][i-3] = new Tile('r');
+        this->mosaicArray[i][i-4] = new Tile('y');
+    }
+}
+
 
 /**
  * If patternlinefullrow == true
@@ -59,8 +65,8 @@ void Mosaic::mosaicPattern(){
  *  If mosaicArray[i][j].getcolour() == lower(c)
  *     mosaicArray[i][j].setcolour(c)   
 **/
-
- bool Mosaic::hasFullRow()
+/*
+bool Mosaic::hasFullRow()
 {
     bool full;
     for (int row = 0; row < 5; row++)
@@ -82,3 +88,4 @@ void Mosaic::mosaicPattern(){
     }
     return false;
 }
+*/
