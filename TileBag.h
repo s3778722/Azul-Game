@@ -18,6 +18,8 @@ public:
     void shuffleRandom(); 
     void shuffle(int seed); //for testing
     Tile* drawTileFront();
+    int bagSize();
+    Tile* getTile(int i);
 
 private:
     LinkedList* tileList;

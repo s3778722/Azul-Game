@@ -22,6 +22,10 @@ void BoxLid::clearAll(){
     boxLidVector.clear();
 }
 
+std::vector<Tile*> BoxLid::getBoxLid(){
+    return boxLidVector;
+}
+
 std::string BoxLid::toString(){
 
     return "a";

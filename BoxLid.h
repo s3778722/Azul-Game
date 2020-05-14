@@ -14,6 +14,7 @@ public:
     void addTile(Tile* tile);
     void clearAll();
     std::string toString();
+    std::vector<Tile*> getBoxLid();
     
 private:
     std::vector<Tile*> boxLidVector;

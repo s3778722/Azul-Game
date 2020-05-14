@@ -61,3 +61,7 @@ void FloorLine::displayFloorLine(){
         std::cout << std::endl;
     }
 }
+
+LinkedList* FloorLine::getFloorLine(){
+    return floorLine;
+}

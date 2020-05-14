@@ -18,6 +18,9 @@ public:
     bool getTurn();    
     void addPoints(int points);
     void displayGameboard();
+    FloorLine* getFloorLine();
+    PatternLine* getPatternLine();
+    Mosaic* getMosaic();
 
     
 private:

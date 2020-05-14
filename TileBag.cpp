@@ -68,3 +68,11 @@ Tile* TileBag::drawTileFront(){
     tileList->removeFront();
     return frontTile;
 }
+
+int TileBag::bagSize(){
+    return tileList->getSize();
+}
+
+Tile* TileBag::getTile(int i){
+    return tileList->getTile(i);
+}

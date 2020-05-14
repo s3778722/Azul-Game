@@ -50,5 +50,5 @@ void FactoryTable::displayFactories(){
 }
 
 int FactoryTable::getSize(){
-    return 0;
+    return tileFactoryTable.size(); // no of total factories
 }
