@@ -21,6 +21,7 @@ public:
 private:
 
     Tile** mosaicArray[5];
+
     // std::array<std::array<Tile*,5>,5> mosaicArray;
     
 };

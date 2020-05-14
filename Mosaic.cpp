@@ -4,9 +4,9 @@ Mosaic::Mosaic(){
     for(int j=0; j<5; j++){
         this->mosaicArray[j] = new Tile*[5];
         for(int i=0;i<5; i++){
-            this->mosaicArray[j][i] = new Tile();
+            this->mosaicArray[j][i] = new Tile(); 
         }
-    }  
+    }
     mosaicPattern();
     displayMosaic();
 }
@@ -45,6 +45,7 @@ void Mosaic::displayMosaic(){
 
 //sample idea
 void Mosaic::mosaicPattern(){
+    /*
     for(int i = 0; i < 5; i++){
         this->mosaicArray[i][i] = new Tile('b');
         this->mosaicArray[i][i+1] = new Tile('y');
@@ -55,6 +56,15 @@ void Mosaic::mosaicPattern(){
         this->mosaicArray[i][i-2] = new Tile('u');
         this->mosaicArray[i][i-3] = new Tile('r');
         this->mosaicArray[i][i-4] = new Tile('y');
+    }
+    */
+    std::string pattern = "byrullbyruulbyrrulbyyrulb";
+    int counter = 0;
+    for (int i = 0; i < 5; i++){
+        for(int j = 0; j<5; j++){
+            this->mosaicArray[i][j] = new Tile(pattern[counter]);
+            counter++;
+        }
     }
 }
 
