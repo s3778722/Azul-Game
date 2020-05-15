@@ -21,6 +21,7 @@ public:
     FloorLine* getFloorLine();
     PatternLine* getPatternLine();
     Mosaic* getMosaic();
+    void makeTileMosaicUppercase();
 
     
 private:
