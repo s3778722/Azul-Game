@@ -15,7 +15,8 @@ public:
     Player(std::string name, int score, bool isTurn);
     int getScore();
     std::string getName();
-    bool getTurn();    
+    bool getTurn();
+    void setIsTurn(bool isTurn);
     void addPoints(int points);
     void displayGameboard();
     FloorLine* getFloorLine();

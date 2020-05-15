@@ -76,10 +76,10 @@ void newGame(){
     std::string player1Name;
     std::string player2Name;
     std::cout << "Enter the name for player 1:" << std::endl;
-    std::cout << ">";
+    std::cout << "> ";
     std::cin >> player1Name;
     std::cout << "\nEnter the name for player 2:" << std::endl;
-    std::cout << ">";
+    std::cout << "> ";
     std::cin >> player2Name;
     GameModel* Game = new GameModel(player1Name, player2Name);
     Game->play();
