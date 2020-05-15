@@ -98,7 +98,7 @@ void Player::makeTileMosaicUppercase(){
         if (playerPatternLine->isPatternLineFull(i)){
             Colour a = playerPatternLine->getTilePatternLine()[i][0]->getColour();
             for (int j = 0; j < 5; j++){
-                if (a == tolower(mosaic->getMosaic()[i][j]->getColour()))
+                if (tolower(a) == mosaic->getMosaic()[i][j]->getColour())
                 {
                     mosaic->getMosaic()[i][j]->setColour(a);
                 }
