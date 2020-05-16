@@ -11,8 +11,8 @@ class Player{
 public:
     Player();
     ~Player();
-    Player(std::string name); 
-    Player(std::string name, int score, bool isTurn);
+    Player(std::string name);
+    Player(std::string name, int score, bool isTurn, Mosaic* mosaicLoad, FloorLine* FloorLineLoad, PatternLine* patternLineLoad);
     int getScore();
     std::string getName();
     bool getTurn();

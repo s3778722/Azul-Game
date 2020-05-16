@@ -12,6 +12,10 @@ Mosaic::Mosaic(){
     displayMosaic();
 }
 
+// Mosaic::Mosaic(Tile** mosaicArrayLoad){
+//     *this->mosaicArray = mosaicArrayLoad;
+// }
+
 Mosaic::~Mosaic(){
     for(int i=0; i<5; i++){
         for(int j=0; j<5; j++){
@@ -26,7 +30,8 @@ Tile*** Mosaic::getMosaic(){
     return mosaicArray;
 }
 
-void Mosaic::setMosaic(Tile** array){
+void Mosaic::setMosaicTile(int row, int column, Colour colour){
+    mosaicArray[row][column]->setColour(colour);
 }
 
 //tested with Uppercase letter to be displayed and it is working

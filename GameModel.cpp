@@ -11,14 +11,15 @@ GameModel::GameModel(std::string player1Name, std::string player2Name){
 
 }
 
-GameModel::GameModel(Player* player1load, Player* player2load){
+GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* factories, TileBag* tileBag,BoxLid* bodLidLoad){
 
     std::cout << "IN HER";
 
     player1 = player1load;
-    std::cout << player1->getName();
     player2 = player2load;
-    Factories = new FactoryTable();
+    this->Factories = factories;
+    this->tileBag = tileBag;
+    this->boxLid = bodLidLoad;
 
 }
 

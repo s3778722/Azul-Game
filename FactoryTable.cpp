@@ -52,3 +52,7 @@ void FactoryTable::displayFactories(){
 int FactoryTable::getSize(){
     return tileFactoryTable.size(); // no of total factories
 }
+
+// void FactoryTable::setTile(int row, int column, Colour colour){
+//     tileFactoryTable.at(row).at(column)->setColour(colour);
+// }

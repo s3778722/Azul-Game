@@ -15,6 +15,7 @@ public:
     std::vector<Tile*>getFactory(int factoryNo);
     void displayFactories();
     int getSize();
+    // void setTile(int row, int column, Colour colour);
 
 private:
 

@@ -5,18 +5,18 @@ L L Y R
 R R R U
 U L B Y
 
-R R Y Y L L U U B B // Tile Bag need more
-B B U F // Box Lid
+R R Y Y L L U U B B
+B B U F
 
 playerName1 
 true
 6
 
 .
-..
-...
-.BBB
-....U
+. .
+. . .
+. B B B
+. . . . U
 
 . . . R .
 . . . L .
@@ -31,10 +31,10 @@ false
 4
 
 .
-..
-...
-UUUU
-.....
+. .
+. . .
+U U U U
+. . . . .
 
 Y . . . .
 U . . . .

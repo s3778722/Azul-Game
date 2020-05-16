@@ -9,6 +9,10 @@ PatternLine::PatternLine(){
     }
 }
 
+// PatternLine::PatternLine(Tile** tilePatternArray[5]){
+//     *this->tilePatternArray = *tilePatternArray;
+// }
+
 PatternLine::PatternLine(PatternLine& other){
 }
 
@@ -44,4 +48,8 @@ bool PatternLine::isPatternLineFull(int lineNumber){
         }
     }
     return isFull; 
+}
+
+void PatternLine::setTile(int row, int column, Colour colour){
+    tilePatternArray[row][column]->setColour(colour);
 }

@@ -15,16 +15,14 @@ Player::~Player(){
     //TODO
 }
 
-Player::Player(std::string name, int score, bool isTurn){
+Player::Player(std::string name, int score, bool isTurn, Mosaic* mosaicLoad, FloorLine* FloorLineLoad, PatternLine* patternLineLoad){
 
     this->name = name;
     this->score = score;
     this->isTurn = isTurn;
-    this->mosaic = new Mosaic();
-    this->playerFloorLine = new FloorLine();
-    this->playerPatternLine = new PatternLine();
-    playerFloorLine->addTile(new Tile(YELLOW));//remove later
-    playerFloorLine->addTile(new Tile(BLACK));//remove later
+    this->mosaic = mosaicLoad;
+    this->playerFloorLine = FloorLineLoad;
+    this->playerPatternLine = patternLineLoad;
 
 }
 
