@@ -6,7 +6,6 @@ Player::Player(std::string name){
     this->mosaic = new Mosaic();
     this->playerFloorLine = new FloorLine();
     this->playerPatternLine = new PatternLine();
-
     playerFloorLine->addTile(new Tile(YELLOW));//remove later
     playerFloorLine->addTile(new Tile(BLACK));//remove later
 
@@ -50,6 +49,12 @@ bool Player::getTurn(){
     return this->isTurn;
 }
 
+void Player::setIsTurn(bool isTurn){
+
+    this->isTurn = isTurn;
+    
+}
+
 void Player::displayGameboard(){
 
     Tile*** patternLineGrid = playerPatternLine->getTilePatternLine();
@@ -91,3 +96,20 @@ PatternLine* Player::getPatternLine(){
 Mosaic* Player::getMosaic(){
     return mosaic;
 }
+
+//It will make the tile on mosaic to display the Pattern if the patternline row is full.
+void Player::makeTileMosaicUppercase(){
+    for (int i = 0; i < 5; i++)
+    {
+        if (playerPatternLine->isPatternLineFull(i)){
+            Colour a = playerPatternLine->getTilePatternLine()[i][0]->getColour();
+            for (int j = 0; j < 5; j++){
+                if (tolower(a) == mosaic->getMosaic()[i][j]->getColour())
+                {
+                    mosaic->getMosaic()[i][j]->setColour(a);
+                }
+           }
+        }
+    }
+}
+    
