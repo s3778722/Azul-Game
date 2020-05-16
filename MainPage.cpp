@@ -19,7 +19,7 @@ private:
 
 void printCredits();
 void processArgs(int argc, char** argv, CMDArgs* cmdArgs);
-GameModel* loadGame(std::string fileName, GameModel* Game);
+GameModel* loadGame(std::string fileName);
 void createGame();
 void newGame();
 
@@ -51,16 +51,16 @@ int main(int argc, char** argv){
         }
         else if(userInput == 2){
             // load game
-            std::string fileName;
+            std::string fileName = "";
+            std::cout << "Enter the filename from which load a game: ";
             std::cin >> fileName;
             std::ifstream gameFile;
             gameFile.open(fileName);
 
-            GameModel* Game = nullptr;
-            Game = loadGame(fileName, Game);
+            GameModel* gameModel = loadGame(fileName);
 
             //Play game
-            Game->play();
+            gameModel->play();
         }
         else if(userInput == 3){
             printCredits();
@@ -123,7 +123,7 @@ void processArgs(int argc, char** argv, CMDArgs* cmdArgs){
     }
 }
 
-GameModel* loadGame(std::string fileName, GameModel* Game) {
+GameModel* loadGame(std::string fileName) {
     /*
     • The player’s name and scores ( 2 player game only)
     • The state of the factories and player mosaic’s
@@ -139,7 +139,7 @@ GameModel* loadGame(std::string fileName, GameModel* Game) {
     bool p2 = false;
 
     //Will need to filter through the gameformat text to find these variables
-    std::ifstream input( "SaveGameFormat.txt" );
+    std::ifstream input(fileName);
     int lineNum = 0;
     for( std::string line; getline( input, line ); )
     {
@@ -181,8 +181,8 @@ GameModel* loadGame(std::string fileName, GameModel* Game) {
     Player* player2 = new Player(playerName2,playerScore2,p2 );
 
 
-    Game = new GameModel(player1, player2);
-    return Game; 
+    GameModel* gameModel = new GameModel(player1, player2);
+    return gameModel; 
 }
 
 
