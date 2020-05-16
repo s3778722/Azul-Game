@@ -49,6 +49,12 @@ bool Player::getTurn(){
     return this->isTurn;
 }
 
+void Player::setIsTurn(bool isTurn){
+
+    this->isTurn = isTurn;
+    
+}
+
 void Player::displayGameboard(){
 
     Tile*** patternLineGrid = playerPatternLine->getTilePatternLine();
