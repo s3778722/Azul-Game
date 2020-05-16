@@ -9,7 +9,7 @@ class Mosaic {
 public:
 
     Mosaic();
-    // Mosaic(Tile** mosaicArrayLoad[5]);
+    // Mosaic(Tile** mosaicArrayLoad);
     ~Mosaic();
     Tile*** getMosaic();
     void setMosaicTile(int row, int column, Colour colour);

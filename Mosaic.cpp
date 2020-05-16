@@ -12,6 +12,10 @@ Mosaic::Mosaic(){
     displayMosaic();
 }
 
+// Mosaic::Mosaic(Tile** mosaicArrayLoad){
+//     *this->mosaicArray = mosaicArrayLoad;
+// }
+
 Mosaic::~Mosaic(){
     for(int i=0; i<5; i++){
         for(int j=0; j<5; j++){

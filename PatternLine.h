@@ -6,7 +6,7 @@
 class PatternLine {
 public:
     PatternLine();
-    // PatternLine(Tile*** tilePatternArray[5]);
+    // PatternLine(Tile** tilePatternArray[5]);
     PatternLine(PatternLine& other);
     ~PatternLine();
     

@@ -9,8 +9,8 @@ PatternLine::PatternLine(){
     }
 }
 
-// PatternLine::PatternLine(Tile*** tilePatternArray[5]){
-//     *this->tilePatternArray = tilePatternArray;
+// PatternLine::PatternLine(Tile** tilePatternArray[5]){
+//     *this->tilePatternArray = *tilePatternArray;
 // }
 
 PatternLine::PatternLine(PatternLine& other){
