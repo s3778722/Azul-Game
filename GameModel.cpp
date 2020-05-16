@@ -8,6 +8,7 @@ GameModel::GameModel(std::string player1Name, std::string player2Name){
     Factories = new FactoryTable();
     tileBag = new TileBag();
     //boxLid = new BoxLid();
+    patternLine = new PatternLine();
 
 }
 
@@ -241,6 +242,51 @@ void GameModel::fillFactories(){
             //std::cout << tileBag->drawTileFront()->getColour(); CHECK THIS FUNCTION, THIS SHOULD RETURN THE TILE CHAR, DOESN'T
 
         }
+    }
+}
+//doesn't include picking First Player Tile, and putting additional tile to floorline
+bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine){
+    if (factory > 0){
+        for (int i = 0; i < 5; i++)
+        {
+            if (Factories->getFactory(factory).at(i)->getColour() == colour){
+                this->Factories->getFactory(factory).at(i)->setColour(' ');
+                for (int column = 0; column < 5; i++)
+                {
+                    if (patternLine->getTilePatternLine()[atPatternLine][column]->getColour() == NO_TILE)
+                    {
+                        patternLine->getTilePatternLine()[atPatternLine][column]->setColour(colour);
+                        return true;
+                    }
+                }
+            }
+            else{
+                Tile* x = new Tile(Factories->getFactory(factory).at(i)->getColour());
+                this->Factories->getFactory(factory).at(i)->setColour(' ');
+                this->Factories->getFactory(0).push_back(x);
+                return true;
+            }
+        }
+    }
+    else if (factory == 0){
+        for (int i = 0; i < 5; i++)
+        {
+            if (Factories->getFactory(factory).at(i)->getColour() == colour){
+                this->Factories->getFactory(factory).at(i)->setColour(' ');
+                //not sure how to dynamicly get the count of factory, as max is not 5, needed to be fix
+                for (int column = 0; column < 5; i++)
+                {
+                    if (patternLine->getTilePatternLine()[atPatternLine][column]->getColour() == NO_TILE)
+                    {
+                        patternLine->getTilePatternLine()[atPatternLine][column]->setColour(colour);
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    else{
+        return false;
     }
 }
 
