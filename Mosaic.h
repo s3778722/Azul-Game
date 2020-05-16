@@ -9,9 +9,10 @@ class Mosaic {
 public:
 
     Mosaic();
+    // Mosaic(Tile** mosaicArrayLoad[5]);
     ~Mosaic();
     Tile*** getMosaic();
-    void setMosaic(Tile** array);
+    void setMosaicTile(int row, int column, Colour colour);
     void displayMosaic();
 
     void initMosaicPattern();//sampleidea

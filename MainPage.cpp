@@ -54,8 +54,6 @@ int main(int argc, char** argv){
             std::string fileName = "";
             std::cout << "Enter the filename from which load a game: ";
             std::cin >> fileName;
-            std::ifstream gameFile;
-            gameFile.open(fileName);
 
             GameModel* gameModel = loadGame(fileName);
 
@@ -132,57 +130,147 @@ GameModel* loadGame(std::string fileName) {
     */
 
     std::string playerName1 = "";
-    std::string playerName2 = "";
     int playerScore1 = 0;
+    bool p1Turn = false;
+    PatternLine* player1PatternLine = new PatternLine();
+    FloorLine* player1FloorLine = new FloorLine();
+    Mosaic* player1Mosaic = new Mosaic();
+
+    std::string playerName2 = "";
     int playerScore2 = 0;
-    bool p1 = false;
-    bool p2 = false;
+    bool p2Turn = false;
+    PatternLine* player2PatternLine = new PatternLine();
+    FloorLine* player2FloorLine = new FloorLine();
+    Mosaic* player2Mosaic = new Mosaic();
 
-    //Will need to filter through the gameformat text to find these variables
-    std::ifstream input(fileName);
+    LinkedList* tileBagLoad = new LinkedList();
+    BoxLid* boxLidLoad = new BoxLid();
+    std::vector< std::vector<Tile*> > tableState;
+
+    std::ifstream inputFile("saveGameTest1.txt"); // saveGameTest1.txt ==> fileName
     int lineNum = 0;
-    for( std::string line; getline( input, line ); )
-    {
-        if (lineNum == 10){
-            playerName1 = line;
-            std::cout << "playername:" << playerName1 << ". is set" << std::endl;
-        }
+    std::string line;
 
-        if (lineNum == 11){
-            bool p1 = std::stoi(line.c_str());
-            std::cout << "turn for above: " << p1 << ". is set" << std::endl;
+    if (inputFile.is_open()){
+        while (getline(inputFile,line)){
+            if(lineNum == 0||lineNum == 1||lineNum == 2||lineNum == 3||lineNum == 4||lineNum == 5){
+                std::vector<Tile*> factory;
+                for(int i=0;i<line.length();i++){
+                    if(line[i] != ' '){
+                        factory.push_back(new Tile(line[i]));
+                    }
+                }
+                tableState.push_back(factory);
+            }
+            else if(lineNum == 7){
+                for(int i=0;i<line.length();i++){
+                    if(line[i] != ' '){
+                        tileBagLoad->addFront(new Tile(line[i]));
+                    }
+                }
+            }
+            else if(lineNum == 8){
+               for(int i=0;i<line.length();i++){
+                    if(line[i] != ' '){
+                        boxLidLoad->addTile(new Tile(line[i]));
+                    }
+                } 
+            }
+            else if (lineNum == 10){
+                playerName1 = line;
+            }
+            else if (lineNum == 11){
+                p1Turn = (int)line[0];
+            }
+            else if (lineNum == 12){
+                playerScore1 = std::stoi(line.c_str());
+            }
+            else if(lineNum == 14||lineNum == 15||lineNum == 16||lineNum == 17||lineNum == 18){//patternline player 1
+                for(int i=0; i<5; i++){ // 5 -> the dimention of the board
+                    for(int j=0;j<i+1; j++){
+                        for(int k=0;k<line.length();k++){
+                            if(line[k] != ' '){
+                                player1PatternLine->setTile(i, j, line[k]);
+                            }
+                        }
+                    }
+                }
+            }
+            else if(lineNum == 20||lineNum == 21||lineNum == 22||lineNum == 23||lineNum == 24){
+                for (int i = 0; i < 5; i++){
+                    for(int j = 0; j<5; j++){
+                       for(int k=0;k<line.length();k++){
+                            if(line[k] != ' '){
+                                player1Mosaic->setMosaicTile(i, j, line[k]);
+                            }
+                        } 
+                    }
+                }
+            }
+            else if(lineNum == 26){
+                for(int i=0;i<line.length();i++){
+                    if(line[i] != ' '){
+                        player1FloorLine->addTile(new Tile(line[i]));
+                    }
+                }
+            }
+            else if (lineNum == 28){
+                // Player playerkaha = Player(playerName1,playerScore1,p1Turn,player1Mosaic,player1FloorLine,player1PatternLine); //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~debug code here
+                // playerkaha.displayGameboard();
+                playerName2 = line;
+            }
+            else if (lineNum == 29){
+                p2Turn = (int)line[0];
+            }
+            else if (lineNum == 30){
+                playerScore2 = std::stoi(line.c_str());
+            }
+            else if(lineNum == 32||lineNum == 33||lineNum == 34||lineNum == 35||lineNum == 36){//patternline player 1
+                for(int i=0; i<5; i++){ // 5 -> the dimention of the board
+                    for(int j=0;j<i+1; j++){
+                        for(int k=0;k<line.length();k++){
+                            if(line[k] != ' '){
+                                player2PatternLine->setTile(i, j, line[k]);
+                            }
+                        }
+                    }
+                }
+            }
+            else if(lineNum == 38||lineNum == 39||lineNum == 40||lineNum == 41||lineNum == 42){
+                for (int i = 0; i < 5; i++){
+                    for(int j = 0; j<5; j++){
+                       for(int k=0;k<line.length();k++){
+                            if(line[k] != ' '){
+                                player2Mosaic->setMosaicTile(i, j, line[k]);
+                            }
+                        } 
+                    }
+                }
+            }
+            else if(lineNum == 44){
+                for(int i=0;i<line.length();i++){
+                    if(line[i] != ' '){
+                        player2FloorLine->addTile(new Tile(line[i]));
+                    }
+                }
+            }
+            
+            lineNum++;
         }
-
-        if (lineNum == 12){
-            int playerScore1 = std::stoi(line.c_str());
-            std::cout << "score for above: " << playerScore1 << ". is set" << std::endl;
-        }
-
-        if (lineNum == 28){
-            playerName2 = line;
-            std::cout << "playername:" << playerName2 << ". is set" << std::endl;
-        }
-
-        if (lineNum == 29){
-            bool p2 = std::stoi(line.c_str());
-            std::cout << "turn for above: " << p2 << ". is set" << std::endl;
-        }
-
-        if (lineNum == 30){
-            int playerScore2 = std::stoi(line.c_str());
-            std::cout << "score for above: " << playerScore2 << ". is set" << std::endl;
-        }
-
-        lineNum++;
-        
+        inputFile.close();
+    }
+    else{
+        std::cout << "Unable to open file"; 
     }
    
-    Player* player1 = new Player(playerName1,playerScore1,p1 );
-    Player* player2 = new Player(playerName2,playerScore2,p2 );
+    Player* player1 = new Player(playerName1,playerScore1,p1Turn,player1Mosaic,player1FloorLine,player1PatternLine);
+    Player* player2 = new Player(playerName2,playerScore2,p2Turn,player2Mosaic,player2FloorLine,player2PatternLine);
+    FactoryTable* factories = new FactoryTable(tableState);
+    TileBag* tileBag = new TileBag(tileBagLoad);
 
 
-    GameModel* gameModel = new GameModel(player1, player2);
-    return gameModel; 
+    GameModel* gameModel = new GameModel(player1, player2, factories, tileBag, boxLidLoad);
+    return gameModel;
 }
 
 

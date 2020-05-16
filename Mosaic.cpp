@@ -26,7 +26,8 @@ Tile*** Mosaic::getMosaic(){
     return mosaicArray;
 }
 
-void Mosaic::setMosaic(Tile** array){
+void Mosaic::setMosaicTile(int row, int column, Colour colour){
+    mosaicArray[row][column]->setColour(colour);
 }
 
 //tested with Uppercase letter to be displayed and it is working
