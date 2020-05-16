@@ -32,8 +32,7 @@ void GameModel::play(){
 
         bool roundComplete = false;
         std::cout << "=== Start Round == " << std::endl;
-
-        
+        fillFactories();        
 
         while(!roundComplete){
 
@@ -46,6 +45,7 @@ void GameModel::play(){
                 while (!turnComplete){
 
                     std::cout << "TURN FOR PLAYER: " << player1->getName() << std::endl;
+                    Factories->displayFactories();
                     player1->displayGameboard();
                     std::cout << "> ";
                     std::getline(std::cin, command);
@@ -61,6 +61,7 @@ void GameModel::play(){
 
             while (!turnComplete){
                 std::cout << "TURN FOR PLAYER: " << player2->getName() << std::endl;
+                Factories->displayFactories();
                 player2->displayGameboard();
                 std::cout << "> ";
                 std::getline(std::cin, command);
@@ -228,7 +229,17 @@ void GameModel::turn(std::string command, Player* player){
 
 void GameModel::fillFactories(){
 
-    
+    Factories->getFactory(0).at(0)->setColour('F');
 
+    for (int i = 1; i < 5; i++){
+
+        for (int j = 0; j < 4; j++){
+
+            std::cout << "RAN";
+            Factories->getFactory(i).at(j) = tileBag->drawTileFront();
+            //std::cout << tileBag->drawTileFront()->getColour(); CHECK THIS FUNCTION, THIS SHOULD RETURN THE TILE CHAR, DOESN'T
+
+        }
+    }
 }
 
