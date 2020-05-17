@@ -16,7 +16,7 @@ public:
     void addFront(Tile* tile);
     void addBack(Tile* tile);
 
-    void removeFront();
+    Tile* removeFront();
     void removeBack();
     void removeTileAt(int i);
     void removeTile(Tile* tile);

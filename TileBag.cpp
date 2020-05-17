@@ -19,7 +19,7 @@ void TileBag::fillBag(){
     for(int i = 0; i < 20; i++){
         for (Colour colour : tileColours)
         {
-            tileList->addFront(new Tile(colour));
+            tileList->addBack(new Tile(colour));
         }
     }
 }
@@ -64,9 +64,9 @@ void TileBag::shuffleRandom(){
 }
 
 Tile* TileBag::drawTileFront(){
-    Tile* frontTile = tileList->getTile(0);
-    tileList->removeFront();
-    return frontTile;
+    // Tile* frontTile = tileList->getTile(0);
+    // tileList->removeFront();
+    return tileList->removeFront();
 }
 
 int TileBag::bagSize(){

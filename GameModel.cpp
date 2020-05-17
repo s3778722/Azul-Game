@@ -233,12 +233,15 @@ void GameModel::fillFactories(){
 
     Factories->getFactory(0).at(0)->setColour('F');
 
-    for (int i = 1; i < 5; i++){
+    for (int i = 1; i < 6; i++){
 
         for (int j = 0; j < 4; j++){
 
-            std::cout << "RAN";
-            Factories->getFactory(i).at(j) = tileBag->drawTileFront();
+            // std::cout << "RAN";
+            Tile* tilePtr = tileBag->drawTileFront(); 
+            std::cout << tilePtr->getColour();
+            Factories->getFactory(i).at(j)->setColour(tilePtr->getColour()); 
+            delete tilePtr; 
             //std::cout << tileBag->drawTileFront()->getColour(); CHECK THIS FUNCTION, THIS SHOULD RETURN THE TILE CHAR, DOESN'T
 
         }
@@ -246,17 +249,18 @@ void GameModel::fillFactories(){
 }
 //doesn't include picking First Player Tile, and putting additional tile to floorline
 bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine){
+    bool moved = false;
     if (factory > 0){
         for (int i = 0; i < 5; i++)
         {
             if (Factories->getFactory(factory).at(i)->getColour() == colour){
                 this->Factories->getFactory(factory).at(i)->setColour(' ');
-                for (int column = 0; column < 5; i++)
+                for (int column = 0; column < 5; column++)
                 {
                     if (patternLine->getTilePatternLine()[atPatternLine][column]->getColour() == NO_TILE)
                     {
                         patternLine->getTilePatternLine()[atPatternLine][column]->setColour(colour);
-                        return true;
+                        moved =  true;
                     }
                 }
             }
@@ -264,7 +268,7 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                 Tile* x = new Tile(Factories->getFactory(factory).at(i)->getColour());
                 this->Factories->getFactory(factory).at(i)->setColour(' ');
                 this->Factories->getFactory(0).push_back(x);
-                return true;
+                moved =  true;
             }
         }
     }
@@ -274,19 +278,20 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
             if (Factories->getFactory(factory).at(i)->getColour() == colour){
                 this->Factories->getFactory(factory).at(i)->setColour(' ');
                 //not sure how to dynamicly get the count of factory, as max is not 5, needed to be fix
-                for (int column = 0; column < 5; i++)
+                for (int column = 0; column < 5; column++)
                 {
                     if (patternLine->getTilePatternLine()[atPatternLine][column]->getColour() == NO_TILE)
                     {
                         patternLine->getTilePatternLine()[atPatternLine][column]->setColour(colour);
-                        return true;
+                        moved =  true;
                     }
                 }
             }
         }
     }
     else{
-        return false;
+        moved =  false;
     }
+    return moved;
 }
 

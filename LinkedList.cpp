@@ -73,13 +73,19 @@ void LinkedList::addBack(Tile* tile){
     count++;
 }
 
-void LinkedList::removeFront(){
+Tile* LinkedList::removeFront(){
     if (head != nullptr){
         Node* toRemove = head;
         head = toRemove->next;
-        delete toRemove;
-        count--; 
+        // delete toRemove;
+        count--;
+        return toRemove->tile; 
     }
+    else
+    {
+        return nullptr;
+    }
+    
 }
 
 void LinkedList::removeBack(){
@@ -122,7 +128,7 @@ void LinkedList::removeTile(Tile* tile) {
             tileToRemove = tileToRemove->next;
         }
         if (tileToRemove != nullptr) {
-            delete tileToRemove;
+            // delete tileToRemove;
             count--;
         }
     }
