@@ -238,8 +238,7 @@ void GameModel::fillFactories(){
         for (int j = 0; j < 4; j++){
 
             // std::cout << "RAN";
-            Tile* tilePtr = tileBag->drawTileFront(); 
-            std::cout << tilePtr->getColour();
+            Tile* tilePtr = tileBag->drawTileFront();
             Factories->getFactory(i).at(j)->setColour(tilePtr->getColour()); 
             delete tilePtr; 
             //std::cout << tileBag->drawTileFront()->getColour(); CHECK THIS FUNCTION, THIS SHOULD RETURN THE TILE CHAR, DOESN'T
