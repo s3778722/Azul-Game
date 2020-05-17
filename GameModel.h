@@ -16,7 +16,7 @@ public:
     void play();
     void displayGameboard(Player* player);
     void saveGame(std::string saveFileName);
-    void turn(std::string command, Player* player);
+    void commandParse(std::string command, Player* player);
     void fillFactories();
     bool drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine);
 

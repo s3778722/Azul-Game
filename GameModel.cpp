@@ -53,7 +53,15 @@ void GameModel::play(){
                     player1->displayGameboard();
                     std::cout << "> ";
                     std::getline(std::cin, command);
-                    turn(command, player1);
+                    if(command == "save"){
+                        std::string fileName = "";
+                        std::cout << "Enter the file name(eg: save.txt): ";
+                        std::cin >> fileName;
+                        saveGame(fileName);
+                    }
+                    else{
+                        commandParse(command, player1);
+                    }
                     if (player1->getTurn() == false){
                         player2->setIsTurn(true);
                         turnComplete = true;
@@ -69,7 +77,15 @@ void GameModel::play(){
                 player2->displayGameboard();
                 std::cout << "> ";
                 std::getline(std::cin, command);
-                turn(command, player2);
+                if(command == "save"){
+                        std::string fileName = "";
+                        std::cout << "Enter the file name(eg: save.txt): ";
+                        std::cin >> fileName;
+                        saveGame(fileName);
+                }
+                else{
+                    commandParse(command, player1);
+                }
                 if (player2->getTurn() == false){
                     player1->setIsTurn(true);
                     turnComplete = true;
@@ -192,7 +208,7 @@ void GameModel::savePlayerData(Player* player, std::ofstream& saveFile){
 
 }
 
-void GameModel::turn(std::string command, Player* player){
+void GameModel::commandParse(std::string command, Player* player){ //need renaming the function
 
     if (command == "help"){ // can be extended for specific help later if wanted
 
