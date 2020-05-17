@@ -153,10 +153,30 @@ GameModel* loadGame(std::string fileName) {
 
     if (inputFile.is_open()){
         while (getline(inputFile,line)){
-            if(lineNum == 0||lineNum == 1||lineNum == 2||lineNum == 3||lineNum == 4||lineNum == 5){
+            if(lineNum ==0){
+                std::vector<Tile*> factory;
+                int times = 0;
+                if(line.length() == 0){
+                    times = 4;
+                }
+                else{
+                    times = line.length();
+                }
+                for(int i=0;i<times;i++){
+                    if(line[i] != ' ' && line[i]){
+                        factory.push_back(new Tile(line[i]));
+                    }
+                    else{
+                        factory.push_back(new Tile());
+                    }
+                }
+                tableState.push_back(factory);
+            }
+            else if(lineNum == 1||lineNum == 2||lineNum == 3||lineNum == 4||lineNum == 5){
                 std::vector<Tile*> factory;
                 for(int i=0;i<line.length();i++){
                     if(line[i] != ' '){
+                        // std::cout << line[i] << std::endl;
                         factory.push_back(new Tile(line[i]));
                     }
                 }
@@ -257,6 +277,8 @@ GameModel* loadGame(std::string fileName) {
     Player* player2 = new Player(playerName2,playerScore2,p2Turn,player2Mosaic,player2FloorLine,player2PatternLine);
     FactoryTable* factories = new FactoryTable(tableState);
     TileBag* tileBag = new TileBag(tileBagLoad);
+
+    factories->setFactoriesLoaded(true);
 
 
     GameModel* gameModel = new GameModel(player1, player2, factories, tileBag, boxLidLoad);

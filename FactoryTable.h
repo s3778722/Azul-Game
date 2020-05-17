@@ -15,11 +15,13 @@ public:
     std::vector<Tile*>getFactory(int factoryNo);
     void displayFactories();
     int getSize();
-    // void setTile(int row, int column, Colour colour);
+    bool factoriesLoaded();
+    void setFactoriesLoaded(bool state);
 
 private:
 
     std::vector< std::vector<Tile*> > tileFactoryTable; // done by dulshan
+    bool loaded = false;
 
 };
 

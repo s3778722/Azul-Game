@@ -34,7 +34,9 @@ void GameModel::play(){
 
         bool roundComplete = false;
         std::cout << "=== Start Round == " << std::endl;
-        fillFactories();        
+        if(!Factories->factoriesLoaded()){
+            fillFactories();//this should only be called if the factories are empty and it is a new game
+        }
 
         while(!roundComplete){
 
