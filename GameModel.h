@@ -18,7 +18,7 @@ public:
     void saveGame(std::string saveFileName);
     void commandParse(std::string command, Player* player);
     void fillFactories();
-    bool drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine);
+    bool drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine, Player* player);
 
 private:
 

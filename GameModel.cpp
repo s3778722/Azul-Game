@@ -235,14 +235,18 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
 
         if ((command.substr(4,1) == " " && command.length() == 10 ) && (command.substr(6,1) == " " && command.substr(8,1) == " ")){ // checks for spaces in the right spot and proper length
 
-            std::string factoryStr = command.substr(5,1);
-            std::string colourStr = command.substr(7,1);
-            std::string patternRowStr = command.substr(9,1);
+            int factory = std::stoi(command.substr(5,1));
+            Colour colourStr = command[7];
+            int patternRow = std::stoi(command.substr(9,1));
 
             // player place tile function() returns bool, if false should provide error too other than the one i put below.
 
 
-            bool placeTileSuccess = true;
+            bool placeTileSuccess = false;
+
+            if(drawTileFromFactoryToPatternLine(factory,colourStr,patternRow,player)){
+                placeTileSuccess = true;
+            }
 
             //if placeTileSuccess(player, factory, colour, pattern) <- this is converted from the string ones above
             if(placeTileSuccess){ // replace this with the method above.
@@ -274,25 +278,25 @@ void GameModel::fillFactories(){
     }
 }
 //doesn't include picking First Player Tile, and putting additional tile to floorline
-bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine){
+bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine, Player* player){
     bool moved = false;
     if (factory > 0){
         for (int i = 0; i < 5; i++)
         {
             if (Factories->getFactory(factory).at(i)->getColour() == colour){
-                this->Factories->getFactory(factory).at(i)->setColour(' ');
+                this->Factories->getFactory(factory).at(i)->setColour(NO_TILE);
                 for (int column = 0; column < 5; column++)
                 {
-                    if (patternLine->getTilePatternLine()[atPatternLine][column]->getColour() == NO_TILE)
+                    if (patternLine->getTilePatternLine()[atPatternLine-1][column]->getColour() == NO_TILE)
                     {
-                        patternLine->getTilePatternLine()[atPatternLine][column]->setColour(colour);
+                        patternLine->getTilePatternLine()[atPatternLine-1][column]->setColour(colour);
                         moved =  true;
                     }
                 }
             }
             else{
                 Tile* x = new Tile(Factories->getFactory(factory).at(i)->getColour());
-                this->Factories->getFactory(factory).at(i)->setColour(' ');
+                this->Factories->getFactory(factory).at(i)->setColour(NO_TILE);
                 this->Factories->getFactory(0).push_back(x);
                 moved =  true;
             }
@@ -302,13 +306,13 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
         for (int i = 0; i < 5; i++)
         {
             if (Factories->getFactory(factory).at(i)->getColour() == colour){
-                this->Factories->getFactory(factory).at(i)->setColour(' ');
+                this->Factories->getFactory(factory).at(i)->setColour(NO_TILE);
                 //not sure how to dynamicly get the count of factory, as max is not 5, needed to be fix
                 for (int column = 0; column < 5; column++)
                 {
-                    if (patternLine->getTilePatternLine()[atPatternLine][column]->getColour() == NO_TILE)
+                    if (patternLine->getTilePatternLine()[atPatternLine-1][column]->getColour() == NO_TILE)
                     {
-                        patternLine->getTilePatternLine()[atPatternLine][column]->setColour(colour);
+                        patternLine->getTilePatternLine()[atPatternLine-1][column]->setColour(colour);
                         moved =  true;
                     }
                 }
