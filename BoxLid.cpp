@@ -11,7 +11,7 @@ BoxLid::~BoxLid(){
 }
 
 int BoxLid::size(){
-    return boxLidVector.size();
+    return (int)boxLidVector.size();
 }
 
 void BoxLid::addTile(Tile* tile){

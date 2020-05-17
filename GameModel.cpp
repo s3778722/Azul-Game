@@ -7,12 +7,12 @@ GameModel::GameModel(std::string player1Name, std::string player2Name){
     player2 = new Player(player2Name);
     Factories = new FactoryTable();
     tileBag = new TileBag();
-    //boxLid = new BoxLid();
+    boxLid = new BoxLid();
     patternLine = new PatternLine();
 
 }
 
-GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* factories, TileBag* tileBag,BoxLid* bodLidLoad){
+GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* factories, TileBag* tileBag,BoxLid* boxLidLoad){
 
     std::cout << "IN HER";
 
@@ -20,7 +20,7 @@ GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* fac
     player2 = player2load;
     this->Factories = factories;
     this->tileBag = tileBag;
-    this->boxLid = bodLidLoad;
+    this->boxLid = boxLidLoad;
 
 }
 
@@ -142,17 +142,25 @@ void GameModel::saveGame(std::string saveFileName){
                 saveFile << " ";
         }
     }
-
-    for(int i=0; i<boxLid->size();i++){ //boxlid
-        saveFile << boxLid->getBoxLid().at(i);
-        if(i < boxLid->size()-1){
-                saveFile << " ";
+    
+    if(boxLid->size() == 0){
+        std::cout<<"comes here"<<std::endl;
+        saveFile << std::endl;
+    }
+    else{
+        for(int i=0; i<boxLid->size();i++){ //boxlid
+            saveFile << boxLid->getBoxLid().at(i);
+            if(i < boxLid->size()-1){
+                    saveFile << " ";
+            }
         }
     }
 
     saveFile << std::endl;
+    saveFile << std::endl;
     
     savePlayerData(player1,saveFile);
+    saveFile << std::endl;
     savePlayerData(player2,saveFile);
     saveFile.close();
     std::cout << "Game successfully saved to ’" << saveFileName << "’" << std::endl;
@@ -182,9 +190,10 @@ void GameModel::savePlayerData(Player* player, std::ofstream& saveFile){
     for(int i=0;i<5;i++){ // mosaic/board/wall
         for(int j=0; j<5; j++){
             saveFile << mosaicGrid[i][j]->getColour();
-            if(j < i){
-                saveFile << " ";
-            }
+            saveFile << " ";
+            // if(j < i){
+            //     saveFile << " ";
+            // }
         }
         saveFile << std::endl;
     }
