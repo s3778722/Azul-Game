@@ -230,10 +230,10 @@ void Player::checkBrokenTiles(){
                 this->score--;
             }
             if(i >= 2 && i < 5){
-                this->score - 2;
+                this->score -= 2;
             }
             else {
-                this->score - 3;
+                this->score -= 3;
             }
         }
         else
@@ -271,27 +271,27 @@ void Player::countColours(){
 void Player::scoreColours(){
     if(redCounter == 5 && this->colourTiles[0] == false) 
     {   
-        this->score + 10; 
+        this->score += 10; 
         this->colourTiles[0] = true;
     }
     if(lightblueCounter == 5 && this->colourTiles[1] == false) 
     {   
-        this->score + 10; 
+        this->score += 10; 
         this->colourTiles[1] = true;
     }
     if(blueCounter == 5 && this->colourTiles[2] == false)
     {   
-        this->score + 10; 
+        this->score += 10; 
         this->colourTiles[2] = true;
     }
     if(yellowCounter == 5 && this->colourTiles[3] == false)
     {   
-        this->score + 10; 
+        this->score += 10; 
         this->colourTiles[3] = true;
     }
     if(blackCounter == 5 && this->colourTiles[4] == false)
     {   
-        this->score + 10; 
+        this->score += 10; 
         this->colourTiles[4] = true;
     }
 }
