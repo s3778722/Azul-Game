@@ -138,7 +138,7 @@ void Player::scoring()
     checkingRow = true;
     checkingColumn = true;
 
-    for(int i = 0; i < checkRow.size(); i++)
+    for(unsigned int i = 0; i < checkRow.size(); i++)
     {
         bool rowCounted = false;
         bool columnCounted = false;

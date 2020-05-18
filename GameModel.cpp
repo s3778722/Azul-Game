@@ -307,6 +307,9 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                         player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->setColour(colour);
                         setTile = true;
                     }
+                    else{
+                        player->getFloorLine()->addTile((new Tile(colour))); // SHOULD GO TO FLOOR BUT DOESN'T
+                    }
                 
                 column++;
                 Factories->getFactory(factory).at(i)->setColour(NO_TILE);
