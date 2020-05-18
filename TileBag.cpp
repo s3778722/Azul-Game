@@ -1,5 +1,5 @@
 #include "TileBag.h"
-
+#include <time.h> 
 TileBag::TileBag(){
     tileList = new LinkedList();
     fillBag();
@@ -47,7 +47,7 @@ void TileBag::shuffle(int seed){
 void TileBag::shuffleRandom(){
     int size = tileList->getSize();
     std::vector<Tile*> tiles;
-    std::default_random_engine generator;
+    std::default_random_engine generator(time(0));
     std::uniform_int_distribution<int> uniform_dist(0, size-1);
     for (int i = 0; i < size; i++){
         //take front tile and push to back
