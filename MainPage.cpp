@@ -186,7 +186,7 @@ GameModel* loadGame(std::string fileName) {
             }
             else if(lineNum == 1||lineNum == 2||lineNum == 3||lineNum == 4||lineNum == 5){
                 std::vector<Tile*> factory;
-                for(int i=0;i<line.length();i++){
+                for(unsigned int i=0;i<line.length();i++){
                     if(line[i] != ' '){
                         // std::cout << line[i] << std::endl;
                         factory.push_back(new Tile(line[i]));
@@ -195,14 +195,14 @@ GameModel* loadGame(std::string fileName) {
                 tableState.push_back(factory);
             }
             else if(lineNum == 7){
-                for(int i=0;i<line.length();i++){
+                for(unsigned int i=0;i<line.length();i++){
                     if(line[i] != ' '){
                         tileBagLoad->addFront(new Tile(line[i]));
                     }
                 }
             }
             else if(lineNum == 8){
-               for(int i=0;i<line.length();i++){
+               for(unsigned int i=0;i<line.length();i++){
                     if(line[i] != ' '){
                         boxLidLoad->addTile(new Tile(line[i]));
                     }
@@ -219,7 +219,7 @@ GameModel* loadGame(std::string fileName) {
             }
             else if(lineNum == 14||lineNum == 15||lineNum == 16||lineNum == 17||lineNum == 18){//patternline player 1
                 int j = 0;
-                for(int k=0;k<line.length();k++){
+                for(unsigned int k=0;k<line.length();k++){
                     if(line[k] != ' '){
                         player1PatternLine->setTile(lineNum-14, j, line[k]);
                         j++;
@@ -228,7 +228,7 @@ GameModel* loadGame(std::string fileName) {
             }
             else if(lineNum == 20||lineNum == 21||lineNum == 22||lineNum == 23||lineNum == 24){
                 int j = 0;
-                for(int k=0;k<line.length();k++){
+                for(unsigned int k=0;k<line.length();k++){
                     if(line[k] != ' '){
                         player1Mosaic->setMosaicTile(lineNum-20, j, line[k]);
                         j++;
@@ -236,7 +236,7 @@ GameModel* loadGame(std::string fileName) {
                 }
             }
             else if(lineNum == 26){
-                for(int i=0;i<line.length();i++){
+                for(unsigned  int i=0;i<line.length();i++){
                     if(line[i] != ' '){
                         player1FloorLine->addTile(new Tile(line[i]));
                     }
@@ -253,7 +253,7 @@ GameModel* loadGame(std::string fileName) {
             }
             else if(lineNum == 32||lineNum == 33||lineNum == 34||lineNum == 35||lineNum == 36){//patternline player 1
                 int j = 0;
-                for(int k=0;k<line.length();k++){
+                for(unsigned int k=0;k<line.length();k++){
                     if(line[k] != ' '){
                         player2PatternLine->setTile(lineNum-32, j, line[k]);
                         j++;
@@ -262,7 +262,7 @@ GameModel* loadGame(std::string fileName) {
             }
             else if(lineNum == 38||lineNum == 39||lineNum == 40||lineNum == 41||lineNum == 42){
                 int j = 0;
-                for(int k=0;k<line.length();k++){
+                for(unsigned  int k=0;k<line.length();k++){
                     if(line[k] != ' '){
                         player2Mosaic->setMosaicTile(lineNum-38, j, line[k]);
                         j++;
@@ -270,7 +270,7 @@ GameModel* loadGame(std::string fileName) {
                 }
             }
             else if(lineNum == 44){
-                for(int i=0;i<line.length();i++){
+                for(unsigned  int i=0;i<line.length();i++){
                     if(line[i] != ' '){
                         player2FloorLine->addTile(new Tile(line[i]));
                     }

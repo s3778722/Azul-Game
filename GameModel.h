@@ -29,6 +29,5 @@ private:
     Player* player2;
     BoxLid* boxLid;
     TileBag* tileBag;
-    PatternLine* patternLine;
-
+    bool roundComplete; //TODO REMOVE THIS DAM THING AND WHEREVER ELSE I SAID TO
 };

@@ -8,7 +8,7 @@ GameModel::GameModel(std::string player1Name, std::string player2Name){
     Factories = new FactoryTable();
     tileBag = new TileBag();
     boxLid = new BoxLid();
-    patternLine = new PatternLine();
+    roundComplete = false; //TODO REMOVE THIS DAM THING AND WHEREVER ELSE I SAID TO
 
 }
 
@@ -20,13 +20,9 @@ GameModel::GameModel(std::string player1Name, std::string player2Name,int seed){
     Factories = new FactoryTable();
     tileBag = new TileBag(seed);
     boxLid = new BoxLid();
-    patternLine = new PatternLine();
-
 }
 
 GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* factories, TileBag* tileBag,BoxLid* boxLidLoad){
-
-    std::cout << "IN HER";
 
     player1 = player1load;
     player2 = player2load;
@@ -44,7 +40,7 @@ void GameModel::play(){
     bool winner = false;
     while(!winner){
 
-        bool roundComplete = false;
+        /*bool*/ roundComplete = false; //TODO REMOVE COMMENT WHEN ROUND COMMAND IS REMOVED
         std::cout << "=== Start Round == " << std::endl;
         if(!Factories->factoriesLoaded()){
             fillFactories();//this should only be called if the factories are empty and it is a new game
@@ -65,15 +61,7 @@ void GameModel::play(){
                     player1->displayGameboard();
                     std::cout << "> ";
                     std::getline(std::cin, command);
-                    if(command == "save"){
-                        std::string fileName = "";
-                        std::cout << "Enter the file name(eg: save.txt): ";
-                        std::cin >> fileName;
-                        saveGame(fileName);
-                    }
-                    else{
-                        commandParse(command, player1);
-                    }
+                    commandParse(command, player1);
                     if (player1->getTurn() == false){
                         player2->setIsTurn(true);
                         turnComplete = true;
@@ -89,22 +77,16 @@ void GameModel::play(){
                 player2->displayGameboard();
                 std::cout << "> ";
                 std::getline(std::cin, command);
-                if(command == "save"){
-                        std::string fileName = "";
-                        std::cout << "Enter the file name(eg: save.txt): ";
-                        std::cin >> fileName;
-                        saveGame(fileName);
-                }
-                else{
-                    commandParse(command, player1);
-                }
+                commandParse(command, player2);
                 if (player2->getTurn() == false){
                     player1->setIsTurn(true);
                     turnComplete = true;
                 }
             }
-
         }
+
+        player1->makeTileMosaicUppercase();
+        player2->makeTileMosaicUppercase();
 
         std::cout << "=== END OF ROUND ===" << std::endl;
 
@@ -234,6 +216,19 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
     if (command == "help"){ // can be extended for specific help later if wanted
 
         std::cout << "I AM HELP, LOOK AT ME" << std::endl;
+    }
+
+    
+    else if(command == "save"){
+       std::string fileName = "";
+       std::cout << "Enter the file name(eg: save.txt): ";
+       std::cin >> fileName;
+        saveGame(fileName);
+    }
+
+    else if(command == "round"){
+
+        roundComplete = true;
 
     }
 
@@ -293,39 +288,39 @@ void GameModel::fillFactories(){
 bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine, Player* player){
     bool moved = false;
     if (factory > 0){
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (Factories->getFactory(factory).at(i)->getColour() == colour){
-                this->Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-                for (int column = 0; column < 5; column++)
+                for (int column = 0; column < atPatternLine; column++)
                 {
-                    if (patternLine->getTilePatternLine()[atPatternLine-1][column]->getColour() == NO_TILE)
+                    if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][column]->getColour() == NO_TILE)
                     {
-                        patternLine->getTilePatternLine()[atPatternLine-1][column]->setColour(colour);
-                        moved =  true;
+                        player->getPatternLine()->getTilePatternLine()[atPatternLine-1][column]->setColour(Factories->getFactory(factory).at(i)->getColour());
                     }
                 }
+                this->Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+                moved = true;
+
             }
             else{
                 Tile* x = new Tile(Factories->getFactory(factory).at(i)->getColour());
+                std::cout << Factories->getFactory(factory).at(i)->getColour() << std::endl;
                 this->Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-                this->Factories->getFactory(0).push_back(x);
-                moved =  true;
+                this->Factories->getFactory(0).push_back(x); 
             }
         }
     }
     else if (factory == 0){
-        for (int i = 0; i < 5; i++)
+        for (unsigned int i = 0; i < Factories->getFactory(factory).size(); i++)
         {
-            if (Factories->getFactory(factory).at(i)->getColour() == colour){
+            if (Factories->getFactory(factory).at(i)->getColour() == colour || Factories->getFactory(factory).at(i)->getColour() == 'F'){ // will also take F tile if there.
                 this->Factories->getFactory(factory).at(i)->setColour(NO_TILE);
                 //not sure how to dynamicly get the count of factory, as max is not 5, needed to be fix
                 for (int column = 0; column < 5; column++)
                 {
-                    if (patternLine->getTilePatternLine()[atPatternLine-1][column]->getColour() == NO_TILE)
+                    if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][column]->getColour() == NO_TILE)
                     {
-                        patternLine->getTilePatternLine()[atPatternLine-1][column]->setColour(colour);
-                        moved =  true;
+                        player->getPatternLine()->getTilePatternLine()[atPatternLine-1][column]->setColour(colour);
                     }
                 }
             }

@@ -9,7 +9,7 @@ Mosaic::Mosaic(){
         }
     }*/
     initMosaicPattern();
-    displayMosaic();
+    //displayMosaic();
 }
 
 // Mosaic::Mosaic(Tile** mosaicArrayLoad){

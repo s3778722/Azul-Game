@@ -4,7 +4,12 @@
 FactoryTable::FactoryTable():
     tileFactoryTable()
 {
-    for (int i = 0; i < 6; i++) { //6 right now is the number of factories we're going to make
+
+    std::vector<Tile*> firstFactory;
+    firstFactory.push_back(new Tile('F'));
+    tileFactoryTable.push_back(firstFactory);
+
+    for (int i = 1; i < 6; i++) { //6 right now is the number of factories we're going to make
         
         std::vector<Tile*> factory;
 
@@ -41,7 +46,9 @@ void FactoryTable::displayFactories(){
     std::cout << i <<":";
 
         for (unsigned int j = 0; j < tileFactoryTable.at(i).size(); j++){
-            std::cout << " " << tileFactoryTable.at(i).at(j)->getColour();
+            if (tileFactoryTable.at(i).at(j)->getColour() != '.'){
+                std::cout << " " << tileFactoryTable.at(i).at(j)->getColour();
+            }
         }
         std::cout << std::endl;        
     }
