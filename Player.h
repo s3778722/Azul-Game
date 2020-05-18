@@ -24,6 +24,11 @@ public:
     PatternLine* getPatternLine();
     Mosaic* getMosaic();
     std::vector<Tile*> makeTileMosaicUppercase();
+    void scoring();
+    void checkBrokenTiles();
+    void countColours();
+    void scoreColours();
+
 
     
 private:
@@ -33,6 +38,18 @@ private:
     Mosaic* mosaic;
     FloorLine* playerFloorLine;
     PatternLine* playerPatternLine;
+    std::vector<int> checkRow;
+    std::vector<int> checkColumn;
+    bool checkingRow;
+    bool checkingColumn;
+    char** scoringBoard;
+    Tile* brokenTilesSlot[7];
+    int blackCounter = 0;
+    int lightblueCounter = 0;
+    int blueCounter = 0;
+    int yellowCounter = 0;
+    int redCounter = 0;
+    bool* colourTiles;
 
 };
 #endif //PLAYER_H

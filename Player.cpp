@@ -115,4 +115,185 @@ std::vector<Tile*> Player::makeTileMosaicUppercase(){
     }
     return tileVector;
 }
+
+void Player::scoring()
+{
+    this->scoringBoard = new char*[5];
+    this->colourTiles = new bool[5];
+
+    for (int i = 0; i < 5; i++){
+        this->scoringBoard[i] = new char[5];
+    }
+    
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+            if(scoringBoard[i][j] == toupper(mosaic->getMosaic()[i][j]->getColour())){
+                //Uppercase represents that it already has a tile
+                checkRow.push_back(i);
+                checkColumn.push_back(j);
+            }
+        }
+    }
+
+    checkingRow = true;
+    checkingColumn = true;
+
+    for(int i = 0; i < checkRow.size(); i++)
+    {
+        bool rowCounted = false;
+        bool columnCounted = false;
+
+        scoringBoard[checkRow[i]][checkColumn[i]] = 'x'; 
+        //mark it as 'x' to represent that it is checked
+        
+        //South
+        for(int j = ((checkColumn[i]) + 1); j < 5; j++)
+        {
+            if(scoringBoard[checkRow[i]][j] == 'x'){
+                this->score++;  
+                if(j == ((checkColumn[i])+1)){
+                    rowCounted = true;
+                    this->score++;
+                }
+            }else{
+                j = 5;
+                checkingRow = false;
+            }
+        }
+        //North
+        for(int j = ((checkColumn[i])-1); j >= 0; j--)
+        {
+            if(scoringBoard[checkRow[i]][j] == 'x'){
+               this->score++;  
+               if(rowCounted == false){
+                   rowCounted = true;
+                   this->score++;
+                }
+            }else{
+                j = 0;
+                checkingRow = false;
+            }
+        }
+        //East
+        for(int j = ((checkRow[i])+1); j <  5; j++)
+        {
+            if(scoringBoard[j][checkColumn[i]] == 'x'){
+               this->score++;
+               if(j == checkRow[i]+1){
+                   columnCounted = true;
+                   this->score++;
+                }
+            }else{
+               j = 5;
+               checkingColumn = false;
+            }
+        }
+        //West
+        for(int j = ((checkRow[i]-1)); j >= 0; j--)
+        {
+            if(scoringBoard[j][checkColumn[i]] == 'x'){
+               this->score++;
+               if(columnCounted == false){
+                   columnCounted = true;
+                   this->score++;
+                }
+            }else{
+               j = 0;
+               checkingColumn = false;
+            }
+        }
+        if(checkingRow == true)
+        {
+            this->score+=2;
+        }
+        if(checkingColumn == true)
+        {
+            this->score+=7;
+        }
+        else
+        {
+            columnCounted = true;
+            this->score++;
+        }
+    }
+    this->checkBrokenTiles();
+    this->countColours();
+    this->scoreColours();
+}
+
+void Player::checkBrokenTiles(){
+    for (int i = 0; i <= playerFloorLine->getNegativePoints(); i++)
+    {
+        if(brokenTilesSlot[i] != nullptr)
+        {
+            if(i >= 0 && i < 2){
+                this->score--;
+            }
+            if(i >= 2 && i < 5){
+                this->score - 2;
+            }
+            else {
+                this->score - 3;
+            }
+        }
+        else
+        {
+            i = playerFloorLine->getNegativePoints()+1;
+        }
+        
+    }
+}
+
+void Player::countColours(){
+    for(int i = 0; i <  5; i++)
+    {
+        for(int j = 0; j <  5; j++)
+        {
+            if(this->mosaic->getMosaic()[i][j]->getColour() == RED){
+                redCounter++;
+            }
+            if(this->mosaic->getMosaic()[i][j]->getColour() == LIGHT_BLUE){
+                lightblueCounter++;
+            }
+            if(this->mosaic->getMosaic()[i][j]->getColour() == DARK_BLUE){
+                blueCounter++;
+            }
+            if(this->mosaic->getMosaic()[i][j]->getColour() == YELLOW){
+                yellowCounter++;
+            }
+            if(this->mosaic->getMosaic()[i][j]->getColour() == BLACK){
+                blackCounter++;
+            }
+        }
+    }
+}
+
+void Player::scoreColours(){
+    if(redCounter == 5 && this->colourTiles[0] == false) 
+    {   
+        this->score + 10; 
+        this->colourTiles[0] = true;
+    }
+    if(lightblueCounter == 5 && this->colourTiles[1] == false) 
+    {   
+        this->score + 10; 
+        this->colourTiles[1] = true;
+    }
+    if(blueCounter == 5 && this->colourTiles[2] == false)
+    {   
+        this->score + 10; 
+        this->colourTiles[2] = true;
+    }
+    if(yellowCounter == 5 && this->colourTiles[3] == false)
+    {   
+        this->score + 10; 
+        this->colourTiles[3] = true;
+    }
+    if(blackCounter == 5 && this->colourTiles[4] == false)
+    {   
+        this->score + 10; 
+        this->colourTiles[4] = true;
+    }
+}
+
     
