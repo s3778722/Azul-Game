@@ -308,7 +308,7 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                         setTile = true;
                     }
                     else{
-                        player->getFloorLine()->addTile((new Tile(colour))); // SHOULD GO TO FLOOR BUT DOESN'T
+                        player->getFloorLine()->addTile((new Tile(colour))); 
                     }
                 
                 column++;
@@ -318,12 +318,8 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
             }
             else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
                 Tile* x = new Tile(Factories->getFactory(factory).at(i)->getColour());
-                std::cout << Factories->getFactory(factory).at(i)->getColour() << std::endl;
-                std::cout << x->getColour() << std::endl;
                 Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-                std::cout << "SIZE OF FACTORY 0 = :" << Factories->getFactory(0).size() << std::endl;
-                Factories->getFactory(0).reserve(Factories->getFactory(0).size()+1);
-                Factories->getFactory(0).push_back(x); 
+                Factories->getFactory(0).push_back(x); // hmmmm no idea about this situation, close though.
             }
         }
     }
