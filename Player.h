@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Mosaic.h"
 #include "PatternLine.h"
+#include "vector"
 
 class Player{
 public:
@@ -22,7 +23,7 @@ public:
     FloorLine* getFloorLine();
     PatternLine* getPatternLine();
     Mosaic* getMosaic();
-    void makeTileMosaicUppercase();
+    std::vector<Tile*> makeTileMosaicUppercase();
 
     
 private:

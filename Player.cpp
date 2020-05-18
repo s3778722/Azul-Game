@@ -6,8 +6,6 @@ Player::Player(std::string name){
     this->mosaic = new Mosaic();
     this->playerFloorLine = new FloorLine();
     this->playerPatternLine = new PatternLine();
-    playerFloorLine->addTile(new Tile(YELLOW));//remove later
-    playerFloorLine->addTile(new Tile(BLACK));//remove later
 
 }
 
@@ -96,18 +94,25 @@ Mosaic* Player::getMosaic(){
 }
 
 //It will make the tile on mosaic to display the Pattern if the patternline row is full.
-void Player::makeTileMosaicUppercase(){
+std::vector<Tile*> Player::makeTileMosaicUppercase(){
+    std::vector<Tile*> tileVector;
     for (int i = 0; i < 5; i++)
     {
         if (playerPatternLine->isPatternLineFull(i)){
-            Colour a = playerPatternLine->getTilePatternLine()[i][0]->getColour();
+            Colour colour = playerPatternLine->getTilePatternLine()[i][0]->getColour();
             for (int j = 0; j < 5; j++){
-                if (tolower(a) == mosaic->getMosaic()[i][j]->getColour())
+                if (tolower(colour) == mosaic->getMosaic()[i][j]->getColour())
                 {
-                    mosaic->getMosaic()[i][j]->setColour(a);
+                    mosaic->getMosaic()[i][j]->setColour(colour);
+                    Tile* tile = playerPatternLine->getTilePatternLine()[i][0];
+                    tileVector.push_back(tile);
+                    for(int k = 0;k<i+1;k++){
+                        playerPatternLine->getTilePatternLine()[i][k]->setColour(NO_TILE);
+                    }
                 }
            }
         }
     }
+    return tileVector;
 }
     

@@ -40,7 +40,7 @@ void GameModel::play(){
     bool winner = false;
     while(!winner){
 
-        /*bool*/ roundComplete = false; //TODO REMOVE COMMENT WHEN ROUND COMMAND IS REMOVED
+        bool roundComplete = false;
         std::cout << "=== Start Round == " << std::endl;
         if(!Factories->factoriesLoaded()){
             fillFactories();//this should only be called if the factories are empty and it is a new game
@@ -55,40 +55,32 @@ void GameModel::play(){
                 bool turnComplete = false;
 
                 while (!turnComplete){
-
-                    std::cout << "TURN FOR PLAYER: " << player1->getName() << std::endl;
-                    Factories->displayFactories();
-                    player1->displayGameboard();
-                    std::cout << "> ";
-                    std::getline(std::cin, command);
-                    commandParse(command, player1);
-                    if (player1->getTurn() == false){
-                        player2->setIsTurn(true);
-                        turnComplete = true;
-                    }
+                    turnComplete = playSupportFunction(player1,player2,command);
                 }
             }
 
             bool turnComplete = false;
 
             while (!turnComplete){
-                std::cout << "TURN FOR PLAYER: " << player2->getName() << std::endl;
-                Factories->displayFactories();
-                player2->displayGameboard();
-                std::cout << "> ";
-                std::getline(std::cin, command);
-                commandParse(command, player2);
-                if (player2->getTurn() == false){
-                    player1->setIsTurn(true);
-                    turnComplete = true;
-                }
+                turnComplete = playSupportFunction(player2,player1,command);
+            }
+        }
+        
+        std::cout << "=== END OF ROUND ===" << std::endl;
+        //the make uppercase thing is here
+        std::vector<Tile*> player1TileVector = player1->makeTileMosaicUppercase();
+        std::vector<Tile*> player2TileVector = player2->makeTileMosaicUppercase();
+
+        if(player1TileVector.size() != 0 && player2TileVector.size() != 0){
+            for(int i=0;i<player1TileVector.size();i++){
+                boxLid->addTile(player1TileVector.at(i));
+            }
+            for(int i=0;i<player2TileVector.size();i++){
+                boxLid->addTile(player2TileVector.at(i));
             }
         }
 
-        player1->makeTileMosaicUppercase();
-        player2->makeTileMosaicUppercase();
-
-        std::cout << "=== END OF ROUND ===" << std::endl;
+        std::cout << std::endl;
 
     }
 
@@ -98,20 +90,36 @@ void GameModel::play(){
 
 }
 
+bool GameModel::playSupportFunction(Player* player, Player* otherPlayer,std::string command){
+    bool turnComplete = false;
+    displayGameboard(player);
+    std::cout << "> ";
+    std::getline(std::cin, command);
+    if(command == "save"){
+        std::string fileName = "";
+        std::cout << "Enter the file name(eg: save.txt): ";
+        std::cin >> fileName;
+        saveGame(fileName);
+    }
+    else{
+        commandParse(command, player);
+    }
+    if (player->getTurn() == false){
+        otherPlayer->setIsTurn(true);
+        turnComplete = true;
+    }
+
+    return turnComplete;
+}
+
 void GameModel::displayGameboard(Player* player){
 
-    std::cout << "== Start Round ===" << std::endl;
+    // std::cout << "== Start Round ===" << std::endl;
     std::cout << "TURN FOR PLAYER:" << player->getName() <<  std::endl;
     std::cout << "Factories:" << std::endl;
     Factories->displayFactories();
     std::cout << "Mosaic for " << player->getName() << ":" << std::endl;
     player->displayGameboard();
-
-    // TODO
-    std::cout << "== END OF ROUND ===" << std::endl;
-    //this must be called after each round automatically or 'have the user put in "save" and be called' (single quote is the way the specs show)
-    // saveGame(savedGameFile.txt);
-
 }
 
 void GameModel::saveGame(std::string saveFileName){

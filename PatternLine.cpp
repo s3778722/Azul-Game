@@ -40,10 +40,10 @@ Tile*** PatternLine::getTilePatternLine(){
 
 // }
 
-bool PatternLine::isPatternLineFull(int lineNumber){
+bool PatternLine::isPatternLineFull(int lineNumber){ //line number here is actual line number -1
     bool isFull = true;
-    for(int j=0;j<lineNumber;j++){
-        if(tilePatternArray[lineNumber-1][j]->getColour() == '.'){
+    for(int j=0;j<lineNumber+1;j++){
+        if(tilePatternArray[lineNumber][j]->getColour() == '.'){
             isFull = false;
         }
     }
