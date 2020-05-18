@@ -21,7 +21,7 @@ void printCredits();
 void processArgs(int argc, char** argv, CMDArgs* cmdArgs);
 GameModel* loadGame(std::string fileName);
 void createGame();
-void newGame();
+void newGame(int seed);
 
 int main(int argc, char** argv){
 
@@ -47,7 +47,12 @@ int main(int argc, char** argv){
         std::cout << std::endl;
 
         if(userInput == 1){
-            newGame();
+            if(cmdArgs.haveSeed){
+                newGame(cmdArgs.randomSeed);
+            }
+            else{
+                newGame(0);
+            }
         }
         else if(userInput == 2){
             // load game
@@ -69,7 +74,7 @@ int main(int argc, char** argv){
     }
 }
 
-void newGame(){
+void newGame(int seed){
     std::cout << "Starting a New Game" << std::endl;
     std::string player1Name;
     std::string player2Name;
@@ -79,7 +84,14 @@ void newGame(){
     std::cout << "\nEnter the name for player 2:" << std::endl;
     std::cout << "> ";
     std::cin >> player2Name;
-    GameModel* Game = new GameModel(player1Name, player2Name);
+    GameModel* Game;
+    if(seed != 0){
+        Game = new GameModel(player1Name, player2Name,seed);
+    }
+    else{
+        Game = new GameModel(player1Name, player2Name);
+    }
+    
     Game->play();
     //create a new game
 }

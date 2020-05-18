@@ -6,6 +6,12 @@ TileBag::TileBag(){
     shuffleRandom();
 }
 
+TileBag::TileBag(int seed){
+    tileList = new LinkedList();
+    fillBag();
+    shuffle(seed);
+}
+
 TileBag::TileBag(LinkedList* load){
     tileList = load;
 }

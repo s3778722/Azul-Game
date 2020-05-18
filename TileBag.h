@@ -11,6 +11,7 @@
 class TileBag {
 public:
     TileBag();
+    TileBag(int seed);
     TileBag(LinkedList* load);
     ~TileBag(); 
 

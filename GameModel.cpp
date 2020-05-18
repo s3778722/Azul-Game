@@ -12,6 +12,18 @@ GameModel::GameModel(std::string player1Name, std::string player2Name){
 
 }
 
+GameModel::GameModel(std::string player1Name, std::string player2Name,int seed){
+
+    player1 = new Player(player1Name);
+    player1->setIsTurn(true);
+    player2 = new Player(player2Name);
+    Factories = new FactoryTable();
+    tileBag = new TileBag(seed);
+    boxLid = new BoxLid();
+    patternLine = new PatternLine();
+
+}
+
 GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* factories, TileBag* tileBag,BoxLid* boxLidLoad){
 
     std::cout << "IN HER";
