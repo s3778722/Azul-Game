@@ -72,10 +72,10 @@ void GameModel::play(){
         std::vector<Tile*> player2TileVector = player2->makeTileMosaicUppercase();
 
         if(player1TileVector.size() != 0 && player2TileVector.size() != 0){
-            for(int i=0;i<player1TileVector.size();i++){
+            for(unsigned int i=0;i<player1TileVector.size();i++){
                 boxLid->addTile(player1TileVector.at(i));
             }
-            for(int i=0;i<player2TileVector.size();i++){
+            for(unsigned int i=0;i<player2TileVector.size();i++){
                 boxLid->addTile(player2TileVector.at(i));
             }
         }
@@ -299,22 +299,28 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
         for (int i = 0; i < 4; i++)
         {
             if (Factories->getFactory(factory).at(i)->getColour() == colour){
-                for (int column = 0; column < atPatternLine; column++)
-                {
-                    if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][column]->getColour() == NO_TILE)
+                int column = 0;
+                bool setTile = false;
+                while(column < atPatternLine && setTile == false){
+                    if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->getColour() == NO_TILE)
                     {
-                        player->getPatternLine()->getTilePatternLine()[atPatternLine-1][column]->setColour(Factories->getFactory(factory).at(i)->getColour());
+                        player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->setColour(colour);
+                        setTile = true;
                     }
-                }
-                this->Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+                
+                column++;
+                Factories->getFactory(factory).at(i)->setColour(NO_TILE);
                 moved = true;
-
+                }
             }
-            else{
+            else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
                 Tile* x = new Tile(Factories->getFactory(factory).at(i)->getColour());
                 std::cout << Factories->getFactory(factory).at(i)->getColour() << std::endl;
-                this->Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-                this->Factories->getFactory(0).push_back(x); 
+                std::cout << x->getColour() << std::endl;
+                Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+                std::cout << "SIZE OF FACTORY 0 = :" << Factories->getFactory(0).size() << std::endl;
+                Factories->getFactory(0).reserve(Factories->getFactory(0).size()+1);
+                Factories->getFactory(0).push_back(x); 
             }
         }
     }
@@ -322,7 +328,7 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
         for (unsigned int i = 0; i < Factories->getFactory(factory).size(); i++)
         {
             if (Factories->getFactory(factory).at(i)->getColour() == colour || Factories->getFactory(factory).at(i)->getColour() == 'F'){ // will also take F tile if there.
-                this->Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+                Factories->getFactory(factory).at(i)->setColour(NO_TILE);
                 //not sure how to dynamicly get the count of factory, as max is not 5, needed to be fix
                 for (int column = 0; column < 5; column++)
                 {
