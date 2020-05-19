@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <string>
+#include <cctype>
 #include "FloorLine.h"
 #include <iostream>
 #include "Mosaic.h"

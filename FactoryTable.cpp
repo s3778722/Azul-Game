@@ -86,7 +86,7 @@ void FactoryTable::addToFactory(int factoryNo, Tile* newTile){
 }
 int FactoryTable::getSize(int factoryNum){
     int size=0;
-    for(int i=0;i<tileFactoryTable.at(factoryNum).size();i++){
+    for(unsigned int i=0;i<tileFactoryTable.at(factoryNum).size();i++){
         if(tileFactoryTable.at(factoryNum).at(i)->getColour() != NO_TILE && tileFactoryTable.at(factoryNum).at(i)->getColour() != ' '){
             size++;
         }
@@ -96,7 +96,7 @@ int FactoryTable::getSize(int factoryNum){
 
 bool FactoryTable::isEmpty(){
     bool empty = false;
-    for(int i=0;i<tileFactoryTable.size();i++){
+    for(unsigned int i=0;i<tileFactoryTable.size();i++){
         if(getSize(i)==0){
             empty = true;
         }

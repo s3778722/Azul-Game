@@ -74,8 +74,18 @@ void Player::displayGameboard(){
         std::cout << "|| ";
         //mosaic stuff here
         for(int j=0; j<5; j++){
-            std::cout << mosaicGrid[i][j]->getColour()<< " ";
+
+            if (std::isupper(mosaicGrid[i][j]->getColour())){
+                std::cout << mosaicGrid[i][j]->getColour();
+            }
+
+            else{
+                std::cout << '.';
+            }
+
+            std::cout << " ";
         }
+            
         std::cout << std::endl;
     }
 
