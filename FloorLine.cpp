@@ -29,28 +29,35 @@ int FloorLine::getNegativePoints(){ // think of a way to make this better.... ni
     // for(int i=0;i<floorLine->getSize();i++){
     //     floorLine->getTile(i);
     // }
+    int negativePoints = 0;
     int size = floorLine->getSize();
     if(size == 1){
-        return -1;
+        negativePoints = -1;
     }
     else if(size == 2){
-        return -2;
+        negativePoints = -2;
     }
     else if(size == 3){
-        return -4;
+        negativePoints = -4;
     }
     else if(size == 4){
-        return -6;
+        negativePoints = -6;
     }
     else if(size == 5){
-        return -9;
+        negativePoints = -9;
     }
     else if(size == 6){
-        return -12;
+        negativePoints = -12;
     }
     else{
-        return 0;
+        negativePoints = 0;
     }
+
+    for(int i=0;i<floorLine->getSize();i++){
+        delete floorLine->getTile(i);
+    }
+
+    return negativePoints;
 }
 
 void FloorLine::displayFloorLine(){
