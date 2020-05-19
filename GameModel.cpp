@@ -32,6 +32,10 @@ GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* fac
 
 }
 
+GameModel::~GameModel(){
+
+}
+
 void GameModel::play(){
     
     std::cin.ignore();

@@ -21,6 +21,16 @@ FactoryTable::FactoryTable():
   }
 }
 
+FactoryTable::~FactoryTable(){
+    for (unsigned int i = 0; i < tileFactoryTable.size(); i++){
+        for (unsigned int j = 0; j < tileFactoryTable.at(i).size(); j++){
+            delete tileFactoryTable.at(i).at(j);
+        }
+        tileFactoryTable.at(i).clear();//      
+    }
+
+}
+
 FactoryTable::FactoryTable(std::vector< std::vector<Tile*> > TableState){
 
     this->tileFactoryTable = TableState;
