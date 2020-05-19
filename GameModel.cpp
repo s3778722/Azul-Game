@@ -93,6 +93,19 @@ void GameModel::play(){
         player1->scoring();
         player2->scoring();
 
+        // if(//the Winner checking function returns true){
+        //     if(player1->getScore() > player2->getScore()){
+        //     winner = true;
+        //     winnerName = player1->getName();
+        //     }
+        //     else if(player1->getScore() < player2->getScore()){
+        //         winner = true;
+        //         winnerName = player2->getName();
+        //     }
+        // }
+
+        //~~~~~~~~~~~~~~~~~~~~remove below once the above is done~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         if(player1->getScore() > player2->getScore()){
             winner = true;
             winnerName = player1->getName();
@@ -101,6 +114,9 @@ void GameModel::play(){
             winner = true;
             winnerName = player2->getName();
         }
+
+         //~~~~~~~~~~~~~~~~~~~~remove above condition is met~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
     }
     
