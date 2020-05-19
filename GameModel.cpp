@@ -65,6 +65,8 @@ void GameModel::play(){
                 }
             }
 
+            //NEEDS CHECK ROUND FUNCTION HERE
+
             bool turnComplete = false;
 
             while (!turnComplete && !roundComplete){
@@ -72,6 +74,11 @@ void GameModel::play(){
             }
 
             std::cout << std::endl;
+            player1->scoring();
+            player2->scoring();
+
+            //NEEDS CHECK ROUND FUCTION HERE
+            //NEEDS CHECK WINNER FUNCTION HERE
         }
 
         fillFactories();
