@@ -5,6 +5,7 @@
 
 Player* player1;
 Player* player2;
+bool loadedGameSuccessfully = true;
 
 
 class CMDArgs {
@@ -282,6 +283,7 @@ GameModel* loadGame(std::string fileName) {
         inputFile.close();
     }
     else{
+        loadedGameSuccessfully = false;
         std::cout << "Unable to open file"; 
     }
    

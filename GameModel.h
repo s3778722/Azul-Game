@@ -21,6 +21,7 @@ public:
     void fillFactories();
     bool drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine, Player* player);
     bool playSupportFunction(Player* player, Player* otherPlayer,std::string command);
+    bool endGameConditionCheck();
 
 private:
 

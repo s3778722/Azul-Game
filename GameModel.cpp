@@ -93,27 +93,27 @@ void GameModel::play(){
         player1->scoring();
         player2->scoring();
 
-        // if(//the Winner checking function returns true){
-        //     if(player1->getScore() > player2->getScore()){
-        //     winner = true;
-        //     winnerName = player1->getName();
-        //     }
-        //     else if(player1->getScore() < player2->getScore()){
-        //         winner = true;
-        //         winnerName = player2->getName();
-        //     }
-        // }
+        if(endGameConditionCheck()){
+            if(player1->getScore() > player2->getScore()){
+            winner = true;
+            winnerName = player1->getName();
+            }
+            else if(player1->getScore() < player2->getScore()){
+                winner = true;
+                winnerName = player2->getName();
+            }
+        }
 
         //~~~~~~~~~~~~~~~~~~~~remove below once the above is done~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        if(player1->getScore() > player2->getScore()){
-            winner = true;
-            winnerName = player1->getName();
-        }
-        else if(player1->getScore() < player2->getScore()){
-            winner = true;
-            winnerName = player2->getName();
-        }
+        // if(player1->getScore() > player2->getScore()){
+        //     winner = true;
+        //     winnerName = player1->getName();
+        // }
+        // else if(player1->getScore() < player2->getScore()){
+        //     winner = true;
+        //     winnerName = player2->getName();
+        // }
 
          //~~~~~~~~~~~~~~~~~~~~remove above condition is met~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -287,7 +287,7 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
 
     }
 
-    else if (command.substr(0,4) == "turn"){
+    else if (command.substr(0,4) == "turn" || command.substr(0,4) == "TURN"){
 
         if ((command.substr(4,1) == " " && command.length() == 10 ) && (command.substr(6,1) == " " && command.substr(8,1) == " ")){ // checks for spaces in the right spot and proper length
 
@@ -410,5 +410,13 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
     // }
 
     return moved;
+}
+
+bool GameModel::endGameConditionCheck(){
+    bool gameDone = false;
+    if(player1->getMosaic()->hasFullRow() || player2->getMosaic()->hasFullRow()){
+        gameDone = true;
+    }
+    return gameDone;
 }
 
