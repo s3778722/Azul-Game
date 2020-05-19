@@ -13,6 +13,7 @@ public:
     GameModel(std::string player1, std::string player2);
     GameModel(std::string player1, std::string player2,int seed);
     GameModel(Player* player1, Player* player2,FactoryTable* factories, TileBag* tileBag, BoxLid* boxLidLoad);
+    ~GameModel();
     void play();
     void displayGameboard(Player* player);
     void saveGame(std::string saveFileName);

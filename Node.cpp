@@ -12,5 +12,5 @@ Node::Node(Node& other) :
 
 Node::~Node() //destructor
 {
-    delete tile;
+    // delete tile;
 }

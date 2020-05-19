@@ -32,6 +32,10 @@ GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* fac
 
 }
 
+GameModel::~GameModel(){
+
+}
+
 void GameModel::play(){
     
     std::cin.ignore();
@@ -64,29 +68,19 @@ void GameModel::play(){
             while (!turnComplete){
                 turnComplete = playSupportFunction(player2,player1,command);
             }
-        }
-        
-        std::cout << "=== END OF ROUND ===" << std::endl;
-        //the make uppercase thing is here
-        std::vector<Tile*> player1TileVector = player1->makeTileMosaicUppercase();
-        std::vector<Tile*> player2TileVector = player2->makeTileMosaicUppercase();
-
-        if(player1TileVector.size() != 0 && player2TileVector.size() != 0){
-            for(unsigned int i=0;i<player1TileVector.size();i++){
-                boxLid->addTile(player1TileVector.at(i));
-            }
-            for(unsigned int i=0;i<player2TileVector.size();i++){
-                boxLid->addTile(player2TileVector.at(i));
-            }
+            std::cout << "=== END OF ROUND ===" << std::endl;
+            std::cout << std::endl;
         }
 
-        std::cout << std::endl;
+        player1->scoring();
+        player2->scoring();
 
     }
+    
+
+    //need something here to announce the winner
 
     std::cout << "=== GAME OVER ===" << std::endl;
-
-    displayGameboard(player1);
 
 }
 
@@ -95,20 +89,14 @@ bool GameModel::playSupportFunction(Player* player, Player* otherPlayer,std::str
     displayGameboard(player);
     std::cout << "> ";
     std::getline(std::cin, command);
-    if(command == "save"){
-        std::string fileName = "";
-        std::cout << "Enter the file name(eg: save.txt): ";
-        std::cin >> fileName;
-        saveGame(fileName);
-    }
-    else{
-        commandParse(command, player);
-    }
+
+    commandParse(command, player);
+    std::cout<< std::endl;
+
     if (player->getTurn() == false){
         otherPlayer->setIsTurn(true);
         turnComplete = true;
     }
-
     return turnComplete;
 }
 

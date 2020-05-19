@@ -10,6 +10,7 @@ class FactoryTable{
 public: 
 
     FactoryTable();
+    ~FactoryTable();
     FactoryTable(std::vector< std::vector<Tile*> > TableState);
     std::vector< std::vector<Tile*> > getTable();
     std::vector<Tile*>getFactory(int factoryNo);

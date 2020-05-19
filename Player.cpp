@@ -10,7 +10,14 @@ Player::Player(std::string name){
 }
 
 Player::~Player(){
-    //TODO
+    delete mosaic;
+    delete playerFloorLine;
+    delete playerPatternLine;
+    for(int i=0;i<5;i++){
+        delete[] scoringBoard[i];
+    }
+    delete[] scoringBoard;
+    delete[] colourTiles;
 }
 
 Player::Player(std::string name, int score, bool isTurn, Mosaic* mosaicLoad, FloorLine* FloorLineLoad, PatternLine* patternLineLoad){
@@ -224,7 +231,7 @@ void Player::scoring()
 void Player::checkBrokenTiles(){
     for (int i = 0; i <= playerFloorLine->getNegativePoints(); i++)
     {
-        if(brokenTilesSlot[i] != nullptr)
+        if(playerFloorLine->getFloorLine()->getTile(i) != nullptr)
         {
             if(i >= 0 && i < 2){
                 this->score--;
@@ -240,7 +247,6 @@ void Player::checkBrokenTiles(){
         {
             i = playerFloorLine->getNegativePoints()+1;
         }
-        
     }
 }
 
