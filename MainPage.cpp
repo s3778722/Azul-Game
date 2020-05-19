@@ -179,9 +179,6 @@ GameModel* loadGame(std::string fileName) {
                     if(line[i] != ' ' && line[i]){
                         factory.push_back(new Tile(line[i]));
                     }
-                    else{
-                        factory.push_back(new Tile());
-                    }
                 }
                 tableState.push_back(factory);
             }
