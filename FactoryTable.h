@@ -16,9 +16,13 @@ public:
     std::vector<Tile*>getFactory(int factoryNo);
     void displayFactories();
     int getSize();
+    //gives the size of the relevant factory only counts the ones with an colour that is not NO_TILE
+    int getSize(int factoryNum);
     bool factoriesLoaded();
     void setFactoriesLoaded(bool state);
     void addToFactory(int factoryNo, Tile* newTile);
+    //checks if all the factories are empty(including the zeroth one)
+    bool isEmpty();
 
 private:
 

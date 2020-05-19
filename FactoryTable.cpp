@@ -84,6 +84,38 @@ void FactoryTable::addToFactory(int factoryNo, Tile* newTile){
     tileFactoryTable.at(factoryNo).push_back(newTile);
 
 }
+int FactoryTable::getSize(int factoryNum){
+    int size=0;
+    for(int i=0;i<tileFactoryTable.at(factoryNum).size();i++){
+        if(tileFactoryTable.at(factoryNum).at(i)->getColour() != NO_TILE && tileFactoryTable.at(factoryNum).at(i)->getColour() != ' '){
+            size++;
+        }
+    }
+    return size;
+}
+
+bool FactoryTable::isEmpty(){
+    bool empty = false;
+    for(int i=0;i<tileFactoryTable.size();i++){
+        if(getSize(i)==0){
+            empty = true;
+        }
+        else{
+            empty = false;
+        }
+    }
+    
+    if(getSize(0) != 0){
+        empty = false;
+    }
+    else if(getSize(0) == 0){
+        empty = true;
+    }
+
+    return empty;
+}
+
+
 
 // void FactoryTable::setTile(int row, int column, Colour colour){
 //     tileFactoryTable.at(row).at(column)->setColour(colour);

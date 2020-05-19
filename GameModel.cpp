@@ -20,6 +20,7 @@ GameModel::GameModel(std::string player1Name, std::string player2Name,int seed){
     Factories = new FactoryTable();
     tileBag = new TileBag(seed);
     boxLid = new BoxLid();
+    roundComplete = false;
 }
 
 GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* factories, TileBag* tileBag,BoxLid* boxLidLoad){
@@ -29,6 +30,7 @@ GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* fac
     this->Factories = factories;
     this->tileBag = tileBag;
     this->boxLid = boxLidLoad;
+    roundComplete = false;
 
 }
 
@@ -40,11 +42,11 @@ void GameModel::play(){
     
     std::cin.ignore();
     std::cout << "Let's Play!\n" << std::endl;
+    std::string winnerName;
     
     bool winner = false;
     while(!winner){
 
-        bool roundComplete = false;
         std::cout << "=== Start Round == " << std::endl;
         if(!Factories->factoriesLoaded()){
             fillFactories();//this should only be called if the factories are empty and it is a new game
@@ -58,27 +60,46 @@ void GameModel::play(){
 
                 bool turnComplete = false;
 
-                while (!turnComplete){
+                while (!turnComplete && !roundComplete){
                     turnComplete = playSupportFunction(player1,player2,command);
                 }
             }
 
             bool turnComplete = false;
 
-            while (!turnComplete){
+            while (!turnComplete && !roundComplete){
                 turnComplete = playSupportFunction(player2,player1,command);
             }
-            std::cout << "=== END OF ROUND ===" << std::endl;
+
             std::cout << std::endl;
         }
+
+        fillFactories();
+        player1->makeTileMosaicUppercase();
+        player2->makeTileMosaicUppercase();
+        
+        roundComplete = false;
+        
+        std::cout << "=== END OF ROUND ===" << std::endl;
+        std::cout << std::endl;
 
         player1->scoring();
         player2->scoring();
 
+        if(player1->getScore() > player2->getScore()){
+            winner = true;
+            winnerName = player1->getName();
+        }
+        else if(player1->getScore() < player2->getScore()){
+            winner = true;
+            winnerName = player2->getName();
+        }
+
     }
     
 
-    //need something here to announce the winner
+    std::cout << "Congratulations!!!!!!" << std::endl;
+    std::cout << "Winner is: " << winnerName << std::endl;
 
     std::cout << "=== GAME OVER ===" << std::endl;
 
@@ -92,6 +113,12 @@ bool GameModel::playSupportFunction(Player* player, Player* otherPlayer,std::str
 
     commandParse(command, player);
     std::cout<< std::endl;
+
+    
+
+    if(Factories->isEmpty()){
+        roundComplete = true;
+    }
 
     if (player->getTurn() == false){
         otherPlayer->setIsTurn(true);
@@ -222,15 +249,18 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
         saveGame(fileName);
     }
 
-    else if(command == "round"){
+    else if(command == "round"){ // just a tester need to delete later
 
         roundComplete = true;
 
     }
 
-    else if (command == "switch"){ // just a tester
+    else if (command == "fill"){ // just a tester need to delete later
 
-        player->setIsTurn(false);
+        fillFactories();
+        player1->makeTileMosaicUppercase();
+        player2->makeTileMosaicUppercase();
+        
 
     }
 
@@ -350,6 +380,12 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
     else{
         moved =  false;
     }
+
+    // if(Factories->isEmpty()){
+    //     fillFactories();
+    //     roundComplete = true;
+    // }
+
     return moved;
 }
 

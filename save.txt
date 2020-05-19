@@ -1,0 +1,45 @@
+. . . . . . . . . . . . .
+. . . .
+. . . .
+. . . .
+. . . .
+. . . .
+
+L Y Y Y U R Y Y U R U R R L R L B Y U Y B U R R L B Y L U U Y Y U R L L B U U B Y B B Y U L L L L Y U L R Y Y U Y U U B R B R R Y R U B Y B U Y B R B R B B L U
+
+
+las
+0
+0
+
+Y
+. B
+B B B
+. . . .
+L L L L L
+
+b y r u l 
+l b y r u 
+u l b y r 
+r u l b y 
+y r u l b 
+
+B B B L L L L L L L L L L
+
+asl
+1
+0
+
+B
+U U
+. . .
+. . L L
+R R R R R
+
+b y r u l 
+l b y r u 
+u l b y r 
+r u l b y 
+y r u l b 
+
+F L R R R R R R R R R R U

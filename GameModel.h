@@ -31,5 +31,5 @@ private:
     Player* player2;
     BoxLid* boxLid;
     TileBag* tileBag;
-    bool roundComplete; //TODO REMOVE THIS DAM THING AND WHEREVER ELSE I SAID TO
+    bool roundComplete = false; //TODO REMOVE THIS DAM THING AND WHEREVER ELSE I SAID TO
 };
