@@ -277,22 +277,20 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
 
 void GameModel::fillFactories(){
 
-    Factories->getFactory(0).at(0)->setColour('F');
+    Factories->getFactory(0).at(0)->setColour(FIRST_PLAYER);
 
     for (int i = 1; i < 6; i++){
 
         for (int j = 0; j < 4; j++){
 
-            // std::cout << "RAN";
             Tile* tilePtr = tileBag->drawTileFront();
             Factories->getFactory(i).at(j)->setColour(tilePtr->getColour()); 
             delete tilePtr; 
-            //std::cout << tileBag->drawTileFront()->getColour(); CHECK THIS FUNCTION, THIS SHOULD RETURN THE TILE CHAR, DOESN'T
 
         }
     }
 }
-//doesn't include picking First Player Tile, and putting additional tile to floorline
+
 bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine, Player* player){
     bool moved = false;
     if (factory > 0){
@@ -317,25 +315,47 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                 }
             }
             else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
-                Tile* x = new Tile(Factories->getFactory(factory).at(i)->getColour());
+                Factories->addToFactory(0, new Tile (Factories->getFactory(factory).at(i)->getColour()));// hmmmm no idea about this situation, close though.
                 Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-                Factories->getFactory(0).push_back(x); // hmmmm no idea about this situation, close though.
+
             }
         }
     }
     else if (factory == 0){
-        for (unsigned int i = 0; i < Factories->getFactory(factory).size(); i++)
+        for (unsigned int i = 0; i < Factories->getFactory(0).size(); i++)
         {
-            if (Factories->getFactory(factory).at(i)->getColour() == colour || Factories->getFactory(factory).at(i)->getColour() == 'F'){ // will also take F tile if there.
-                Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-                //not sure how to dynamicly get the count of factory, as max is not 5, needed to be fix
-                for (int column = 0; column < 5; column++)
-                {
-                    if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][column]->getColour() == NO_TILE)
-                    {
-                        player->getPatternLine()->getTilePatternLine()[atPatternLine-1][column]->setColour(colour);
+            if (Factories->getFactory(0).at(i)->getColour() == colour || Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
+
+                if(Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
+
+                    player->getFloorLine()->addTileFront((new Tile(FIRST_PLAYER)));
+                    Factories->getFactory(0).at(0)->setColour(NO_TILE);
+
+                }
+                else{
+
+                    int column = 0;
+                    bool setTile = false;
+                    while(column < atPatternLine && setTile == false){
+                        if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->getColour() == NO_TILE)
+                        {
+                            player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->setColour(colour);
+                            setTile = true;
+                        }
+                        else{
+                            player->getFloorLine()->addTile((new Tile(colour))); 
+                        }
+                    
+                    column++;
+                    Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+                    moved = true;
                     }
                 }
+            }
+            else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
+                //Factories->addToFactory(0, new Tile (Factories->getFactory(0).at(i)->getColour()));// hmmmm no idea about this situation, close though.
+                //Factories->getFactory(0).at(i)->setColour(NO_TILE);
+
             }
         }
     }

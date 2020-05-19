@@ -14,6 +14,7 @@ public:
     int getNegativePoints();
     void displayFloorLine();
     LinkedList* getFloorLine();
+    void addTileFront(Tile* tile);
     
 private:
     LinkedList* floorLine;

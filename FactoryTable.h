@@ -17,6 +17,7 @@ public:
     int getSize();
     bool factoriesLoaded();
     void setFactoriesLoaded(bool state);
+    void addToFactory(int factoryNo, Tile* newTile);
 
 private:
 

@@ -6,7 +6,8 @@ FactoryTable::FactoryTable():
 {
 
     std::vector<Tile*> firstFactory;
-    firstFactory.push_back(new Tile('F'));
+    firstFactory.push_back(new Tile(FIRST_PLAYER));
+
     tileFactoryTable.push_back(firstFactory);
 
     for (int i = 1; i < 6; i++) { //6 right now is the number of factories we're going to make
@@ -35,7 +36,7 @@ std::vector< std::vector<Tile*> > FactoryTable::getTable(){
 
 std::vector<Tile*> FactoryTable::getFactory(int factoryNo){
 
-    return tileFactoryTable[factoryNo];
+    return tileFactoryTable.at(factoryNo);
 
 }
 
@@ -66,6 +67,12 @@ bool FactoryTable::factoriesLoaded(){
 
 void FactoryTable::setFactoriesLoaded(bool state){
     loaded = state;
+}
+
+void FactoryTable::addToFactory(int factoryNo, Tile* newTile){
+
+    tileFactoryTable.at(factoryNo).push_back(newTile);
+
 }
 
 // void FactoryTable::setTile(int row, int column, Colour colour){

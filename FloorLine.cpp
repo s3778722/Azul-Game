@@ -12,6 +12,10 @@ void FloorLine::addTile(Tile* tile){
     floorLine->addBack(tile);
 }
 
+void FloorLine::addTileFront(Tile* tile){
+    floorLine->addFront(tile);
+}
+
 Tile* FloorLine::removeTile(){
     Tile* returnTile = nullptr;
     if(floorLine->getSize() != 0){
