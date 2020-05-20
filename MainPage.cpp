@@ -23,6 +23,7 @@ void processArgs(int argc, char** argv, CMDArgs* cmdArgs);
 GameModel* loadGame(std::string fileName);
 void createGame();
 void newGame(int seed);
+void requestInput(int& userInput);
 
 int main(int argc, char** argv){
 
@@ -33,20 +34,19 @@ int main(int argc, char** argv){
 
     std::cout << "Welcome to Azul! -------------------" << std::endl;
 
-    while (std::cin.good())
-    {   
-        int userInput = 0;
-        std::cout << "Menu" << std::endl;
-        std::cout << "----" << std::endl;
-        std::cout << "1. New Game" << std::endl;
-        std::cout << "2. Load Game" << std::endl;
-        std::cout << "3. Credits (Show student information)" << std::endl;
-        std::cout << "4. Quit" << std::endl;
-        std::cout << std::endl;
-        std::cout << "> ";
-        std::cin >> userInput;
-        std::cout << std::endl;
+    int userInput = 0;
 
+    while (std::cin.good() && !std::cin.eof()){
+        requestInput(userInput);
+
+        if(std::cin.fail() || !std::cin.good()){
+            std::cin.clear();
+            std::cin.ignore();
+            userInput = 0;
+            std::cout << "Enter a valid command" << std::endl;
+            // requestInput(userInput);
+        }
+        
         if(userInput == 1){
             if(cmdArgs.haveSeed){
                 newGame(cmdArgs.randomSeed);
@@ -71,8 +71,21 @@ int main(int argc, char** argv){
         }
         else if(userInput == 4){
             return EXIT_SUCCESS;
-        }
+        } 
     }
+}
+
+void requestInput(int& userInput){
+    std::cout << "Menu" << std::endl;
+    std::cout << "----" << std::endl;
+    std::cout << "1. New Game" << std::endl;
+    std::cout << "2. Load Game" << std::endl;
+    std::cout << "3. Credits (Show student information)" << std::endl;
+    std::cout << "4. Quit" << std::endl;
+    std::cout << std::endl;
+    std::cout << "> ";
+    std::cin >> userInput;
+    std::cout << std::endl;
 }
 
 void newGame(int seed){
@@ -102,7 +115,7 @@ void printCredits(){
     std::cout << "Name: Muditha Kanishka Dulshan Kodithuwakku" << std::endl;
     std::cout << "Student ID: s3813354" << std::endl;
     std::cout << "Email: s3813354@student.rmit.edu.au" << std::endl;
-    std::cout << std::endl;
+    std::cout << "----------------------------------" << std::endl;
     std::cout << "Name: Han Chien Leow " << std::endl;
     std::cout << "Student ID: s3778722" << std::endl;
     std::cout << "Email: s3778722@student.rmit.edu.au" << std::endl;
