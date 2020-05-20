@@ -102,23 +102,12 @@ int FactoryTable::getSize(int factoryNum){
 }
 
 bool FactoryTable::isEmpty(){
-    bool empty = false;
+    bool empty = true;
     for(unsigned int i=0;i<tileFactoryTable.size();i++){
-        if(getSize(i)==0){
-            empty = true;
-        }
-        else{
+        if(getSize(i)!=0){
             empty = false;
         }
     }
-    
-    if(getSize(0) != 0){
-        empty = false;
-    }
-    else if(getSize(0) == 0){
-        empty = true;
-    }
-
     return empty;
 }
 
