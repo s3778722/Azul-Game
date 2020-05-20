@@ -108,6 +108,7 @@ void newGame(int seed){
     
     Game->play();
     //create a new game
+    // CALL DESTRUCTOR!
 }
 
 void printCredits(){
