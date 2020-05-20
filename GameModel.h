@@ -32,7 +32,8 @@ private:
     Player* player2;
     BoxLid* boxLid;
     TileBag* tileBag;
-    bool roundComplete = false; // This isn't optimal, but was a quick fix to be accessible from multiple methods. 
+    bool roundComplete = false; // This two booleans shouldn't be required here. and this really
+    bool quit = false;          // isn't optimal, but was a quick fix to be accessible from multiple methods. 
                                 // Realistically, this should not be needed here but now is required
                                 // as the code depends on this variable existing in multiple areas.
 };

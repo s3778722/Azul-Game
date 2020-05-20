@@ -45,14 +45,14 @@ void GameModel::play(){
     std::string winnerName;
     
     bool winner = false;
-    while(!winner){
+    while(!winner && !quit){
 
         std::cout << "=== Start Round == " << std::endl;
         if(!Factories->factoriesLoaded()){
             fillFactories();//this should only be called if the factories are empty and it is a new game
         }
 
-        while(!roundComplete){
+        while(!roundComplete && !quit){
 
             std::string command;
         
@@ -60,7 +60,7 @@ void GameModel::play(){
 
                 bool turnComplete = false;
 
-                while (!turnComplete && !roundComplete){
+                while ((!turnComplete && !roundComplete) && !quit){
                     turnComplete = playSupportFunction(player1,player2,command);
                 }
             }
@@ -69,7 +69,7 @@ void GameModel::play(){
 
             bool turnComplete = false;
 
-            while (!turnComplete && !roundComplete){
+            while ((!turnComplete && !roundComplete) && !quit){
                 turnComplete = playSupportFunction(player2,player1,command);
             }
 
@@ -78,52 +78,49 @@ void GameModel::play(){
             //NEEDS CHECK ROUND FUCTION HERE
             //NEEDS CHECK WINNER FUNCTION HERE
         }
-        
 
-        fillFactories();
-        player1->makeTileMosaicUppercase();
-        player2->makeTileMosaicUppercase();
-        
-        roundComplete = false;
-        
-        std::cout << "=== END OF ROUND ===" << std::endl;
-        std::cout << std::endl;
+        if(roundComplete){
 
-        player1->scoring();
-        player2->scoring();
+            fillFactories();
+            player1->makeTileMosaicUppercase();
+            player2->makeTileMosaicUppercase();
+            
+            roundComplete = false;
+            
+            std::cout << "=== END OF ROUND ===" << std::endl;
+            std::cout << std::endl;
 
-        if(endGameConditionCheck()){
-            if(player1->getScore() > player2->getScore()){
-            winner = true;
-            winnerName = player1->getName();
-            }
-            else if(player1->getScore() < player2->getScore()){
+            player1->scoring();
+            player2->scoring();
+
+            if(endGameConditionCheck()){
+                if(player1->getScore() > player2->getScore()){
                 winner = true;
-                winnerName = player2->getName();
+                winnerName = player1->getName();
+                }
+                else if(player1->getScore() < player2->getScore()){
+                    winner = true;
+                    winnerName = player2->getName();
+                }
             }
+
         }
-
-        //~~~~~~~~~~~~~~~~~~~~remove below once the above is done~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-        // if(player1->getScore() > player2->getScore()){
-        //     winner = true;
-        //     winnerName = player1->getName();
-        // }
-        // else if(player1->getScore() < player2->getScore()){
-        //     winner = true;
-        //     winnerName = player2->getName();
-        // }
-
-         //~~~~~~~~~~~~~~~~~~~~remove above condition is met~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
     }
     
+    if(!quit){
 
-    std::cout << "Congratulations!!!!!!" << std::endl;
-    std::cout << "Winner is: " << winnerName << std::endl;
+        std::cout << "Congratulations!!!!!!" << std::endl;
+        std::cout << "Winner is: " << winnerName << std::endl;
 
-    std::cout << "=== GAME OVER ===" << std::endl;
+        std::cout << "=== GAME OVER ===" << std::endl;
+    }
+
+    else{
+
+        std::cout << "Quit Game Successfully" << std::endl;
+
+    }
 
 }
 
@@ -305,6 +302,13 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
 
             }
 
+            else if(command.substr(5,4) == "quit" || command.substr(5,4) == "QUIT" ){
+
+                std::cout << "Quits the game right then safely." << std::endl;
+                std::cout << "Will ask if you would like to save." << std::endl;
+
+            }
+
             else {
                 std::cout << "thats not a valid help command";
             }
@@ -316,12 +320,37 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
     }
 
     
-    else if(command == "save"){
+    else if(command == "save" || command == "SAVE"){
        std::string fileName = "";
        std::cout << "Enter the file name(eg: save.txt): ";
        std::cin >> fileName;
         saveGame(fileName);
     }
+
+    else if(command == "quit" || command == "QUIT"){
+
+        std::string choice;
+        while (choice != "Y" && choice != "N"){
+            std::cout << "WOULD YOU LIKE TO SAVE? Y/N: ";
+            std::cin >> choice;
+                if (choice == "Y"){
+                    std::string fileName = "";
+                    std::cout << "Enter the file name(eg: save.txt): ";
+                    std::cin >> fileName;
+                    saveGame(fileName);
+                    std::cout << "File saved and quitting" << std::endl;
+                }
+                else if (choice != "N"){
+
+                    std::cout << "Please enter either Y or N!" << std::endl;
+
+                }
+        }
+
+        quit = true;
+       
+    }
+
 
     else if (command.substr(0,4) == "turn" || command.substr(0,4) == "TURN"){
 
