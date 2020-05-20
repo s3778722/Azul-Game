@@ -121,6 +121,7 @@ std::vector<Tile*> Player::makeTileMosaicUppercase(){
                 if (tolower(colour) == mosaic->getMosaic()[i][j]->getColour())
                 {
                     mosaic->getMosaic()[i][j]->setColour(colour);
+                    this->getScoreBoard()[i][j] = 'X';
                     Tile* tile = playerPatternLine->getTilePatternLine()[i][0];
                     tileVector.push_back(tile);
                     for(int k = 0;k<i+1;k++){
@@ -133,6 +134,10 @@ std::vector<Tile*> Player::makeTileMosaicUppercase(){
     return tileVector;
 }
 
+char** Player::getScoreBoard(){
+    return scoringBoard;
+}
+
 void Player::scoring()
 {
     scoringBoard = new char*[5];
@@ -141,11 +146,20 @@ void Player::scoring()
     for (int i = 0; i < 5; i++){
         scoringBoard[i] = new char[5];
     }
-    
+
+    for(int x=0; x < 5; x++)
+    {
+        for(int y = 0; y < 5; y++)
+        {
+            this->scoringBoard[x][y] = NO_TILE;
+        }
+    }
+
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
-            if(scoringBoard[i][j] == toupper(mosaic->getMosaic()[i][j]->getColour())){
-                //Uppercase represents that it already has a tile
+            //if(scoringBoard[i][j] == toupper(mosaic->getMosaic()[i][j]->getColour())){
+            if(scoringBoard[i][j] == 'X'){
+                //Uppercase 'X' to represent that is Uppercase on Mosaic
                 checkRow.push_back(i);
                 checkColumn.push_back(j);
             }
@@ -227,13 +241,13 @@ void Player::scoring()
         {
             score+=7;
         }
-        else
+        else if (rowCounted == false && columnCounted == false)
         {
             columnCounted = true;
             score++;
         }
     }
-    checkBrokenTiles();
+    //checkBrokenTiles();
     countColours();
     scoreColours();
 }

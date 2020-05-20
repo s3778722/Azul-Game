@@ -29,9 +29,8 @@ public:
     void checkBrokenTiles();
     void countColours();
     void scoreColours();
+    char** getScoreBoard();
 
-
-    
 private:
     std::string name;
     int score;
