@@ -150,7 +150,7 @@ char** Player::getScoreBoard(){
     return scoringBoard;
 }
 
-void Player::scoring()
+LinkedList* Player::scoring()
 {
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
@@ -244,31 +244,37 @@ void Player::scoring()
             score++;
         }
     }
-    //checkBrokenTiles();
+    LinkedList* goesToBoxLid = checkBrokenTiles();
     countColours();
     scoreColours();
+
+    return goesToBoxLid;
 }
 
-void Player::checkBrokenTiles(){
-    for (int i = 0; i <= playerFloorLine->getNegativePoints(); i++)
-    {
-        if(playerFloorLine->getFloorLine()->getTile(i) != nullptr)
-        {
-            if(i >= 0 && i < 2){
-                score--;
-            }
-            if(i >= 2 && i < 5){
-                score -= 2;
-            }
-            else {
-                score -= 3;
-            }
-        }
-        else
-        {
-            i = playerFloorLine->getNegativePoints()+1;
-        }
-    }
+LinkedList* Player::checkBrokenTiles(){
+    score += playerFloorLine->getNegativePoints();
+
+    return playerFloorLine->getToBoxLid();
+
+    // for (int i = 0; i <= playerFloorLine->getNegativePoints(); i++)
+    // {
+    //     if(playerFloorLine->getFloorLine()->getTile(i) != nullptr)
+    //     {
+    //         if(i >= 0 && i < 2){
+    //             score--;
+    //         }
+    //         if(i >= 2 && i < 5){
+    //             score -= 2;
+    //         }
+    //         else {
+    //             score -= 3;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         i = playerFloorLine->getNegativePoints()+1;
+    //     }
+    // }
 }
 
 void Player::countColours(){

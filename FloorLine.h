@@ -15,9 +15,11 @@ public:
     void displayFloorLine();
     LinkedList* getFloorLine();
     void addTileFront(Tile* tile);
+    LinkedList* getToBoxLid();
     
 private:
     LinkedList* floorLine;
+    LinkedList* toBoxLid;
     
 };
 
