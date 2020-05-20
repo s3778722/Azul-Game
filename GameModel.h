@@ -32,5 +32,7 @@ private:
     Player* player2;
     BoxLid* boxLid;
     TileBag* tileBag;
-    bool roundComplete = false; //TODO REMOVE THIS DAM THING AND WHEREVER ELSE I SAID TO
+    bool roundComplete = false; // This isn't optimal, but was a quick fix to be accessible from multiple methods. 
+                                // Realistically, this should not be needed here but now is required
+                                // as the code depends on this variable existing in multiple areas.
 };
