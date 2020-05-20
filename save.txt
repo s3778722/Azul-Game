@@ -1,45 +1,45 @@
-. . . . . . . . . . . . .
+F . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . Y Y U
+Y U Y B
+L R L R
+R U R U
 . . . .
-. . . .
-. . . .
-. . . .
-. . . .
+Y Y Y L
 
-L Y Y Y U R Y Y U R U R R L R L B Y U Y B U R R L B Y L U U Y Y U R L L B U U B Y B B Y U L L L L Y U L R Y Y U Y U U B R B R R Y R U B Y B U Y B R B R B B L U
+
 
 
 las
 0
-0
+-54
 
-Y
-. B
-B B B
+R
+. .
+. . .
 . . . .
-L L L L L
+. . . . B
 
-b y r u l 
-l b y r u 
-u l b y r 
-r u l b y 
-y r u l b 
+B Y r U L 
+l B Y r U 
+u L B Y R 
+r u L b y 
+y r u L b 
 
-B B B L L L L L L L L L L
+
 
 asl
 1
-0
+-54
 
-B
-U U
+R
+. .
 . . .
-. . L L
-R R R R R
+. . . .
+. . . . .
 
-b y r u l 
-l b y r u 
-u l b y r 
-r u l b y 
-y r u l b 
+B y R u l 
+l B Y R U 
+u l B y R 
+r u l B Y 
+y R U l b 
 
-F L R R R R R R R R R R U
+

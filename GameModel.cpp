@@ -74,12 +74,11 @@ void GameModel::play(){
             }
 
             std::cout << std::endl;
-            player1->scoring();
-            player2->scoring();
 
             //NEEDS CHECK ROUND FUCTION HERE
             //NEEDS CHECK WINNER FUNCTION HERE
         }
+        
 
         fillFactories();
         player1->makeTileMosaicUppercase();
@@ -259,9 +258,60 @@ void GameModel::savePlayerData(Player* player, std::ofstream& saveFile){
 
 void GameModel::commandParse(std::string command, Player* player){ //need renaming the function
 
-    if (command == "help"){ // can be extended for specific help later if wanted
+    if (command.substr(0,4) == "help" || command.substr(0,4) == "HELP"){ // can be extended for specific help later if wanted
 
-        std::cout << "I AM HELP, LOOK AT ME" << std::endl;
+        if (command.length() == 4){
+
+            std::cout << "Please enter the factory number, tile character chosen, and pattern line to take it to." << std::endl;
+            std::cout << "For list of commands type: help commands, for help with a speciic command type help <command>. " << std::endl;
+
+        }
+        
+        else if (command.length() == 13){
+        
+            if (command.substr(5,8) == "commands" || command.substr(5,8) == "COMMANDS"){
+
+            std::cout << "valid commands include: turn, quit, save, help";     
+
+            }       
+
+            else {
+                std::cout << "thats not a valid help command";
+            }
+
+        }
+
+        else if (command.length() == 9){
+
+            if (command.substr(5,4) == "turn" || command.substr(5,4) == "TURN" ){
+
+                std::cout << "Turn format is as follows: turn <factory number> <colour of tile> <patternline to move to>" << std::endl;
+                std::cout << "If you have to place directly into the broken line, just move into any line that you're unable to." << std::endl;
+
+            }
+
+            else if(command.substr(5,4) == "save" || command.substr(5,4) == "SAVE" ){
+
+                std::cout << "HAVENT DONE SAVE HELP YET" << std::endl;
+                std::cout << "=============" << std::endl;
+
+            }
+
+            else if(command.substr(5,4) == "help" || command.substr(5,4) == "HELP" ){
+
+                std::cout << "You're better than that!" << std::endl;
+                std::cout << "help yourself lol." << std::endl;
+
+            }
+
+            else {
+                std::cout << "thats not a valid help command";
+            }
+        }
+
+        else {
+            std::cout << "thats not a valid help command";
+        }
     }
 
     
@@ -270,21 +320,6 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
        std::cout << "Enter the file name(eg: save.txt): ";
        std::cin >> fileName;
         saveGame(fileName);
-    }
-
-    else if(command == "round"){ // just a tester need to delete later
-
-        roundComplete = true;
-
-    }
-
-    else if (command == "fill"){ // just a tester need to delete later
-
-        fillFactories();
-        player1->makeTileMosaicUppercase();
-        player2->makeTileMosaicUppercase();
-        
-
     }
 
     else if (command.substr(0,4) == "turn" || command.substr(0,4) == "TURN"){
@@ -314,6 +349,10 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
             }
         }
     }
+
+    else{
+        std::cout << "please type a valid command, if you need help type: help.";
+    }
 }
 
 void GameModel::fillFactories(){
@@ -334,6 +373,8 @@ void GameModel::fillFactories(){
 
 bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine, Player* player){
     bool moved = false;
+    int amountOfTilesMoved = 0;
+    int amountOfTilesFound = 0;
     if (factory > 0){
         for (int i = 0; i < 4; i++)
         {
@@ -345,15 +386,13 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                     {
                         player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->setColour(colour);
                         setTile = true;
+                        amountOfTilesMoved++;
                     }
-                    else{
-                        player->getFloorLine()->addTile((new Tile(colour))); 
-                    }
-                
-                column++;
-                Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-                moved = true;
+                    column++;
+                    Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+                    moved = true;
                 }
+                amountOfTilesFound++;
             }
             else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
                 Factories->addToFactory(0, new Tile (Factories->getFactory(factory).at(i)->getColour()));// hmmmm no idea about this situation, close though.
@@ -382,15 +421,14 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                         {
                             player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->setColour(colour);
                             setTile = true;
-                        }
-                        else{
-                            player->getFloorLine()->addTile((new Tile(colour))); 
+                            amountOfTilesMoved++;
                         }
                     
-                    column++;
-                    Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-                    moved = true;
+                        column++;
+                        Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+                        moved = true;
                     }
+                amountOfTilesFound++;
                 }
             }
             else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
@@ -408,6 +446,12 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
     //     fillFactories();
     //     roundComplete = true;
     // }
+
+    for (int i = 0; i < amountOfTilesFound - amountOfTilesMoved; i++){
+
+        player->getFloorLine()->addTile((new Tile(colour)));                
+
+    }
 
     return moved;
 }
