@@ -6,21 +6,6 @@ Player::Player(std::string name){
     this->mosaic = new Mosaic();
     this->playerFloorLine = new FloorLine();
     this->playerPatternLine = new PatternLine();
-
-    scoringBoard = new char*[5];
-    colourTiles = new bool[5];
-
-    for (int i = 0; i < 5; i++){
-        scoringBoard[i] = new char[5];
-    }
-
-    for(int i=0; i < 5; i++)
-    {
-        for(int j = 0; j < 5; j++)
-        {
-            this->scoringBoard[i][j] = NO_TILE;
-        }
-    }
 }
 
 Player::~Player(){
@@ -35,7 +20,6 @@ Player::~Player(){
 }
 
 Player::Player(std::string name, int score, bool isTurn, Mosaic* mosaicLoad, FloorLine* FloorLineLoad, PatternLine* patternLineLoad){
-
     this->name = name;
     this->score = score;
     this->isTurn = isTurn;
@@ -125,6 +109,21 @@ Mosaic* Player::getMosaic(){
 
 //It will make the tile on mosaic to display the Pattern if the patternline row is full.
 std::vector<Tile*> Player::makeTileMosaicUppercase(){
+    scoringBoard = new char*[5];
+    colourTiles = new bool[5];
+
+    for (int i = 0; i < 5; i++){
+        scoringBoard[i] = new char[5];
+    }
+
+    for(int i=0; i < 5; i++)
+    {
+        for(int j = 0; j < 5; j++)
+        {
+            this->scoringBoard[i][j] = NO_TILE;
+        }
+    }
+    
     std::vector<Tile*> tileVector;
     for (int i = 0; i < 5; i++)
     {
