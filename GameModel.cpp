@@ -376,45 +376,13 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
     bool moved = false;
     int amountOfTilesMoved = 0;
     int amountOfTilesFound = 0;
-    if (factory > 0){
-        for (int i = 0; i < 4; i++)
-        {
-            if (Factories->getFactory(factory).at(i)->getColour() == colour){
-                int column = 0;
-                bool setTile = false;
-                while(column < atPatternLine && setTile == false){
-                    if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->getColour() == NO_TILE)
-                    {
-                        player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->setColour(colour);
-                        setTile = true;
-                        amountOfTilesMoved++;
-                    }
-                    column++;
-                    Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-                    moved = true;
-                }
-                amountOfTilesFound++;
-            }
-            else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
-                Factories->addToFactory(0, new Tile (Factories->getFactory(factory).at(i)->getColour()));// hmmmm no idea about this situation, close though.
-                Factories->getFactory(factory).at(i)->setColour(NO_TILE);
 
-            }
-        }
-    }
-    else if (factory == 0){
-        for (unsigned int i = 0; i < Factories->getFactory(0).size(); i++)
-        {
-            if (Factories->getFactory(0).at(i)->getColour() == colour || Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
+    if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1]->getColour() == NO_TILE || player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1]->getColour() == colour){
 
-                if(Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
-
-                    player->getFloorLine()->addTileFront((new Tile(FIRST_PLAYER)));
-                    Factories->getFactory(0).at(0)->setColour(NO_TILE);
-
-                }
-                else{
-
+        if (factory > 0){
+            for (int i = 0; i < 4; i++)
+            {
+                if (Factories->getFactory(factory).at(i)->getColour() == colour){
                     int column = 0;
                     bool setTile = false;
                     while(column < atPatternLine && setTile == false){
@@ -424,23 +392,59 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                             setTile = true;
                             amountOfTilesMoved++;
                         }
-                    
                         column++;
                         Factories->getFactory(factory).at(i)->setColour(NO_TILE);
                         moved = true;
                     }
-                amountOfTilesFound++;
+                    amountOfTilesFound++;
+                }
+                else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
+                    Factories->addToFactory(0, new Tile (Factories->getFactory(factory).at(i)->getColour()));// hmmmm no idea about this situation, close though.
+                    Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+
                 }
             }
-            else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
-                //Factories->addToFactory(0, new Tile (Factories->getFactory(0).at(i)->getColour()));// hmmmm no idea about this situation, close though.
-                //Factories->getFactory(0).at(i)->setColour(NO_TILE);
+        }
+        else if (factory == 0){
+            for (unsigned int i = 0; i < Factories->getFactory(0).size(); i++)
+            {
+                if (Factories->getFactory(0).at(i)->getColour() == colour || Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
 
+                    if(Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
+
+                        player->getFloorLine()->addTileFront((new Tile(FIRST_PLAYER)));
+                        Factories->getFactory(0).at(0)->setColour(NO_TILE);
+
+                    }
+                    else{
+
+                        int column = 0;
+                        bool setTile = false;
+                        while(column < atPatternLine && setTile == false){
+                            if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->getColour() == NO_TILE)
+                            {
+                                player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->setColour(colour);
+                                setTile = true;
+                                amountOfTilesMoved++;
+                            }
+                        
+                            column++;
+                            Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+                            moved = true;
+                        }
+                    amountOfTilesFound++;
+                    }
+                }
+                else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
+                    //Factories->addToFactory(0, new Tile (Factories->getFactory(0).at(i)->getColour()));// hmmmm no idea about this situation, close though.
+                    //Factories->getFactory(0).at(i)->setColour(NO_TILE);
+
+                }
             }
         }
-    }
-    else{
-        moved =  false;
+        else{
+            moved =  false;
+        }
     }
 
     // if(Factories->isEmpty()){
@@ -452,6 +456,15 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
 
         player->getFloorLine()->addTile((new Tile(colour)));                
 
+    }
+
+    if(factory != 0 && amountOfTilesMoved == 0){
+        int upCounter = 0;
+        for (int i = 4; i > 0; i--){
+            Factories->getFactory(factory).at(upCounter)->setColour(Factories->getFactory(0).at(Factories->getFactory(0).size() - i)->getColour());
+            Factories->getFactory(0).at(Factories->getFactory(0).size() - i)->setColour(NO_TILE);
+            upCounter++;                  
+        }
     }
 
     return moved;

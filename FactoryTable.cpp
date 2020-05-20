@@ -84,6 +84,13 @@ void FactoryTable::addToFactory(int factoryNo, Tile* newTile){
     tileFactoryTable.at(factoryNo).push_back(newTile);
 
 }
+
+void FactoryTable::factoryPopLastTile(int factoryNo){
+
+    tileFactoryTable.at(factoryNo).pop_back();
+
+}
+
 int FactoryTable::getSize(int factoryNum){
     int size=0;
     for(unsigned int i=0;i<tileFactoryTable.at(factoryNum).size();i++){

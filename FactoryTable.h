@@ -21,6 +21,7 @@ public:
     bool factoriesLoaded();
     void setFactoriesLoaded(bool state);
     void addToFactory(int factoryNo, Tile* newTile);
+    void factoryPopLastTile(int factoryNo);
     //checks if all the factories are empty(including the zeroth one)
     bool isEmpty();
 
