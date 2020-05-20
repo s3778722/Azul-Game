@@ -74,12 +74,14 @@ void GameModel::play(){
             }
 
             std::cout << std::endl;
-            player1->scoring();
-            player2->scoring();
 
             //NEEDS CHECK ROUND FUCTION HERE
             //NEEDS CHECK WINNER FUNCTION HERE
         }
+
+        
+        player1->scoring();
+        player2->scoring();
 
         fillFactories();
         player1->makeTileMosaicUppercase();
@@ -334,6 +336,8 @@ void GameModel::fillFactories(){
 
 bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int atPatternLine, Player* player){
     bool moved = false;
+    int amountOfTilesMoved = 0;
+    int amountOfTilesFound = 0;
     if (factory > 0){
         for (int i = 0; i < 4; i++)
         {
@@ -345,15 +349,13 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                     {
                         player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->setColour(colour);
                         setTile = true;
+                        amountOfTilesMoved++;
                     }
-                    else{
-                        player->getFloorLine()->addTile((new Tile(colour))); 
-                    }
-                
-                column++;
-                Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-                moved = true;
+                    column++;
+                    Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+                    moved = true;
                 }
+                amountOfTilesFound++;
             }
             else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
                 Factories->addToFactory(0, new Tile (Factories->getFactory(factory).at(i)->getColour()));// hmmmm no idea about this situation, close though.
@@ -382,15 +384,14 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                         {
                             player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->setColour(colour);
                             setTile = true;
-                        }
-                        else{
-                            player->getFloorLine()->addTile((new Tile(colour))); 
+                            amountOfTilesMoved++;
                         }
                     
-                    column++;
-                    Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-                    moved = true;
+                        column++;
+                        Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+                        moved = true;
                     }
+                amountOfTilesFound++;
                 }
             }
             else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
@@ -408,6 +409,12 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
     //     fillFactories();
     //     roundComplete = true;
     // }
+
+    for (int i = 0; i < amountOfTilesFound - amountOfTilesMoved; i++){
+
+        player->getFloorLine()->addTile((new Tile(colour)));                
+
+    }
 
     return moved;
 }
