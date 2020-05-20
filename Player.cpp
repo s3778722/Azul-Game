@@ -7,6 +7,20 @@ Player::Player(std::string name){
     this->playerFloorLine = new FloorLine();
     this->playerPatternLine = new PatternLine();
 
+    scoringBoard = new char*[5];
+    colourTiles = new bool[5];
+
+    for (int i = 0; i < 5; i++){
+        scoringBoard[i] = new char[5];
+    }
+
+    for(int i=0; i < 5; i++)
+    {
+        for(int j = 0; j < 5; j++)
+        {
+            this->scoringBoard[i][j] = NO_TILE;
+        }
+    }
 }
 
 Player::~Player(){
@@ -28,7 +42,6 @@ Player::Player(std::string name, int score, bool isTurn, Mosaic* mosaicLoad, Flo
     this->mosaic = mosaicLoad;
     this->playerFloorLine = FloorLineLoad;
     this->playerPatternLine = patternLineLoad;
-
 }
 
 int Player::getScore(){
@@ -140,21 +153,6 @@ char** Player::getScoreBoard(){
 
 void Player::scoring()
 {
-    scoringBoard = new char*[5];
-    colourTiles = new bool[5];
-
-    for (int i = 0; i < 5; i++){
-        scoringBoard[i] = new char[5];
-    }
-
-    for(int x=0; x < 5; x++)
-    {
-        for(int y = 0; y < 5; y++)
-        {
-            this->scoringBoard[x][y] = NO_TILE;
-        }
-    }
-
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
             //if(scoringBoard[i][j] == toupper(mosaic->getMosaic()[i][j]->getColour())){
