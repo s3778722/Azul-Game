@@ -153,6 +153,7 @@ void GameModel::displayGameboard(Player* player){
 
     // std::cout << "== Start Round ===" << std::endl;
     std::cout << "TURN FOR PLAYER:" << player->getName() <<  std::endl;
+    std::cout << "SCORE: " << player->getScore() << std::endl;
     std::cout << "Factories:" << std::endl;
     Factories->displayFactories();
     std::cout << "Mosaic for " << player->getName() << ":" << std::endl;
