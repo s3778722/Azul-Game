@@ -293,8 +293,8 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
 
             else if(command.substr(5,4) == "save" || command.substr(5,4) == "SAVE" ){
 
-                std::cout << "HAVENT DONE SAVE HELP YET" << std::endl;
-                std::cout << "=============" << std::endl;
+                std::cout << "This will save the game in its current state." << std::endl;
+                std::cout << "just type whatever you want to call the save and add extention .txt to the end." << std::endl;
 
             }
 
