@@ -54,7 +54,7 @@ int FloorLine::getNegativePoints(){ // think of a way to make this better.... ni
     }
 
     for(int i=0;i<floorLine->getSize();i++){
-        delete floorLine->getTile(i);
+        delete floorLine->removeFront();
     }
 
     return negativePoints;
