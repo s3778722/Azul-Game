@@ -92,6 +92,16 @@ void GameModel::play(){
 
             player1->scoring();
             player2->scoring();
+        LinkedList* goesToBoxLidPlayer1 = player1->scoring();
+        LinkedList* goesToBoxLidPlayer2 = player2->scoring();
+        
+        for(int i=0;i<goesToBoxLidPlayer1->getSize();i++){
+            boxLid->addTile(goesToBoxLidPlayer1->removeFront());
+        }
+
+        for(int i=0;i<goesToBoxLidPlayer2->getSize();i++){
+            boxLid->addTile(goesToBoxLidPlayer2->removeFront());
+        }
 
             if(endGameConditionCheck()){
                 if(player1->getScore() > player2->getScore()){

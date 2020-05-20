@@ -2,10 +2,12 @@
 
 FloorLine::FloorLine(){
     floorLine = new LinkedList();
+    toBoxLid = new LinkedList();
 }
 
 FloorLine::~FloorLine(){
     delete floorLine;
+    delete toBoxLid;
 }
 
 void FloorLine::addTile(Tile* tile){
@@ -54,7 +56,7 @@ int FloorLine::getNegativePoints(){ // think of a way to make this better.... ni
     }
 
     for(int i=0;i<floorLine->getSize();i++){
-        delete floorLine->removeFront();
+        toBoxLid->addBack(floorLine->removeFront());
     }
 
     return negativePoints;
@@ -75,4 +77,8 @@ void FloorLine::displayFloorLine(){
 
 LinkedList* FloorLine::getFloorLine(){
     return floorLine;
+}
+
+LinkedList* FloorLine::getToBoxLid(){
+    return toBoxLid;
 }

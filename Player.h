@@ -25,8 +25,8 @@ public:
     PatternLine* getPatternLine();
     Mosaic* getMosaic();
     std::vector<Tile*> makeTileMosaicUppercase();
-    void scoring();
-    void checkBrokenTiles();
+    LinkedList* scoring();
+    LinkedList* checkBrokenTiles();
     void countColours();
     void scoreColours();
     char** getScoreBoard();
