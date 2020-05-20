@@ -78,10 +78,7 @@ void GameModel::play(){
             //NEEDS CHECK ROUND FUCTION HERE
             //NEEDS CHECK WINNER FUNCTION HERE
         }
-
         
-        player1->scoring();
-        player2->scoring();
 
         fillFactories();
         player1->makeTileMosaicUppercase();
