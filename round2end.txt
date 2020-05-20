@@ -1,0 +1,45 @@
+. . . . . . . . . . . . . . . . . . L .
+. . . .
+. . . .
+. . . .
+. . . .
+. . . .
+
+B L R L B R L L L Y Y U L L Y B B R Y Y Y U Y U L U R Y B L B B R R L L R U R U
+
+
+1
+1
+0
+
+.
+. B
+U U U
+R R R R
+. Y Y Y Y
+
+b y r u l 
+l b y r U 
+u L b y r 
+r u l b y 
+y r u l b 
+
+F L R
+
+2
+0
+0
+
+U
+. U
+R R R
+. Y Y Y
+B B B B B
+
+b y r u l 
+l B y r u 
+u l b y r 
+r U l b y 
+y r u l b 
+
+
