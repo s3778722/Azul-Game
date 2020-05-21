@@ -35,7 +35,11 @@ GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* fac
 }
 
 GameModel::~GameModel(){
-
+    delete player1;
+    delete player2;
+    delete Factories;
+    delete tileBag;
+    delete boxLid;
 }
 
 void GameModel::play(){
