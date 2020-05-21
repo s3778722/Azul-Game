@@ -246,6 +246,18 @@ GameModel* loadGame(std::string fileName) {
                         j++;
                     }
                 }
+
+                std::string pattern = "byrullbyruulbyrrulbyyrulb";
+                int counter = 0;
+                for (int i = 0; i < 5; i++){
+                    for(int j = 0; j<5; j++){
+                        if(player1Mosaic->getMosaic()[i][j]->getColour() == NO_TILE){
+                            player1Mosaic->getMosaic()[i][j] = new Tile(pattern[counter]);
+                        }
+                        counter++;
+                    }
+                }
+
             }
             else if(lineNum == 26){
                 for(unsigned  int i=0;i<line.length();i++){
@@ -278,6 +290,17 @@ GameModel* loadGame(std::string fileName) {
                     if(line[k] != ' '){
                         player2Mosaic->setMosaicTile(lineNum-38, j, line[k]);
                         j++;
+                    }
+                }
+
+                std::string pattern = "byrullbyruulbyrrulbyyrulb";
+                int counter = 0;
+                for (int i = 0; i < 5; i++){
+                    for(int j = 0; j<5; j++){
+                        if(player2Mosaic->getMosaic()[i][j]->getColour() == NO_TILE){
+                            player2Mosaic->getMosaic()[i][j] = new Tile(pattern[counter]);
+                        }
+                        counter++;
                     }
                 }
             }

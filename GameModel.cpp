@@ -225,9 +225,9 @@ void GameModel::savePlayerData(Player* player, std::ofstream& saveFile){
     for(int i=0;i<5;i++){ // pattern line
         for(int j=0; j<i+1; j++){
             saveFile << patternLineGrid[i][j]->getColour();
-            if(j < i){
-                saveFile << " ";
-            }
+            // if(j < i){ // comment this out if we want spaces for the pattern lines
+            //     saveFile << " ";
+            // }
         }
         saveFile << std::endl;
     }
@@ -236,11 +236,17 @@ void GameModel::savePlayerData(Player* player, std::ofstream& saveFile){
 
     for(int i=0;i<5;i++){ // mosaic/board/wall
         for(int j=0; j<5; j++){
-            saveFile << mosaicGrid[i][j]->getColour();
+            if(islower(mosaicGrid[i][j]->getColour())){
+                Colour colour =mosaicGrid[i][j]->getColour();
+                mosaicGrid[i][j]->setColour(NO_TILE);
+                saveFile << mosaicGrid[i][j]->getColour();
+                mosaicGrid[i][j]->setColour(colour);
+            }
+            else{
+                saveFile << mosaicGrid[i][j]->getColour();
+            }
+            
             saveFile << " ";
-            // if(j < i){
-            //     saveFile << " ";
-            // }
         }
         saveFile << std::endl;
     }
