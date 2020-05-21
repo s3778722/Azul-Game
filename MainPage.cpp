@@ -107,6 +107,7 @@ void newGame(int seed){
     }
     
     Game->play();
+    delete Game;
     //create a new game
     // CALL DESTRUCTOR!
 }
