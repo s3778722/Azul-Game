@@ -39,12 +39,11 @@ int main(int argc, char** argv){
     while (std::cin.good() && !std::cin.eof()){
         requestInput(userInput);
 
-        if(std::cin.fail() || !std::cin.good()){
+        if(!std::cin.eof() && (std::cin.fail() || !std::cin.good() || std::cin.bad())){
             std::cin.clear();
             std::cin.ignore();
             userInput = 0;
             std::cout << "Enter a valid command" << std::endl;
-            // requestInput(userInput);
         }
         
         if(userInput == 1){
@@ -64,7 +63,9 @@ int main(int argc, char** argv){
             GameModel* gameModel = loadGame(fileName);
 
             //Play game
-            gameModel->play();
+            if(loadedGameSuccessfully){
+                gameModel->play();
+            }
         }
         else if(userInput == 3){
             printCredits();
@@ -319,7 +320,7 @@ GameModel* loadGame(std::string fileName) {
     }
     else{
         loadedGameSuccessfully = false;
-        std::cout << "Unable to open file"; 
+        std::cout << "Unable to open file" << std::endl; 
     }
    
     Player* player1 = new Player(playerName1,playerScore1,p1Turn,player1Mosaic,player1FloorLine,player1PatternLine);
