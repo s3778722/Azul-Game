@@ -49,14 +49,14 @@ void GameModel::play(){
     std::string winnerName;
     
     bool winner = false;
-    while(!winner && !quit){
+    while(!winner && !quit && !std::cin.eof()){
 
         std::cout << "=== Start Round == " << std::endl;
         if(!Factories->factoriesLoaded()){
             fillFactories();//this should only be called if the factories are empty and it is a new game
         }
 
-        while(!roundComplete && !quit){
+        while(!roundComplete && !quit && !std::cin.eof()){
 
             std::string command;
         
@@ -64,7 +64,7 @@ void GameModel::play(){
 
                 bool turnComplete = false;
 
-                while ((!turnComplete && !roundComplete) && !quit){
+                while ((!turnComplete && !roundComplete) && !quit && !std::cin.eof()){
                     turnComplete = playSupportFunction(player1,player2,command);
                 }
             }
@@ -73,7 +73,7 @@ void GameModel::play(){
 
             bool turnComplete = false;
 
-            while ((!turnComplete && !roundComplete) && !quit){
+            while ((!turnComplete && !roundComplete) && !quit && !std::cin.eof()){
                 turnComplete = playSupportFunction(player2,player1,command);
             }
 
@@ -122,7 +122,7 @@ void GameModel::play(){
 
     }
     
-    if(!quit){
+    if(!quit && winner){
 
         std::cout << "Congratulations!!!!!!" << std::endl;
         std::cout << "Winner is: " << winnerName << std::endl;

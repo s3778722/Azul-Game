@@ -6,6 +6,13 @@ Player::Player(std::string name){
     this->mosaic = new Mosaic();
     this->playerFloorLine = new FloorLine();
     this->playerPatternLine = new PatternLine();
+
+    this->scoringBoard = new char*[5];
+    this->colourTiles = new bool[5];
+
+    for (int i = 0; i < 5; i++){
+        this->scoringBoard[i] = new char[5];
+    }
 }
 
 Player::~Player(){
@@ -109,12 +116,6 @@ Mosaic* Player::getMosaic(){
 
 //It will make the tile on mosaic to display the Pattern if the patternline row is full.
 std::vector<Tile*> Player::makeTileMosaicUppercase(){
-    scoringBoard = new char*[5];
-    colourTiles = new bool[5];
-
-    for (int i = 0; i < 5; i++){
-        scoringBoard[i] = new char[5];
-    }
 
     for(int i=0; i < 5; i++)
     {
@@ -255,26 +256,6 @@ LinkedList* Player::checkBrokenTiles(){
     score += playerFloorLine->getNegativePoints();
 
     return playerFloorLine->getToBoxLid();
-
-    // for (int i = 0; i <= playerFloorLine->getNegativePoints(); i++)
-    // {
-    //     if(playerFloorLine->getFloorLine()->getTile(i) != nullptr)
-    //     {
-    //         if(i >= 0 && i < 2){
-    //             score--;
-    //         }
-    //         if(i >= 2 && i < 5){
-    //             score -= 2;
-    //         }
-    //         else {
-    //             score -= 3;
-    //         }
-    //     }
-    //     else
-    //     {
-    //         i = playerFloorLine->getNegativePoints()+1;
-    //     }
-    // }
 }
 
 void Player::countColours(){
