@@ -116,6 +116,9 @@ void GameModel::play(){
                     winner = true;
                     winnerName = player2->getName();
                 }
+                else if(player1->getScore() == player2->getScore()){
+                    winner = false;
+                }
             }
 
         }
@@ -126,6 +129,12 @@ void GameModel::play(){
 
         std::cout << "Congratulations!!!!!!" << std::endl;
         std::cout << "Winner is: " << winnerName << std::endl;
+
+        std::cout << "=== GAME OVER ===" << std::endl;
+    }
+    else if(!quit && !winner){
+
+        std::cout << "The game is a draw...... Better luck next time!!!" << std::endl;
 
         std::cout << "=== GAME OVER ===" << std::endl;
     }
