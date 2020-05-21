@@ -31,6 +31,8 @@ public:
     int bagSize();
     // get the tile at the given index
     Tile* getTile(int i);
+    // adds the tiles into the tilebag used to move tiles from the boxlid to here
+    void addTile(Tile* tile);
 
 private:
     LinkedList* tileList;
