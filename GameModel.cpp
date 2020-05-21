@@ -47,13 +47,21 @@ void GameModel::play(){
     std::cin.ignore();
     std::cout << "Let's Play!\n" << std::endl;
     std::string winnerName;
+
+    if(!Factories->factoriesLoaded()){
+        fillFactories();//this should only be called if the factories are empty and it is a new game
+    }
     
     bool winner = false;
     while(!winner && !quit && !std::cin.eof()){
 
         std::cout << "=== Start Round == " << std::endl;
-        if(!Factories->factoriesLoaded()){
-            fillFactories();//this should only be called if the factories are empty and it is a new game
+        
+        if(tileBag->bagSize() == 0){ // fills up the tile bag if it has run out of stuff
+            for(int i=boxLid->size()-1;i>0;i--){
+                tileBag->addTile(boxLid->getBoxLid().at(i));
+                boxLid->getBoxLid().pop_back();
+            }
         }
 
         while(!roundComplete && !quit && !std::cin.eof()){
@@ -202,7 +210,6 @@ void GameModel::saveGame(std::string saveFileName){
     }
     
     if(boxLid->size() == 0){
-        std::cout<<"comes here"<<std::endl;
         saveFile << std::endl;
     }
     else{

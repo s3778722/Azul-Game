@@ -82,3 +82,7 @@ int TileBag::bagSize(){
 Tile* TileBag::getTile(int i){
     return tileList->getTile(i);
 }
+
+void TileBag::addTile(Tile* tile){
+    tileList->addBack(tile);
+}
