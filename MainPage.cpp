@@ -36,12 +36,13 @@ int main(int argc, char** argv){
 
     int userInput = 0;
 
+
     while (std::cin.good() && !std::cin.eof()){
         requestInput(userInput);
 
-        if(!std::cin.eof() && (std::cin.fail() || !std::cin.good() || std::cin.bad())){
+        if(!std::cin.eof() && (std::cin.fail() || std::cin.bad())){
             std::cin.clear();
-            std::cin.ignore();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             userInput = 0;
             std::cout << "Enter a valid command" << std::endl;
         }
