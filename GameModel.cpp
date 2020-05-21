@@ -420,8 +420,13 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
 }
 
 void GameModel::fillFactories(){
-
-    Factories->getFactory(0).at(0)->setColour(FIRST_PLAYER);
+    if(Factories->getFactory(0).size() == 0){
+        Factories->getFactory(0).push_back(new Tile(FIRST_PLAYER));
+    }
+    else{
+        Factories->getFactory(0).at(0)->setColour(FIRST_PLAYER);
+    }
+    
 
     for (int i = 1; i < 6; i++){
 
