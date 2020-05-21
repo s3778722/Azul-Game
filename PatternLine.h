@@ -5,17 +5,20 @@
 
 class PatternLine {
 public:
+    //constructor
     PatternLine();
-    // PatternLine(Tile** tilePatternArray[5]);
+    // copy constructor
     PatternLine(PatternLine& other);
+    // destructor
     ~PatternLine();
     
-    // void addTiles(Colour tileColour); //void addTiles(TileFactory tileFactory,int tileFactoryNumber, TileColour colour);
-    Tile*** getTilePatternLine(); // get the tile patternline
-    //PatternLine lineNumber varies from 1 to 5
-    void removeTiles(int lineNumber); // removes all the tiles in the given sub line
-    //PatternLine lineNumber varies from 1 to 5
+    // get the tile patternline in raw 2D array
+    Tile*** getTilePatternLine(); 
+    //removes all the tiles in the given sub line (PatternLine lineNumber varies from 1 to 5)
+    void removeTiles(int lineNumber);
+    //checks if a pattern line is full (PatternLine lineNumber varies from 1 to 5)
     bool isPatternLineFull(int lineNumber);
+    // sets a tile in the patetrn line to a certain colour
     void setTile(int row, int column, Colour colour);
     
 private:

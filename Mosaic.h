@@ -8,22 +8,26 @@
 class Mosaic {
 public:
 
+    //constructor
     Mosaic();
-    // Mosaic(Tile** mosaicArrayLoad);
+    //destructor
     ~Mosaic();
+    // gets the raw version of the mosaic 2D Array
     Tile*** getMosaic();
+    // set mosaic tile to the given colour using the row and column indexes
     void setMosaicTile(int row, int column, Colour colour);
+    //display mosaic
     void displayMosaic();
 
-    void initMosaicPattern();//sampleidea
+    //sampleidea
+    void initMosaicPattern();
+    // checks if the mosaic has atleast one full row(used to check winning condition)
     bool hasFullRow();
 
     
 private:
 
     Tile** mosaicArray[5];
-
-    // std::array<std::array<Tile*,5>,5> mosaicArray;
     
 };
 

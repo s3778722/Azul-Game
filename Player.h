@@ -11,24 +11,41 @@
 
 class Player{
 public:
-    Player();
-    ~Player();
+    //constructor
     Player(std::string name);
+    // overloaded constructor to be used in the loading of player data
     Player(std::string name, int score, bool isTurn, Mosaic* mosaicLoad, FloorLine* FloorLineLoad, PatternLine* patternLineLoad);
+    // destructor
+    ~Player();
+    // get player score
     int getScore();
+    // get player name
     std::string getName();
+    // check if it is player turn
     bool getTurn();
+    // set the player turn
     void setIsTurn(bool isTurn);
+    // add player points
     void addPoints(int points);
+    // displayer player game board
     void displayGameboard();
+    // get player floor line
     FloorLine* getFloorLine();
+    //get player patternline
     PatternLine* getPatternLine();
+    //get player mosaic/wall
     Mosaic* getMosaic();
+    //move tiles from the pattern line to mosaic
     std::vector<Tile*> makeTileMosaicUppercase();
+    // update player score
     LinkedList* scoring();
+    // update the score according to the player floorline
     LinkedList* checkBrokenTiles();
+    // support function for the score
     void countColours();
+    // support function for the score
     void scoreColours();
+    // get the score board, support function for the score
     char** getScoreBoard();
 
 private:

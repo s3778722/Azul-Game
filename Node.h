@@ -4,8 +4,11 @@
 
 class Node{
 public:
+    //constructor
     Node(Tile* tile, Node* next); 
+    // copy constructor
     Node(Node& other);
+    // destructor
     ~Node(); 
 
     Tile* tile;
