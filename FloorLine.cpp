@@ -63,19 +63,16 @@ int FloorLine::getNegativePoints(){ // think of a way to make this better.... ni
         negativePoints = (-14-((size -7)*3));
     }
 
-    for(int i=0;i < floorLine->getSize();i++){
-        Tile* fp = new Tile(FIRST_PLAYER);
-        Tile* floorTile = new Tile(floorLine->getTile(i)->getColour());
-        if(!(floorLine->getTile(i)->matchTile(fp))){
-            //toBoxLid->addBack(floorLine->removeFront());
-            toBoxLid->addBack(floorLine->getTile(i));
-            //floorLine->removeFront();
-            floorLine->removeTile(floorTile);
+    if(floorLine->getSize() > 0){
+        if(floorLine->getTile(0)->getColour() == FIRST_PLAYER){
+            floorLine->removeFront();
         }
-        else{
-            delete floorLine->removeFront();
+        for(int i=0;i < floorLine->getSize();i++){
+            toBoxLid->addBack(floorLine->removeFront());
+            //toBoxLid->addBack(floorLine->getTile(i));
         }
     }
+    
     return negativePoints;
 }
 

@@ -30,7 +30,7 @@ int LinkedList::getSize(){
     }
     return count;
     */
-   return this->count;
+   return count;
 }
 
 //return the tile at the index

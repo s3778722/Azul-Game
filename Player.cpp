@@ -102,7 +102,7 @@ void Player::displayGameboard(){
     // std::cout << std::endl;
 
     //the floorline stuff
-    std::cout << "Broken:";
+    std::cout << "6: Broken:";
     playerFloorLine->displayFloorLine();
     
 
