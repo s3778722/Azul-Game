@@ -30,6 +30,7 @@ int main(int argc, char** argv){
 
     // cmdArgs.randomSeed //this is the random seed given to through the command line interface
 
+    // Runs our basic menu with selection to whichever option you would like.
     std::cout << "Welcome to Azul! -------------------" << std::endl;
 
     int userInput = 0;
@@ -43,7 +44,7 @@ int main(int argc, char** argv){
             userInput = 0;
             std::cout << "Enter a valid command" << std::endl;
         }
-        
+        //runs new game according to seed.
         if(userInput == 1){
             if(cmdArgs.haveSeed){
                 newGame(cmdArgs.randomSeed);
@@ -53,12 +54,13 @@ int main(int argc, char** argv){
             }
         }
         else if(userInput == 2){
-            // load game
+            // load game, takes a file as input and feeds it into the gamemodel constructor to create the game
+            // that initialises the objects according to the file.
             std::string fileName = "";
             std::cout << "Enter the filename from which load a game: ";
             std::cin >> fileName;
             GameModel* gameModel = loadGame(fileName);
-            //Play game
+            //Play game within the gamemodel plays the loaded game
             if(loadedGameSuccessfully){
                 gameModel->play();
                 delete gameModel;
@@ -73,6 +75,7 @@ int main(int argc, char** argv){
     }
 }
 
+//Menu Text and input control
 void requestInput(int& userInput){
     std::cout << "Menu" << std::endl;
     std::cout << "----" << std::endl;
@@ -86,6 +89,7 @@ void requestInput(int& userInput){
     std::cout << std::endl;
 }
 
+// New game input control and setup.
 void newGame(int seed){
     std::cout << "Starting a New Game" << std::endl;
     std::string player1Name;
@@ -104,11 +108,12 @@ void newGame(int seed){
     else{
         Game = new GameModel(player1Name, player2Name);
     }
-    // starts the game.
+    // starts the game according to setup and seed if given.
     Game->play();
     delete Game;
 }
 
+//The credits screen by yours truely below
 void printCredits(){
     std::cout << "----------------------------------" << std::endl;
     std::cout << "Name: Muditha Kanishka Dulshan Kodithuwakku" << std::endl;
@@ -187,13 +192,16 @@ GameModel* loadGame(std::string fileName) {
                 else{
                     times = line.length();
                 }
+                //loaded the factory 0 to these values in the file
                 for(int i=0;i<times;i++){
                     if(line[i] != ' ' && line[i]){
                         factory.push_back(new Tile(line[i]));
                     }
                 }
+                //Adds the factory 0 to the factorytable load
                 tableState.push_back(factory);
             }
+                //the same process with the remaining factories
             else if(lineNum == 1||lineNum == 2||lineNum == 3||lineNum == 4||lineNum == 5){
                 std::vector<Tile*> factory;
                 for(unsigned int i=0;i<line.length();i++){
@@ -204,6 +212,7 @@ GameModel* loadGame(std::string fileName) {
                 }
                 tableState.push_back(factory);
             }
+            //The tilebag loaded to the files values
             else if(lineNum == 7){
                 for(unsigned int i=0;i<line.length();i++){
                     if(line[i] != ' '){
@@ -211,6 +220,7 @@ GameModel* loadGame(std::string fileName) {
                     }
                 }
             }
+            //The boxlid loaded to the files values
             else if(lineNum == 8){
                for(unsigned int i=0;i<line.length();i++){
                     if(line[i] != ' '){
@@ -218,6 +228,7 @@ GameModel* loadGame(std::string fileName) {
                     }
                 } 
             }
+            //Player data is loaded below according to file.
             else if (lineNum == 10){
                 playerName1 = line;
             }
@@ -227,6 +238,7 @@ GameModel* loadGame(std::string fileName) {
             else if (lineNum == 12){
                 playerScore1 = std::stoi(line.c_str());
             }
+            //Players pattern lines loaded according to file.
             else if(lineNum == 14||lineNum == 15||lineNum == 16||lineNum == 17||lineNum == 18){//patternline player 1
                 int j = 0;
                 for(unsigned int k=0;k<line.length();k++){
@@ -236,6 +248,7 @@ GameModel* loadGame(std::string fileName) {
                     }
                 }
             }
+            //Players mosiac loaded according to file
             else if(lineNum == 20||lineNum == 21||lineNum == 22||lineNum == 23||lineNum == 24){
                 int j = 0;
                 for(unsigned int k=0;k<line.length();k++){
@@ -244,6 +257,7 @@ GameModel* loadGame(std::string fileName) {
                         j++;
                     }
                 }
+                //Mosiac pattern created
                 std::string pattern = "byrullbyruulbyrrulbyyrulb";
                 int counter = 0;
                 for (int i = 0; i < 5; i++){
@@ -255,6 +269,7 @@ GameModel* loadGame(std::string fileName) {
                     }
                 }
             }
+            //Floorline loaded in according to file.
             else if(lineNum == 26){
                 for(unsigned  int i=0;i<line.length();i++){
                     if(line[i] != ' '){
@@ -262,6 +277,7 @@ GameModel* loadGame(std::string fileName) {
                     }
                 }
             }
+            //Same process done with player 2 below.
             else if (lineNum == 28){
                 playerName2 = line;
             }
@@ -317,6 +333,7 @@ GameModel* loadGame(std::string fileName) {
         std::cout << "Unable to open file" << std::endl; 
     }
     GameModel* gameModel = nullptr;
+    // Creates the game according to the loaded values from before
     if (loadedGameSuccessfully){
    
             Player* player1 = new Player(playerName1,playerScore1,p1Turn,player1Mosaic,player1FloorLine,player1PatternLine);
@@ -326,5 +343,6 @@ GameModel* loadGame(std::string fileName) {
             factories->setFactoriesLoaded(true);    
             gameModel = new GameModel(player1, player2, factories, tileBag, boxLidLoad);
     }
+    //returns the pointer to the valid game load.
     return gameModel;
 }

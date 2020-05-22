@@ -20,6 +20,9 @@ void Mosaic::setMosaicTile(int row, int column, Colour colour){
     mosaicArray[row][column]->setColour(colour);
 }
 
+//displays the mosiac, this is controlled by the player class now but is kept in due to it may be
+//needed later on in enhancements.
+
 void Mosaic::displayMosaic(){
     for (int i = 0; i < 5; i++)
     {
@@ -33,6 +36,7 @@ void Mosaic::displayMosaic(){
     }
 }
 
+//creates the mosiac according to the games pattern, used to guide the tile to the right position on the mosaic.
 void Mosaic::initMosaicPattern(){
     std::string pattern = "byrullbyruulbyrrulbyyrulb";
     int counter = 0;
