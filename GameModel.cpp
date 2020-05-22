@@ -284,8 +284,6 @@ void GameModel::savePlayerData(Player* player, std::ofstream& saveFile){
     else{
         saveFile << std::endl;
     }
-
-
 }
 
 void GameModel::commandParse(std::string command, Player* player){ //need renaming the function
@@ -390,17 +388,40 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
 
         if ((command.substr(4,1) == " " && command.length() == 10 ) && (command.substr(6,1) == " " && command.substr(8,1) == " ")){ // checks for spaces in the right spot and proper length
 
-            int factory = std::stoi(command.substr(5,1));
-            Colour colourStr = command[7];
-            int patternRow = std::stoi(command.substr(9,1));
+            int factory;
+            Colour colourStr;
+            int patternRow;
+            bool format = true;
+
+            try {
+                factory = std::stoi(command.substr(5,1));
+            }
+            catch(std::invalid_argument& e){
+                std::cout << "Please enter a number for factory only" << std::endl;
+                format = false;
+            }
+
+            colourStr = command[7];
+
+            if (format){
+                try {
+                    patternRow = std::stoi(command.substr(9,1));
+                }
+                catch(std::invalid_argument& e){
+                    std::cout << "Please enter a number for patternline only" << std::endl;
+                    format = false;
+                }
+            }
 
             // player place tile function() returns bool, if false should provide error too other than the one i put below.
 
-
             bool placeTileSuccess = false;
 
-            if(drawTileFromFactoryToPatternLine(factory,colourStr,patternRow,player)){
-                placeTileSuccess = true;
+            if(format == true){
+
+                if(drawTileFromFactoryToPatternLine(factory,colourStr,patternRow,player)){
+                    placeTileSuccess = true;
+                }
             }
 
             //if placeTileSuccess(player, factory, colour, pattern) <- this is converted from the string ones above
@@ -412,10 +433,10 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
                 std::cout << "Tile Couldn't be placed." <<  std::endl;
             }
         }
-    }
 
-    else{
-        std::cout << "please type a valid command, if you need help type: help.";
+        else{
+            std::cout << "please type a valid command, if you need help type: help.";
+        }
     }
 }
 
@@ -446,7 +467,7 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
     int amountOfTilesFound = 0;
 
     if(atPatternLine == 6){
-        if (factory > 0){
+        if (factory > 0 && factory < 6){
             for (int i = 0; i < 4; i++)
             {
                 if (Factories->getFactory(factory).at(i)->getColour() == colour){
@@ -492,7 +513,7 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
 
     else if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1]->getColour() == NO_TILE || player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1]->getColour() == colour){
 
-        if (factory > 0){
+        if (factory > 0 && factory < 6){
             for (int i = 0; i < 4; i++)
             {
                 if (Factories->getFactory(factory).at(i)->getColour() == colour){
@@ -559,11 +580,6 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
             moved =  false;
         }
     }
-
-    // if(Factories->isEmpty()){
-    //     fillFactories();
-    //     roundComplete = true;
-    // }
 
     for (int i = 0; i < amountOfTilesFound - amountOfTilesMoved; i++){
 
