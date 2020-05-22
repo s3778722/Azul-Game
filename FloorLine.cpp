@@ -27,10 +27,8 @@ Tile* FloorLine::removeTile(){
     return returnTile;
 }
 
-int FloorLine::getNegativePoints(){ // think of a way to make this better.... nicer
-    // for(int i=0;i<floorLine->getSize();i++){
-    //     floorLine->getTile(i);
-    // }
+int FloorLine::getNegativePoints(){
+
     int negativePoints = 0;
     int size = floorLine->getSize();
     if (size == 0){
@@ -49,11 +47,9 @@ int FloorLine::getNegativePoints(){ // think of a way to make this better.... ni
         negativePoints = -6;
     }
     else if(size == 5){
-        //negativePoints = -9;
         negativePoints = -8;
     }
     else if(size == 6){
-        //negativePoints = -12;
         negativePoints = -11;
     }
     else if(size == 7){
@@ -69,10 +65,8 @@ int FloorLine::getNegativePoints(){ // think of a way to make this better.... ni
         }
         for(int i=0;i < floorLine->getSize()+1;i++){
             toBoxLid->addBack(floorLine->removeFront());
-            //toBoxLid->addBack(floorLine->getTile(i));
         }
     }
-    
     return negativePoints;
 }
 

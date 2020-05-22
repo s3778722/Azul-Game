@@ -73,7 +73,9 @@ void Player::displayGameboard(){
     Tile*** patternLineGrid = playerPatternLine->getTilePatternLine();
     Tile*** mosaicGrid = mosaic->getMosaic(); //use this to access the mosaic and print the stuff
 
+    //Printing out the overall board via 5 lines from the two objects.
     for(int i=0;i<5;i++){
+        //Printing out the pattern lines.
         std::cout << i+1 << ": ";
         for(int s=0;s<4-i;s++){
             std::cout << "  ";
@@ -82,7 +84,7 @@ void Player::displayGameboard(){
             std::cout << patternLineGrid[i][j]->getColour()<< " ";
         }
         std::cout << "|| ";
-        //mosaic stuff here
+        //Printing out the mosiac
         for(int j=0; j<5; j++){
 
             if (std::isupper(mosaicGrid[i][j]->getColour())){
@@ -92,20 +94,12 @@ void Player::displayGameboard(){
             else{
                 std::cout << '.';
             }
-
             std::cout << " ";
-        }
-            
+        }          
         std::cout << std::endl;
     }
-
-    // std::cout << std::endl;
-
-    //the floorline stuff
     std::cout << "6: Broken:";
     playerFloorLine->displayFloorLine();
-    
-
 }
 
 FloorLine* Player::getFloorLine(){
@@ -147,7 +141,7 @@ std::vector<Tile*> Player::makeTileMosaicUppercase(){
                         playerPatternLine->getTilePatternLine()[i][k]->setColour(NO_TILE);
                     }
                 }
-           }
+            }
         }
     }
     return tileVector;
@@ -161,7 +155,6 @@ LinkedList* Player::scoring()
 {
     for(int i = 0; i < 5; i++){
         for(int j = 0; j < 5; j++){
-            //if(scoringBoard[i][j] == toupper(mosaic->getMosaic()[i][j]->getColour())){
             if(scoringBoard[i][j] == 'X'){
                 //Uppercase 'X' to represent that is Uppercase on Mosaic
                 checkRow.push_back(i);
@@ -173,8 +166,7 @@ LinkedList* Player::scoring()
     checkingRow = true;
     checkingColumn = true;
 
-    for(unsigned int i = 0; i < checkRow.size(); i++)
-    {
+    for(unsigned int i = 0; i < checkRow.size(); i++){
         bool rowCounted = false;
         bool columnCounted = false;
 
@@ -182,8 +174,7 @@ LinkedList* Player::scoring()
         //mark it as 'x' to represent that it is checked
         
         //South
-        for(int j = ((checkColumn[i]) + 1); j < 5; j++)
-        {
+        for(int j = ((checkColumn[i]) + 1); j < 5; j++){
             if(scoringBoard[checkRow[i]][j] == 'x'){
                 score++;  
                 if(j == ((checkColumn[i])+1)){
@@ -196,8 +187,7 @@ LinkedList* Player::scoring()
             }
         }
         //North
-        for(int j = ((checkColumn[i])-1); j >= 0; j--)
-        {
+        for(int j = ((checkColumn[i])-1); j >= 0; j--){
             if(scoringBoard[checkRow[i]][j] == 'x'){
                score++;  
                if(rowCounted == false){
@@ -210,8 +200,7 @@ LinkedList* Player::scoring()
             }
         }
         //East
-        for(int j = ((checkRow[i])+1); j <  5; j++)
-        {
+        for(int j = ((checkRow[i])+1); j <  5; j++){
             if(scoringBoard[j][checkColumn[i]] == 'x'){
                score++;
                if(j == checkRow[i]+1){
@@ -224,8 +213,7 @@ LinkedList* Player::scoring()
             }
         }
         //West
-        for(int j = ((checkRow[i]-1)); j >= 0; j--)
-        {
+        for(int j = ((checkRow[i]-1)); j >= 0; j--){
             if(scoringBoard[j][checkColumn[i]] == 'x'){
                score++;
                if(columnCounted == false){
@@ -237,16 +225,13 @@ LinkedList* Player::scoring()
                checkingColumn = false;
             }
         }
-        if(checkingRow == true)
-        {
+        if(checkingRow == true){
             score+=2;
         }
-        if(checkingColumn == true)
-        {
+        if(checkingColumn == true){
             score+=7;
         }
-        else if (rowCounted == false && columnCounted == false)
-        {
+        else if (rowCounted == false && columnCounted == false){
             columnCounted = true;
             score++;
         }
@@ -254,7 +239,6 @@ LinkedList* Player::scoring()
     countColours();
     scoreColours();
     LinkedList* goesToBoxLid = checkBrokenTiles();
-
     return goesToBoxLid;
 }
 
@@ -268,10 +252,8 @@ LinkedList* Player::checkBrokenTiles(){
 }
 
 void Player::countColours(){
-    for(int i = 0; i <  5; i++)
-    {
-        for(int j = 0; j <  5; j++)
-        {
+    for(int i = 0; i <  5; i++){
+        for(int j = 0; j <  5; j++){
             if(mosaic->getMosaic()[i][j]->getColour() == RED){
                 redCounter++;
             }
@@ -292,31 +274,24 @@ void Player::countColours(){
 }
 
 void Player::scoreColours(){
-    if(redCounter == 5 && colourTiles[0] == false) 
-    {   
+    if(redCounter == 5 && colourTiles[0] == false) {   
         score += 10; 
         colourTiles[0] = true;
     }
-    if(lightblueCounter == 5 && colourTiles[1] == false) 
-    {   
+    if(lightblueCounter == 5 && colourTiles[1] == false) {   
         score += 10; 
         colourTiles[1] = true;
     }
-    if(blueCounter == 5 && colourTiles[2] == false)
-    {   
+    if(blueCounter == 5 && colourTiles[2] == false){   
         score += 10; 
         colourTiles[2] = true;
     }
-    if(yellowCounter == 5 && colourTiles[3] == false)
-    {   
+    if(yellowCounter == 5 && colourTiles[3] == false){   
         score += 10; 
         colourTiles[3] = true;
     }
-    if(blackCounter == 5 && colourTiles[4] == false)
-    {   
+    if(blackCounter == 5 && colourTiles[4] == false){   
         score += 10; 
         colourTiles[4] = true;
     }
 }
-
-    

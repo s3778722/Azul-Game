@@ -11,7 +11,9 @@ public:
     // destructor
     ~Node(); 
 
+    //the tile this node represents
     Tile* tile;
+    //reference to the next node in the linked list.
     Node* next;
 };
 #endif //NODE_H

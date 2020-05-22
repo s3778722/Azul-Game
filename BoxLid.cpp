@@ -2,9 +2,7 @@
 
 BoxLid::BoxLid():
     boxLidVector()
-{
-
-}
+{}
 
 BoxLid::~BoxLid(){
 
@@ -27,7 +25,5 @@ std::vector<Tile*> BoxLid::getBoxLid(){
 }
 
 std::string BoxLid::toString(){
-
     return "a";
-
 }

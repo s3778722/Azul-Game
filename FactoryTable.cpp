@@ -7,17 +7,14 @@ FactoryTable::FactoryTable():
 
     std::vector<Tile*> firstFactory;
     firstFactory.push_back(new Tile(FIRST_PLAYER));
-
     tileFactoryTable.push_back(firstFactory);
 
     for (int i = 1; i < 6; i++) { //6 right now is the number of factories we're going to make
         
         std::vector<Tile*> factory;
-
         for (int j = 0;  j < 4; j++) { //initalising the factory to '.'
             factory.push_back(new Tile('.'));
         }
-
         tileFactoryTable.push_back(factory);
   }
 }
@@ -29,7 +26,6 @@ FactoryTable::~FactoryTable(){
         }
         tileFactoryTable.at(i).clear();//      
     }
-
 }
 
 FactoryTable::FactoryTable(std::vector< std::vector<Tile*> > TableState){
@@ -53,7 +49,6 @@ std::vector<Tile*> FactoryTable::getFactory(int factoryNo){
 void FactoryTable::displayFactories(){
 
     for (unsigned int i = 0; i < tileFactoryTable.size(); i++){
-
     std::cout << i <<":";
 
         for (unsigned int j = 0; j < tileFactoryTable.at(i).size(); j++){
@@ -110,9 +105,3 @@ bool FactoryTable::isEmpty(){
     }
     return empty;
 }
-
-
-
-// void FactoryTable::setTile(int row, int column, Colour colour){
-//     tileFactoryTable.at(row).at(column)->setColour(colour);
-// }
