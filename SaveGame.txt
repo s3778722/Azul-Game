@@ -1,6 +1,6 @@
-F
-Y R Y Y
-Y R Y R
+F R R R
+. . . .
+. . . .
 L L U U
 B L R L
 L L B B
@@ -8,38 +8,38 @@ L L B B
 B L U L R L L L L B B Y Y R B U Y B U B U L U B L L B R B R R U Y L R B R B B U L Y B U B U Y R R B L Y Y R R Y Y L R U L U Y U B R U Y U Y Y R U U R U U B R Y
 
 
-John
+Jack
 1
 0
 
 .
-. .
-. . .
-. . . .
-. . . . .
+..
+YYY
+....
+.....
 
-b y r u l 
-l b y r u 
-u l b y r 
-r u l b y 
-y r u l b 
+. . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
 
 
 
-Jack
+John
 0
 0
 
 .
-. .
-. . .
-. . . .
-. . . . .
+YY
+...
+....
+.....
 
-b y r u l 
-l b y r u 
-u l b y r 
-r u l b y 
-y r u l b 
+. . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
+. . . . . 
 
 
