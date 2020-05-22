@@ -1,7 +1,6 @@
 #include "Player.h"
 
 Player::Player(std::string name){
-
     this->name = name;
     this->mosaic = new Mosaic();
     this->playerFloorLine = new FloorLine();
@@ -48,6 +47,7 @@ int Player::getScore(){
 }
 
 void Player::addPoints(int points){
+    //adding points to score
     this->score += points;
 }
 
@@ -70,7 +70,7 @@ void Player::setIsTurn(bool isTurn){
 
 void Player::displayGameboard(){
 
-    Tile*** patternLineGrid = playerPatternLine->getTilePatternLine();
+    Tile*** patternLineGrid = playerPatternLine->getTilePatternLine(); //get the pattern line grid of a player
     Tile*** mosaicGrid = mosaic->getMosaic(); //use this to access the mosaic and print the stuff
 
     //Printing out the overall board via 5 lines from the two objects.
@@ -86,20 +86,20 @@ void Player::displayGameboard(){
         std::cout << "|| ";
         //Printing out the mosiac
         for(int j=0; j<5; j++){
-
+            //show the mosaic grid pattern when it is Uppercase
             if (std::isupper(mosaicGrid[i][j]->getColour())){
                 std::cout << mosaicGrid[i][j]->getColour();
             }
 
-            else{
+            else{ //hide the mosaic grid with . when it is not upper
                 std::cout << '.';
             }
             std::cout << " ";
         }          
         std::cout << std::endl;
-    }
+    } 
     std::cout << "6: Broken:";
-    playerFloorLine->displayFloorLine();
+    playerFloorLine->displayFloorLine();//show the floor line here
 }
 
 FloorLine* Player::getFloorLine(){
@@ -116,24 +116,29 @@ Mosaic* Player::getMosaic(){
 
 //It will make the tile on mosaic to display the Pattern if the patternline row is full.
 std::vector<Tile*> Player::makeTileMosaicUppercase(){
-
+    //made a new scoring board that imitates the mosaic to help with scoring
     for(int i=0; i < 5; i++)
     {
         for(int j = 0; j < 5; j++)
         {
-            this->scoringBoard[i][j] = NO_TILE;
+            this->scoringBoard[i][j] = NO_TILE; //set the scoring board grid to '.'
         }
     }
-    
+
     std::vector<Tile*> tileVector;
     for (int i = 0; i < 5; i++)
     {
+        //check each patternline row if it is full
         if (playerPatternLine->isPatternLineFull(i)){
             Colour colour = playerPatternLine->getTilePatternLine()[i][0]->getColour();
             for (int j = 0; j < 5; j++){
+                //Compare the to be inserted colour in lower case to the mosaic pattern which is also in lower case
+                //both will be in lower case when it is available to be inserted
                 if (tolower(colour) == mosaic->getMosaic()[i][j]->getColour())
                 {
+                    //insert the colour to the mosaic/wall
                     mosaic->getMosaic()[i][j]->setColour(colour);
+                    //mark the scoring board with a 'X' as occupied
                     this->getScoreBoard()[i][j] = 'X';
                     Tile* tile = playerPatternLine->getTilePatternLine()[i][0];
                     tileVector.push_back(tile);
@@ -225,9 +230,11 @@ LinkedList* Player::scoring()
                checkingColumn = false;
             }
         }
+        //complete horizontal line of 5 consecutive tiles on your wall.
         if(checkingRow == true){
             score+=2;
         }
+        //complete vertical line of 5 consecutive tiles on your wall.
         if(checkingColumn == true){
             score+=7;
         }
@@ -251,6 +258,7 @@ LinkedList* Player::checkBrokenTiles(){
     return playerFloorLine->getToBoxLid();
 }
 
+//count each of the colours present in the mosaic
 void Player::countColours(){
     for(int i = 0; i <  5; i++){
         for(int j = 0; j <  5; j++){
@@ -272,7 +280,7 @@ void Player::countColours(){
         }
     }
 }
-
+//Gain 10 points for each color of which you have placed all 5 tiles on your wall.
 void Player::scoreColours(){
     if(redCounter == 5 && colourTiles[0] == false) {   
         score += 10; 
