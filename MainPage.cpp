@@ -66,6 +66,7 @@ int main(int argc, char** argv){
             //Play game
             if(loadedGameSuccessfully){
                 gameModel->play();
+                delete gameModel;
             }
         }
         else if(userInput == 3){
@@ -111,7 +112,6 @@ void newGame(int seed){
     Game->play();
     delete Game;
     //create a new game
-    // CALL DESTRUCTOR!
 }
 
 void printCredits(){
@@ -321,18 +321,22 @@ GameModel* loadGame(std::string fileName) {
     }
     else{
         loadedGameSuccessfully = false;
+        inputFile.close();
         std::cout << "Unable to open file" << std::endl; 
     }
+
+    GameModel* gameModel = nullptr;
+    if (loadedGameSuccessfully){
    
-    Player* player1 = new Player(playerName1,playerScore1,p1Turn,player1Mosaic,player1FloorLine,player1PatternLine);
-    Player* player2 = new Player(playerName2,playerScore2,p2Turn,player2Mosaic,player2FloorLine,player2PatternLine);
-    FactoryTable* factories = new FactoryTable(tableState);
-    TileBag* tileBag = new TileBag(tileBagLoad);
+            Player* player1 = new Player(playerName1,playerScore1,p1Turn,player1Mosaic,player1FloorLine,player1PatternLine);
+            Player* player2 = new Player(playerName2,playerScore2,p2Turn,player2Mosaic,player2FloorLine,player2PatternLine);
+            FactoryTable* factories = new FactoryTable(tableState);
+            TileBag* tileBag = new TileBag(tileBagLoad);
 
-    factories->setFactoriesLoaded(true);
+            factories->setFactoriesLoaded(true);    
+            gameModel = new GameModel(player1, player2, factories, tileBag, boxLidLoad);
+    }
 
-
-    GameModel* gameModel = new GameModel(player1, player2, factories, tileBag, boxLidLoad);
     return gameModel;
 }
 
