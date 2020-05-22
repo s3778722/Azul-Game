@@ -1,0 +1,148 @@
+Welcome to Azul! -------------------
+Menu
+----
+1. New Game
+2. Load Game
+3. Credits (Show student information)
+4. Quit
+
+> 
+Starting a New Game
+Enter the name for player 1:
+> 
+Enter the name for player 2:
+> Let's Play!
+
+=== Start Round == 
+TURN FOR PLAYER:Jake
+SCORE: 0
+Factories:
+0: F
+1: Y R Y Y
+2: Y R Y R
+3: L L U U
+4: B L R L
+5: L L B B
+
+Mosaic for Jake:
+1:         . || . . . . . 
+2:       . . || . . . . . 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+TURN FOR PLAYER:John
+SCORE: 0
+Factories:
+0: F R
+1:
+2: Y R Y R
+3: L L U U
+4: B L R L
+5: L L B B
+
+Mosaic for John:
+1:         . || . . . . . 
+2:       . . || . . . . . 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+
+TURN FOR PLAYER:Jake
+SCORE: 0
+Factories:
+0: F R U U
+1:
+2: Y R Y R
+3:
+4: B L R L
+5: L L B B
+
+Mosaic for Jake:
+1:         . || . . . . . 
+2:       . . || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+TURN FOR PLAYER:John
+SCORE: 0
+Factories:
+0: F R U U B B
+1:
+2: Y R Y R
+3:
+4: B L R L
+5:
+
+Mosaic for John:
+1:         . || . . . . . 
+2:       L L || . . . . . 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+
+TURN FOR PLAYER:Jake
+SCORE: 0
+Factories:
+0: F R U U B B L R L
+1:
+2: Y R Y R
+3:
+4:
+5:
+
+Mosaic for Jake:
+1:         . || . . . . . 
+2:       L L || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+TURN FOR PLAYER:John
+SCORE: 0
+Factories:
+0: U U B B L L
+1:
+2: Y R Y R
+3:
+4:
+5:
+
+Mosaic for John:
+1:         . || . . . . . 
+2:       L L || . . . . . 
+3:     . . B || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+
+TURN FOR PLAYER:Jake
+SCORE: 0
+Factories:
+0: U U L L
+1:
+2: Y R Y R
+3:
+4:
+5:
+
+Mosaic for Jake:
+1:         R || . . . . . 
+2:       L L || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:F R 
+> 
+
+The game is a draw...... Better luck next time!!!
+=== GAME OVER ===
