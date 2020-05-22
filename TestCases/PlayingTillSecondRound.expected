@@ -14,7 +14,7 @@ Enter the name for player 2:
 > Let's Play!
 
 === Start Round == 
-TURN FOR PLAYER:Jake
+TURN FOR PLAYER:Player1
 SCORE: 0
 Factories:
 0: F
@@ -24,7 +24,7 @@ Factories:
 4: B L R L
 5: L L B B
 
-Mosaic for Jake:
+Mosaic for Player1:
 1:         . || . . . . . 
 2:       . . || . . . . . 
 3:     . . . || . . . . . 
@@ -32,7 +32,7 @@ Mosaic for Jake:
 5: . . . . . || . . . . . 
 6: Broken:
 > 
-TURN FOR PLAYER:John
+TURN FOR PLAYER:Player2
 SCORE: 0
 Factories:
 0: F R
@@ -42,7 +42,7 @@ Factories:
 4: B L R L
 5: L L B B
 
-Mosaic for John:
+Mosaic for Player2:
 1:         . || . . . . . 
 2:       . . || . . . . . 
 3:     . . . || . . . . . 
@@ -51,17 +51,17 @@ Mosaic for John:
 6: Broken:
 > 
 
-TURN FOR PLAYER:Jake
+TURN FOR PLAYER:Player1
 SCORE: 0
 Factories:
-0: F R U U
+0: F R L L
 1:
 2: Y R Y R
 3:
 4: B L R L
 5: L L B B
 
-Mosaic for Jake:
+Mosaic for Player1:
 1:         . || . . . . . 
 2:       . . || . . . . . 
 3:     Y Y Y || . . . . . 
@@ -69,137 +69,157 @@ Mosaic for Jake:
 5: . . . . . || . . . . . 
 6: Broken:
 > 
-TURN FOR PLAYER:John
+TURN FOR PLAYER:Player2
 SCORE: 0
 Factories:
-0: F R U U B B
+0: R
 1:
 2: Y R Y R
 3:
 4: B L R L
-5:
+5: L L B B
 
-Mosaic for John:
+Mosaic for Player2:
 1:         . || . . . . . 
-2:       L L || . . . . . 
+2:       U U || . . . . . 
 3:     . . . || . . . . . 
 4:   . . . . || . . . . . 
 5: . . . . . || . . . . . 
 6: Broken:
 > 
 
-TURN FOR PLAYER:Jake
+TURN FOR PLAYER:Player1
 SCORE: 0
 Factories:
-0: F R U U B B L R L
+0: R Y Y
 1:
-2: Y R Y R
+2:
 3:
-4:
-5:
+4: B L R L
+5: L L B B
 
-Mosaic for Jake:
-1:         . || . . . . . 
-2:       L L || . . . . . 
+Mosaic for Player1:
+1:         L || . . . . . 
+2:       . . || . . . . . 
 3:     Y Y Y || . . . . . 
 4:   . . . . || . . . . . 
 5: . . . . . || . . . . . 
-6: Broken:
+6: Broken:F L 
 > 
-TURN FOR PLAYER:John
+TURN FOR PLAYER:Player2
 SCORE: 0
 Factories:
-0: U U B B L L
+0: R
 1:
-2: Y R Y R
+2:
 3:
-4:
-5:
+4: B L R L
+5: L L B B
 
-Mosaic for John:
-1:         . || . . . . . 
-2:       L L || . . . . . 
-3:     . . B || . . . . . 
-4:   . . . . || . . . . . 
-5: . . . . . || . . . . . 
-6: Broken:
-> 
-
-TURN FOR PLAYER:Jake
-SCORE: 0
-Factories:
-0: U U L L
-1:
-2: Y R Y R
-3:
-4:
-5:
-
-Mosaic for Jake:
+Mosaic for Player2:
 1:         R || . . . . . 
-2:       L L || . . . . . 
+2:       U U || . . . . . 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:R 
+> 
+
+TURN FOR PLAYER:Player1
+SCORE: 0
+Factories:
+0: R B R
+1:
+2:
+3:
+4:
+5: L L B B
+
+Mosaic for Player1:
+1:         L || . . . . . 
+2:       Y Y || . . . . . 
 3:     Y Y Y || . . . . . 
 4:   . . . . || . . . . . 
 5: . . . . . || . . . . . 
-6: Broken:F R 
+6: Broken:F L 
 > 
-TURN FOR PLAYER:John
+TURN FOR PLAYER:Player2
 SCORE: 0
 Factories:
-0: L L
-1:
-2: Y R Y R
-3:
-4:
-5:
-
-Mosaic for John:
-1:         . || . . . . . 
-2:       L L || . . . . . 
-3:     B B B || . . . . . 
-4:   . . . . || . . . . . 
-5: . . . . . || . . . . . 
-6: Broken:
-> 
-
-TURN FOR PLAYER:Jake
-SCORE: 0
-Factories:
-0: L L R R
+0: R B R L L
 1:
 2:
 3:
 4:
 5:
 
-Mosaic for Jake:
+Mosaic for Player2:
 1:         R || . . . . . 
-2:       L L || . . . . . 
-3:     Y Y Y || . . . . . 
-4:   . . U U || . . . . . 
+2:       U U || . . . . . 
+3:     . L L || . . . . . 
+4:   . . . . || . . . . . 
 5: . . . . . || . . . . . 
-6: Broken:F R 
+6: Broken:R 
 > 
-TURN FOR PLAYER:John
+
+TURN FOR PLAYER:Player1
 SCORE: 0
 Factories:
-0: R R
+0: R B R
 1:
 2:
 3:
 4:
 5:
 
-Mosaic for John:
-1:         . || . . . . . 
-2:       L L || . . . . . 
-3:     B B B || . . . . . 
-4:   . . Y Y || . . . . . 
+Mosaic for Player1:
+1:         L || . . . . . 
+2:       Y Y || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   . . B B || . . . . . 
 5: . . . . . || . . . . . 
-6: Broken:
+6: Broken:F L 
+> 
+TURN FOR PLAYER:Player2
+SCORE: 0
+Factories:
+0: B
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player2:
+1:         R || . . . . . 
+2:       U U || . . . . . 
+3:     L L L || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:R L 
 > 
 
 === END OF ROUND ===
+
+=== Start Round == 
+TURN FOR PLAYER:Player1
+SCORE: 1
+Factories:
+0: F
+1: B L U L
+2: R L L L
+3: L B B Y
+4: Y R B U
+5: Y B U B
+
+Mosaic for Player1:
+1:         . || . . . . L 
+2:       . . || . . Y . . 
+3:     . . . || . . . Y . 
+4:   . . B B || . . . . . 
+5: . . . R R || . . . . . 
+6: Broken:
+> 
 
 The game is a draw...... Better luck next time!!!
 === GAME OVER ===
