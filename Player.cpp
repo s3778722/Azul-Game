@@ -33,6 +33,12 @@ Player::Player(std::string name, int score, bool isTurn, Mosaic* mosaicLoad, Flo
     this->mosaic = mosaicLoad;
     this->playerFloorLine = FloorLineLoad;
     this->playerPatternLine = patternLineLoad;
+    this->scoringBoard = new char*[5];
+    this->colourTiles = new bool[5];
+
+    for (int i = 0; i < 5; i++){
+        this->scoringBoard[i] = new char[5];
+    }
 }
 
 int Player::getScore(){
