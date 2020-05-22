@@ -412,13 +412,17 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
                     format = false;
                 }
             }
+            if (format){
+                if(patternRow > 6){
+                    format = false;
+                }
+            }
 
             // player place tile function() returns bool, if false should provide error too other than the one i put below.
 
             bool placeTileSuccess = false;
 
             if(format == true){
-
                 if(drawTileFromFactoryToPatternLine(factory,colourStr,patternRow,player)){
                     placeTileSuccess = true;
                 }
@@ -587,7 +591,7 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
 
     }
 
-    if(factory != 0 && amountOfTilesMoved == 0){ // If no tiles moved, it was an incorrect move, this moves the tiles back to the factory they came from.
+    if((factory != 0 && amountOfTilesMoved == 0) && factory < 6){ // If no tiles moved, it was an incorrect move, this moves the tiles back to the factory they came from.
         int upCounter = 0;
         for (int i = 4; i > 0; i--){
             Factories->getFactory(factory).at(upCounter)->setColour(Factories->getFactory(0).at(Factories->getFactory(0).size() - i)->getColour());
@@ -596,7 +600,7 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
         }
     }
 
-    if((factory == 0 && amountOfTilesMoved == 0) && player->getFloorLine()->getFloorLine()->getTile(0)->getColour() == FIRST_PLAYER){ // If no tiles moved, it was an incorrect move, this moves the tiles back to the factory they came from.
+    if((factory == 0 && amountOfTilesMoved == 0 ) && (factory < 6 && player->getFloorLine()->getFloorLine()->getTile(0)->getColour() == FIRST_PLAYER)){ // If no tiles moved, it was an incorrect move, this moves the tiles back to the factory they came from.
         for (int i = 4; i > 0; i--){
             Factories->getFactory(0).at(0)->setColour(FIRST_PLAYER);
             player->getFloorLine()->getFloorLine()->removeFront();
