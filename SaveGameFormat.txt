@@ -1,0 +1,45 @@
+f 	  // factory 0 centre table + first player token REMOVE TO LOAD
+s s s s// factory 1 REMOVE TO LOAD
+s s s s// factory 2 REMOVE TO LOAD
+s s s s// factory 3 REMOVE TO LOAD
+s s s s// factory 4 REMOVE TO LOAD
+s s s s// factory 5 REMOVE TO LOAD
+
+r r b y b y g // Tile Bag REMOVE TO LOAD
+r r b y b y g // Box Lid REMOVE TO LOAD
+
+playerName1
+0
+10
+
+r // patternline REMOVE TO LOAD
+yy
+...
+bbb.
+.....
+
+. r . y . // Wall REMOVE TO LOAD
+. r . y .
+. r . y .
+. r . y .
+. r . y .
+
+r r b y b y g  // Broken REMOVE TO LOAD
+
+playerName2
+1
+20
+
+r // Player Patters REMOVE TO LOAD
+yy
+...
+bbb.
+.....
+
+. r . y . // Player Mosaic/GameBoard REMOVE TO LOAD
+. r . y .
+. r . y .
+. r . y .
+. r . y .
+
+r r b y b y g // Broken tiles + first player token REMOVE TO LOAD
