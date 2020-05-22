@@ -85,7 +85,6 @@ Tile* LinkedList::removeFront(){
     {
         return nullptr;
     }
-    
 }
 
 void LinkedList::removeBack(){
@@ -117,7 +116,8 @@ void LinkedList::removeTileAt(int i)
         }
         temp->next = node->next;
         delete node;
-        --count;
+        //--count;
+        count--;
     }
 }
 

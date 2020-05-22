@@ -65,10 +65,12 @@ int FloorLine::getNegativePoints(){ // think of a way to make this better.... ni
 
     for(int i=0;i < floorLine->getSize();i++){
         Tile* fp = new Tile(FIRST_PLAYER);
+        Tile* floorTile = new Tile(floorLine->getTile(i)->getColour());
         if(!(floorLine->getTile(i)->matchTile(fp))){
             //toBoxLid->addBack(floorLine->removeFront());
             toBoxLid->addBack(floorLine->getTile(i));
-            floorLine->removeFront();
+            //floorLine->removeFront();
+            floorLine->removeTile(floorTile);
         }
         else{
             delete floorLine->removeFront();
