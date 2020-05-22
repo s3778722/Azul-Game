@@ -77,3 +77,13 @@ bool Mosaic::hasFullRow(){
     }
     return full;
 }
+
+bool Mosaic::checkRowForTile(int row, Colour colourToCheck){
+    bool found = false;
+    for(int column = 0; column<5; column++){
+        if(mosaicArray[row-1][column]->getColour() == colourToCheck){
+            found = true;
+        }
+    }
+    return found;
+}
