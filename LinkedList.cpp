@@ -22,14 +22,6 @@ void LinkedList::clear(){
 }
 
 int LinkedList::getSize(){
-    /*
-    Node* current = head;
-    while(current != nullptr) {
-        ++count;
-        current = current->next;
-    }
-    return count;
-    */
    return count;
 }
 
@@ -99,8 +91,7 @@ void LinkedList::removeBack(){
         count--;
     }
 }
-void LinkedList::removeTileAt(int i)
-{  
+void LinkedList::removeTileAt(int i){  
     if (i == 0){
        removeFront();
     }
@@ -116,7 +107,6 @@ void LinkedList::removeTileAt(int i)
         }
         temp->next = node->next;
         delete node;
-        //--count;
         count--;
     }
 }
@@ -148,7 +138,6 @@ bool LinkedList::containsTile(Tile* tile){
 
 std::string LinkedList::toString(){
     std::string linkedListString = "";
-    
     for(int i = 0; i < getSize(); i++) {
         linkedListString += getTile(i)->getColour();
         if(i < getSize() - 1) {

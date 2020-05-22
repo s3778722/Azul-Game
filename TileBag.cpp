@@ -70,8 +70,6 @@ void TileBag::shuffleRandom(){
 }
 
 Tile* TileBag::drawTileFront(){
-    // Tile* frontTile = tileList->getTile(0);
-    // tileList->removeFront();
     return tileList->removeFront();
 }
 

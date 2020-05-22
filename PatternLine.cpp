@@ -9,14 +9,10 @@ PatternLine::PatternLine(){
     }
 }
 
-// PatternLine::PatternLine(Tile** tilePatternArray[5]){
-//     *this->tilePatternArray = *tilePatternArray;
-// }
-
 PatternLine::PatternLine(PatternLine& other){
 }
 
-PatternLine::~PatternLine(){ // not sure if this is needed so check later - not needed since nothing is in the heap
+PatternLine::~PatternLine(){
     for(int i=0; i<5; i++){
         for(int j=0; j<i; j++){
             delete tilePatternArray[i][j];
@@ -34,10 +30,6 @@ void PatternLine::removeTiles(int lineNumber){
 Tile*** PatternLine::getTilePatternLine(){
     return tilePatternArray;
 }
-
-// int PatternLine::getPatternLineSizeIndi(int lineNumber){
-
-// }
 
 bool PatternLine::isPatternLineFull(int lineNumber){ //line number here is actual line number -1
     bool isFull = true;

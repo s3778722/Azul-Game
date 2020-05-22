@@ -60,7 +60,6 @@ private:
     bool checkingRow;
     bool checkingColumn;
     char** scoringBoard;
-    // Tile* brokenTilesSlot[7];
     int blackCounter = 0;
     int lightblueCounter = 0;
     int blueCounter = 0;

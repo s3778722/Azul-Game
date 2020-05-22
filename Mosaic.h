@@ -18,14 +18,12 @@ public:
     void setMosaicTile(int row, int column, Colour colour);
     //display mosaic
     void displayMosaic();
-
-    //sampleidea
+    //creates the mosiac tile layout according to the rules
     void initMosaicPattern();
     // checks if the mosaic has atleast one full row(used to check winning condition)
     bool hasFullRow();
     // check to see if the row already has this colour tile placed.
     bool checkRowForTile(int row, Colour colourToCheck);
-
     
 private:
 

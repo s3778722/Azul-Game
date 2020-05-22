@@ -7,15 +7,13 @@ Player* player1;
 Player* player2;
 bool loadedGameSuccessfully = true;
 
-
 class CMDArgs {
 public:
 
    bool haveSeed = false;
    int randomSeed = 0; // set up the random seed it needs to be when the game isn't given a seed
 
-private:
-    
+private:  
 };
 
 void printCredits();
@@ -35,7 +33,6 @@ int main(int argc, char** argv){
     std::cout << "Welcome to Azul! -------------------" << std::endl;
 
     int userInput = 0;
-
 
     while (std::cin.good() && !std::cin.eof()){
         requestInput(userInput);
@@ -60,9 +57,7 @@ int main(int argc, char** argv){
             std::string fileName = "";
             std::cout << "Enter the filename from which load a game: ";
             std::cin >> fileName;
-
             GameModel* gameModel = loadGame(fileName);
-
             //Play game
             if(loadedGameSuccessfully){
                 gameModel->play();
@@ -102,16 +97,16 @@ void newGame(int seed){
     std::cout << "> ";
     std::cin >> player2Name;
     GameModel* Game;
+    //create a new game depending on if seed or not.
     if(seed != 0){
         Game = new GameModel(player1Name, player2Name,seed);
     }
     else{
         Game = new GameModel(player1Name, player2Name);
     }
-    
+    // starts the game.
     Game->play();
     delete Game;
-    //create a new game
 }
 
 void printCredits(){
@@ -249,7 +244,6 @@ GameModel* loadGame(std::string fileName) {
                         j++;
                     }
                 }
-
                 std::string pattern = "byrullbyruulbyrrulbyyrulb";
                 int counter = 0;
                 for (int i = 0; i < 5; i++){
@@ -260,7 +254,6 @@ GameModel* loadGame(std::string fileName) {
                         counter++;
                     }
                 }
-
             }
             else if(lineNum == 26){
                 for(unsigned  int i=0;i<line.length();i++){
@@ -313,8 +306,7 @@ GameModel* loadGame(std::string fileName) {
                         player2FloorLine->addTile(new Tile(line[i]));
                     }
                 }
-            }
-            
+            }           
             lineNum++;
         }
         inputFile.close();
@@ -324,7 +316,6 @@ GameModel* loadGame(std::string fileName) {
         inputFile.close();
         std::cout << "Unable to open file" << std::endl; 
     }
-
     GameModel* gameModel = nullptr;
     if (loadedGameSuccessfully){
    
@@ -332,13 +323,8 @@ GameModel* loadGame(std::string fileName) {
             Player* player2 = new Player(playerName2,playerScore2,p2Turn,player2Mosaic,player2FloorLine,player2PatternLine);
             FactoryTable* factories = new FactoryTable(tableState);
             TileBag* tileBag = new TileBag(tileBagLoad);
-
             factories->setFactoriesLoaded(true);    
             gameModel = new GameModel(player1, player2, factories, tileBag, boxLidLoad);
     }
-
     return gameModel;
 }
-
-
-

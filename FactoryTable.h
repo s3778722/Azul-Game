@@ -38,7 +38,7 @@ public:
 
 private:
 
-    std::vector< std::vector<Tile*> > tileFactoryTable; // done by dulshan
+    std::vector< std::vector<Tile*> > tileFactoryTable;
     bool loaded = false;
 
 };
