@@ -1,0 +1,33 @@
+Welcome to Azul! -------------------
+Menu
+----
+1. New Game
+2. Load Game
+3. Credits (Show student information)
+4. Quit
+
+> 
+Enter the filename from which load a game: Let's Play!
+
+=== Start Round == 
+TURN FOR PLAYER:Jack
+SCORE: 0
+Factories:
+0: F R R R
+1:
+2:
+3: L L U U
+4: B L R L
+5: L L B B
+
+Mosaic for Jack:
+1:         . || . . . . . 
+2:       . . || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+
+The game is a draw...... Better luck next time!!!
+=== GAME OVER ===
