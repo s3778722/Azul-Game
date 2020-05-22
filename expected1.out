@@ -768,5 +768,151 @@ Mosaic for Player2:
 6: Broken:
 > 
 
-The game is a draw...... Better luck next time!!!
-=== GAME OVER ===
+TURN FOR PLAYER:Player1
+SCORE: 43
+Factories:
+0: F R U Y B R Y
+1: L U Y U
+2:
+3: U Y Y R
+4: U U R U
+5:
+
+Mosaic for Player1:
+1:         . || . . R . . 
+2:       . . || L . Y R . 
+3:     . . . || U . . Y R 
+4:   B B B B || R . . . Y 
+5: . . . . . || . . . L B 
+6: Broken:
+> 
+TURN FOR PLAYER:Player2
+SCORE: 43
+Factories:
+0: F R U Y B R Y U R
+1: L U Y U
+2:
+3:
+4: U U R U
+5:
+
+Mosaic for Player2:
+1:         . || . . . U . 
+2:       . . || L . . R U 
+3:     . . . || U . . . . 
+4:   U U U U || . . L B . 
+5: . . . . . || Y . . L B 
+6: Broken:
+> 
+
+TURN FOR PLAYER:Player1
+SCORE: 43
+Factories:
+0: F R U Y B R Y U R R
+1: L U Y U
+2:
+3:
+4:
+5:
+
+Mosaic for Player1:
+1:         . || . . R . . 
+2:       . . || L . Y R . 
+3:     . . . || U . . Y R 
+4:   B B B B || R . . . Y 
+5: . . . Y Y || . . . L B 
+6: Broken:
+> 
+TURN FOR PLAYER:Player2
+SCORE: 43
+Factories:
+0: F R U Y B R Y U R R L U U
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player2:
+1:         . || . . . U . 
+2:       . . || L . . R U 
+3:     . . . || U . . . . 
+4:   U U U U || . . L B . 
+5: . . U U U || Y . . L B 
+6: Broken:
+> 
+
+TURN FOR PLAYER:Player1
+SCORE: 43
+Factories:
+0: R Y B R Y R R L
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player1:
+1:         . || . . R . . 
+2:       . . || L . Y R . 
+3:     . . . || U . . Y R 
+4:   B B B B || R . . . Y 
+5: . . Y Y Y || . . . L B 
+6: Broken:
+> 
+TURN FOR PLAYER:Player2
+SCORE: 43
+Factories:
+0: R B R R R L
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player2:
+1:         . || . . . U . 
+2:       . . || L . . R U 
+3:     . . . || U . . . . 
+4:   U U U U || . . L B . 
+5: U U U U U || Y . . L B 
+6: Broken:F U U 
+> 
+
+TURN FOR PLAYER:Player1
+SCORE: 43
+Factories:
+0: R B R R R
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player1:
+1:         . || . . R . . 
+2:       . . || L . Y R . 
+3:     . . . || U . . Y R 
+4:   B B B B || R . . . Y 
+5: Y Y Y Y Y || . . . L B 
+6: Broken:
+> 
+TURN FOR PLAYER:Player2
+SCORE: 43
+Factories:
+0: R R R R
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player2:
+1:         L || . . . U . 
+2:       . . || L . . R U 
+3:     . . . || U . . . . 
+4:   U U U U || . . L B . 
+5: U U U U U || Y . . L B 
+6: Broken:F U U 
+> 
+

@@ -40,3 +40,12 @@ turn 0 Y 5
 turn 0 R 3
 turn 0 L 2
 turn 2 B 4
+turn 5 U 4
+turn 3 Y 5
+turn 4 U 5
+turn 1 Y 5
+turn 0 U 5
+turn 0 Y 5
+turn 0 L 1
+turn 0 B 1
+turn 0 R 3
