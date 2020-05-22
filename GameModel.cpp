@@ -31,7 +31,6 @@ GameModel::GameModel(Player* player1load, Player* player2load, FactoryTable* fac
     this->tileBag = tileBag;
     this->boxLid = boxLidLoad;
     roundComplete = false;
-
 }
 
 GameModel::~GameModel(){
@@ -65,20 +64,13 @@ void GameModel::play(){
         }
 
         while(!roundComplete && !quit && !std::cin.eof()){
-
             std::string command;
-        
             if(player1->getTurn()){
-
                 bool turnComplete = false;
-
                 while ((!turnComplete && !roundComplete) && !quit && !std::cin.eof()){
                     turnComplete = playSupportFunction(player1,player2,command);
                 }
             }
-
-            //NEEDS CHECK ROUND FUNCTION HERE
-
             bool turnComplete = false;
 
             while ((!turnComplete && !roundComplete) && !quit && !std::cin.eof()){
@@ -86,19 +78,14 @@ void GameModel::play(){
             }
 
             std::cout << std::endl;
-
-            //NEEDS CHECK ROUND FUCTION HERE
-            //NEEDS CHECK WINNER FUNCTION HERE
         }
 
         if(roundComplete){
 
             fillFactories();
             player1->makeTileMosaicUppercase();
-            player2->makeTileMosaicUppercase();
-            
+            player2->makeTileMosaicUppercase();    
             roundComplete = false;
-            
             std::cout << "=== END OF ROUND ===" << std::endl;
             std::cout << std::endl;
 
@@ -126,31 +113,22 @@ void GameModel::play(){
                     winner = false;
                 }
             }
-
         }
-
     }
-    
     if(!quit && winner){
 
         std::cout << "Congratulations!!!!!!" << std::endl;
         std::cout << "Winner is: " << winnerName << std::endl;
-
         std::cout << "=== GAME OVER ===" << std::endl;
     }
     else if(!quit && !winner){
-
         std::cout << "The game is a draw...... Better luck next time!!!" << std::endl;
-
         std::cout << "=== GAME OVER ===" << std::endl;
     }
 
     else{
-
         std::cout << "Quit Game Successfully" << std::endl;
-
     }
-
 }
 
 bool GameModel::playSupportFunction(Player* player, Player* otherPlayer,std::string command){
@@ -158,11 +136,8 @@ bool GameModel::playSupportFunction(Player* player, Player* otherPlayer,std::str
     displayGameboard(player);
     std::cout << "> ";
     std::getline(std::cin, command);
-
     commandParse(command, player);
     std::cout<< std::endl;
-
-    
 
     if(Factories->isEmpty()){
         roundComplete = true;
@@ -177,7 +152,6 @@ bool GameModel::playSupportFunction(Player* player, Player* otherPlayer,std::str
 
 void GameModel::displayGameboard(Player* player){
 
-    // std::cout << "== Start Round ===" << std::endl;
     std::cout << "TURN FOR PLAYER:" << player->getName() <<  std::endl;
     std::cout << "SCORE: " << player->getScore() << std::endl;
     std::cout << "Factories:" << std::endl;
@@ -201,7 +175,6 @@ void GameModel::saveGame(std::string saveFileName){
     }
     
     saveFile << std::endl;
-    
     for(int i=0;i<tileBag->bagSize();i++){ // tilebag
         saveFile << tileBag->getTile(i)->getColour();
         if(i < tileBag->bagSize()-1){
@@ -212,6 +185,7 @@ void GameModel::saveGame(std::string saveFileName){
     if(boxLid->size() == 0){
         saveFile << std::endl;
     }
+
     else{
         for(int i=0; i<boxLid->size();i++){ //boxlid
             saveFile << boxLid->getBoxLid().at(i);
@@ -220,10 +194,8 @@ void GameModel::saveGame(std::string saveFileName){
             }
         }
     }
-
     saveFile << std::endl;
     saveFile << std::endl;
-    
     savePlayerData(player1,saveFile);
     saveFile << std::endl;
     savePlayerData(player2,saveFile);
@@ -243,9 +215,6 @@ void GameModel::savePlayerData(Player* player, std::ofstream& saveFile){
     for(int i=0;i<5;i++){ // pattern line
         for(int j=0; j<i+1; j++){
             saveFile << patternLineGrid[i][j]->getColour();
-            // if(j < i){ // comment this out if we want spaces for the pattern lines
-            //     saveFile << " ";
-            // }
         }
         saveFile << std::endl;
     }
@@ -263,14 +232,12 @@ void GameModel::savePlayerData(Player* player, std::ofstream& saveFile){
             else{
                 saveFile << mosaicGrid[i][j]->getColour();
             }
-            
             saveFile << " ";
         }
         saveFile << std::endl;
     }
 
     saveFile << std::endl;
-
     int size = floorLine->getSize(); // floorline/broken tiles
     if(size != 0){
         for(int i=0; i<size; i++){
@@ -289,69 +256,49 @@ void GameModel::savePlayerData(Player* player, std::ofstream& saveFile){
 void GameModel::commandParse(std::string command, Player* player){ //need renaming the function
 
     if (command.substr(0,4) == "help" || command.substr(0,4) == "HELP"){ // can be extended for specific help later if wanted
-
         if (command.length() == 4){
-
             std::cout << "Please enter the factory number, tile character chosen, and pattern line to take it to." << std::endl;
             std::cout << "For list of commands type: help commands, for help with a speciic command type help <command>. " << std::endl;
-
         }
         
         else if (command.length() == 13){
-        
             if (command.substr(5,8) == "commands" || command.substr(5,8) == "COMMANDS"){
-
             std::cout << "valid commands include: turn, quit, save, help";     
-
-            }       
-
+            }
             else {
                 std::cout << "thats not a valid help command";
             }
-
         }
 
         else if (command.length() == 9){
-
             if (command.substr(5,4) == "turn" || command.substr(5,4) == "TURN" ){
-
                 std::cout << "Turn format is as follows: turn <factory number> <colour of tile> <patternline to move to>" << std::endl;
                 std::cout << "If you have to place directly into the broken line, just move into any line that you're unable to." << std::endl;
-
             }
 
             else if(command.substr(5,4) == "save" || command.substr(5,4) == "SAVE" ){
-
                 std::cout << "This will save the game in its current state." << std::endl;
                 std::cout << "just type whatever you want to call the save and add extention .txt to the end." << std::endl;
-
             }
 
             else if(command.substr(5,4) == "help" || command.substr(5,4) == "HELP" ){
-
                 std::cout << "You're better than that!" << std::endl;
                 std::cout << "help yourself lol." << std::endl;
-
             }
 
             else if(command.substr(5,4) == "quit" || command.substr(5,4) == "QUIT" ){
-
                 std::cout << "Quits the game right then safely." << std::endl;
                 std::cout << "Will ask if you would like to save." << std::endl;
-
             }
-
             else {
                 std::cout << "thats not a valid help command";
             }
         }
-
         else {
             std::cout << "thats not a valid help command";
         }
     }
 
-    
     else if(command == "save" || command == "SAVE"){
        std::string fileName = "";
        std::cout << "Enter the file name(eg: save.txt): ";
@@ -360,7 +307,6 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
     }
 
     else if(command == "quit" || command == "QUIT"){
-
         std::string choice;
         while (choice != "Y" && choice != "N"){
             std::cout << "WOULD YOU LIKE TO SAVE? Y/N: ";
@@ -373,19 +319,13 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
                     std::cout << "File saved and quitting" << std::endl;
                 }
                 else if (choice != "N"){
-
                     std::cout << "Please enter either Y or N!" << std::endl;
-
                 }
         }
-
-        quit = true;
-       
+    quit = true;
     }
 
-
     else if (command.substr(0,4) == "turn" || command.substr(0,4) == "TURN"){
-
         if ((command.substr(4,1) == " " && command.length() == 10 ) && (command.substr(6,1) == " " && command.substr(8,1) == " ")){ // checks for spaces in the right spot and proper length
 
             int factory;
@@ -417,9 +357,7 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
                     format = false;
                 }
             }
-
             // player place tile function() returns bool, if false should provide error too other than the one i put below.
-
             bool placeTileSuccess = false;
 
             if(format == true){
@@ -432,12 +370,10 @@ void GameModel::commandParse(std::string command, Player* player){ //need renami
             if(placeTileSuccess){ // replace this with the method above.
                 player->setIsTurn(false); // goes to the next player now
             }
-
             else{
                 std::cout << "Tile Couldn't be placed." <<  std::endl;
             }
         }
-
         else{
             std::cout << "please type a valid command, if you need help type: help.";
         }
@@ -451,16 +387,11 @@ void GameModel::fillFactories(){
     else{
         Factories->getFactory(0).at(0)->setColour(FIRST_PLAYER);
     }
-    
-
     for (int i = 1; i < 6; i++){
-
         for (int j = 0; j < 4; j++){
-
             Tile* tilePtr = tileBag->drawTileFront();
             Factories->getFactory(i).at(j)->setColour(tilePtr->getColour()); 
             delete tilePtr; 
-
         }
     }
 }
@@ -475,13 +406,11 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
             for (int i = 0; i < 4; i++)
             {
                 if (Factories->getFactory(factory).at(i)->getColour() == colour){
-
                     player->getFloorLine()->addTile((new Tile(colour)));
                     Factories->getFactory(factory).at(i)->setColour(NO_TILE);
                     amountOfTilesFound++;
                     amountOfTilesMoved++;
-                    moved = true; 
-                    
+                    moved = true;                
                 }
                 else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
                     Factories->addToFactory(0, new Tile (Factories->getFactory(factory).at(i)->getColour()));// hmmmm no idea about this situation, close though.
@@ -490,19 +419,15 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                 }
             }
         }
-
         else if (factory == 0){
             for (unsigned int i = 0; i < Factories->getFactory(0).size(); i++)
             {
                 if (Factories->getFactory(0).at(i)->getColour() == colour || Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
-
                     if(Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
-
                         player->getFloorLine()->addTileFront((new Tile(FIRST_PLAYER)));
                         Factories->getFactory(0).at(0)->setColour(NO_TILE);
                         moved = true;
                     }
-
                     else{
                         player->getFloorLine()->addTile((new Tile(colour)));
                         Factories->getFactory(0).at(i)->setColour(NO_TILE);
@@ -514,18 +439,16 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
             }
         }
     }
-
+    
+    //Apologies for the extremely long if statement.
     else if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1]->getColour() == NO_TILE || player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1]->getColour() == colour){
-
         if ((factory > 0 && factory < 6) && !player->getMosaic()->checkRowForTile(atPatternLine,colour)){
-            for (int i = 0; i < 4; i++)
-            {
+            for (int i = 0; i < 4; i++){
                 if (Factories->getFactory(factory).at(i)->getColour() == colour){
                     int column = 0;
                     bool setTile = false;
                     while(column < atPatternLine && setTile == false){
-                        if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->getColour() == NO_TILE)
-                        {
+                        if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->getColour() == NO_TILE){
                             player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1-column]->setColour(colour);
                             setTile = true;
                             amountOfTilesMoved++;
@@ -539,23 +462,19 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                 else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
                     Factories->addToFactory(0, new Tile (Factories->getFactory(factory).at(i)->getColour()));// hmmmm no idea about this situation, close though.
                     Factories->getFactory(factory).at(i)->setColour(NO_TILE);
-
                 }
             }
         }
         else if (factory == 0 && !player->getMosaic()->checkRowForTile(atPatternLine,colour)){
-            for (unsigned int i = 0; i < Factories->getFactory(0).size(); i++)
-            {
+            for (unsigned int i = 0; i < Factories->getFactory(0).size(); i++){
                 if (Factories->getFactory(0).at(i)->getColour() == colour || Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
 
                     if(Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
-
                         player->getFloorLine()->addTileFront((new Tile(FIRST_PLAYER)));
                         Factories->getFactory(0).at(0)->setColour(NO_TILE);
 
                     }
                     else{
-
                         int column = 0;
                         bool setTile = false;
                         while(column < atPatternLine && setTile == false){
@@ -573,44 +492,17 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
                     amountOfTilesFound++;
                     }
                 }
-                else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
-                    //Factories->addToFactory(0, new Tile (Factories->getFactory(0).at(i)->getColour()));// hmmmm no idea about this situation, close though.
-                    //Factories->getFactory(0).at(i)->setColour(NO_TILE);
-
-                }
             }
         }
         else{
             moved =  false;
         }
     }
-
     for (int i = 0; i < amountOfTilesFound - amountOfTilesMoved; i++){
 
         player->getFloorLine()->addTile((new Tile(colour)));                
 
     }
-
-    // if((factory != 0 && amountOfTilesMoved == 0) && factory < 6 ){ // If no tiles moved, it was an incorrect move, this moves the tiles back to the factory they came from.
-    //     if(!player->getMosaic()->checkRowForTile(atPatternLine,colour)){
-    //         int upCounter = 0;
-    //         for (int i = 4; i > 0; i--){
-    //             Factories->getFactory(factory).at(upCounter)->setColour(Factories->getFactory(0).at(Factories->getFactory(0).size() - i)->getColour());
-    //             Factories->getFactory(0).at(Factories->getFactory(0).size() - i)->setColour(NO_TILE);
-    //             upCounter++;
-    //         }                
-    //     }
-    // }
-
-    // if((factory == 0 && amountOfTilesMoved == 0 ) && (factory < 6 && player->getFloorLine()->getFloorLine()->getTile(0)->getColour() == FIRST_PLAYER)){ // If no tiles moved, it was an incorrect move, this moves the tiles back to the factory they came from.
-    //     if(!player->getMosaic()->checkRowForTile(atPatternLine,colour)){
-    //         for (int i = 4; i > 0; i--){
-    //             Factories->getFactory(0).at(0)->setColour(FIRST_PLAYER);
-    //             player->getFloorLine()->getFloorLine()->removeFront();
-    //         }
-    //     }
-    // }
-
     return moved;
 }
 
@@ -621,4 +513,3 @@ bool GameModel::endGameConditionCheck(){
     }
     return gameDone;
 }
-
