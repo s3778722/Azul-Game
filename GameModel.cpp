@@ -445,7 +445,52 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
     int amountOfTilesMoved = 0;
     int amountOfTilesFound = 0;
 
-    if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1]->getColour() == NO_TILE || player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1]->getColour() == colour){
+    if(atPatternLine == 6){
+        if (factory > 0){
+            for (int i = 0; i < 4; i++)
+            {
+                if (Factories->getFactory(factory).at(i)->getColour() == colour){
+
+                    player->getFloorLine()->addTile((new Tile(colour)));
+                    Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+                    amountOfTilesFound++;
+                    amountOfTilesMoved++;
+                    moved = true; 
+                    
+                }
+                else{ // THIS IS TO HELP SORT OUT THE NEW PROBLEM
+                    Factories->addToFactory(0, new Tile (Factories->getFactory(factory).at(i)->getColour()));// hmmmm no idea about this situation, close though.
+                    Factories->getFactory(factory).at(i)->setColour(NO_TILE);
+
+                }
+            }
+        }
+
+        else if (factory == 0){
+            for (unsigned int i = 0; i < Factories->getFactory(0).size(); i++)
+            {
+                if (Factories->getFactory(0).at(i)->getColour() == colour || Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
+
+                    if(Factories->getFactory(0).at(i)->getColour() == FIRST_PLAYER){
+
+                        player->getFloorLine()->addTileFront((new Tile(FIRST_PLAYER)));
+                        Factories->getFactory(0).at(0)->setColour(NO_TILE);
+                        moved = true;
+                    }
+
+                    else{
+                        player->getFloorLine()->addTile((new Tile(colour)));
+                        Factories->getFactory(0).at(i)->setColour(NO_TILE);
+                        moved = true;
+                    }
+                        amountOfTilesFound++;
+                        amountOfTilesMoved++;
+                }
+            }
+        }
+    }
+
+    else if (player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1]->getColour() == NO_TILE || player->getPatternLine()->getTilePatternLine()[atPatternLine-1][atPatternLine-1]->getColour() == colour){
 
         if (factory > 0){
             for (int i = 0; i < 4; i++)
