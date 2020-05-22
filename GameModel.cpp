@@ -591,25 +591,25 @@ bool GameModel::drawTileFromFactoryToPatternLine(int factory, Colour colour, int
 
     }
 
-    if((factory != 0 && amountOfTilesMoved == 0) && factory < 6 ){ // If no tiles moved, it was an incorrect move, this moves the tiles back to the factory they came from.
-        if(!player->getMosaic()->checkRowForTile(atPatternLine,colour)){
-            int upCounter = 0;
-            for (int i = 4; i > 0; i--){
-                Factories->getFactory(factory).at(upCounter)->setColour(Factories->getFactory(0).at(Factories->getFactory(0).size() - i)->getColour());
-                Factories->getFactory(0).at(Factories->getFactory(0).size() - i)->setColour(NO_TILE);
-                upCounter++;
-            }                
-        }
-    }
+    // if((factory != 0 && amountOfTilesMoved == 0) && factory < 6 ){ // If no tiles moved, it was an incorrect move, this moves the tiles back to the factory they came from.
+    //     if(!player->getMosaic()->checkRowForTile(atPatternLine,colour)){
+    //         int upCounter = 0;
+    //         for (int i = 4; i > 0; i--){
+    //             Factories->getFactory(factory).at(upCounter)->setColour(Factories->getFactory(0).at(Factories->getFactory(0).size() - i)->getColour());
+    //             Factories->getFactory(0).at(Factories->getFactory(0).size() - i)->setColour(NO_TILE);
+    //             upCounter++;
+    //         }                
+    //     }
+    // }
 
-    if((factory == 0 && amountOfTilesMoved == 0 ) && (factory < 6 && player->getFloorLine()->getFloorLine()->getTile(0)->getColour() == FIRST_PLAYER)){ // If no tiles moved, it was an incorrect move, this moves the tiles back to the factory they came from.
-        if(!player->getMosaic()->checkRowForTile(atPatternLine,colour)){
-            for (int i = 4; i > 0; i--){
-                Factories->getFactory(0).at(0)->setColour(FIRST_PLAYER);
-                player->getFloorLine()->getFloorLine()->removeFront();
-            }
-        }
-    }
+    // if((factory == 0 && amountOfTilesMoved == 0 ) && (factory < 6 && player->getFloorLine()->getFloorLine()->getTile(0)->getColour() == FIRST_PLAYER)){ // If no tiles moved, it was an incorrect move, this moves the tiles back to the factory they came from.
+    //     if(!player->getMosaic()->checkRowForTile(atPatternLine,colour)){
+    //         for (int i = 4; i > 0; i--){
+    //             Factories->getFactory(0).at(0)->setColour(FIRST_PLAYER);
+    //             player->getFloorLine()->getFloorLine()->removeFront();
+    //         }
+    //     }
+    // }
 
     return moved;
 }
