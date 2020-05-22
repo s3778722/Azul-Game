@@ -21,12 +21,13 @@ void FloorLine::addTileFront(Tile* tile){
 Tile* FloorLine::removeTile(){
     Tile* returnTile = nullptr;
     if(floorLine->getSize() != 0){
-        returnTile = floorLine->getTile(0); // this is thinking that the linked list goes from 0 onwards in indexing
+        returnTile = floorLine->getTile(0);
         floorLine->removeFront();
     }
     return returnTile;
 }
 
+// Will return the negative score from the floorline, and clear the floor afterwards, emptying it into the lid.
 int FloorLine::getNegativePoints(){
 
     int negativePoints = 0;
@@ -59,6 +60,7 @@ int FloorLine::getNegativePoints(){
         negativePoints = (-14-((size -7)*3));
     }
 
+    // The clear to the lid
     if(floorLine->getSize() > 0){
         if(floorLine->getTile(0)->getColour() == FIRST_PLAYER){
             floorLine->removeFront();
