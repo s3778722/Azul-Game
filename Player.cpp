@@ -245,16 +245,19 @@ LinkedList* Player::scoring()
             score++;
         }
     }
-    LinkedList* goesToBoxLid = checkBrokenTiles();
     countColours();
     scoreColours();
+    LinkedList* goesToBoxLid = checkBrokenTiles();
 
     return goesToBoxLid;
 }
 
 LinkedList* Player::checkBrokenTiles(){
     score += playerFloorLine->getNegativePoints();
-
+    //added this function to avoid it counting negative score because score can't be negative
+    if (score < 0){
+        score = 0;
+    }
     return playerFloorLine->getToBoxLid();
 }
 
