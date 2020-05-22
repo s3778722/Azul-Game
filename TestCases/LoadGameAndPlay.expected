@@ -1,0 +1,148 @@
+Welcome to Azul! -------------------
+Menu
+----
+1. New Game
+2. Load Game
+3. Credits (Show student information)
+4. Quit
+
+> 
+Enter the filename from which load a game: Let's Play!
+
+=== Start Round == 
+TURN FOR PLAYER:Player1
+SCORE: 0
+Factories:
+0: F R U U R R B B
+1:
+2:
+3:
+4: B L R L
+5:
+
+Mosaic for Player1:
+1:         . || . . . . . 
+2:       Y Y || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+TURN FOR PLAYER:Player2
+SCORE: 0
+Factories:
+0: F R U U R R B B B L L
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player2:
+1:         . || . . . . . 
+2:       . . || . . . . . 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . L L L L || . . . . . 
+6: Broken:
+> 
+
+TURN FOR PLAYER:Player1
+SCORE: 0
+Factories:
+0: R R R B B B L L
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player1:
+1:         . || . . . . . 
+2:       Y Y || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   . . . R || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+TURN FOR PLAYER:Player2
+SCORE: 0
+Factories:
+0: B B B L L
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player2:
+1:         . || . . . . . 
+2:       U U || . . . . . 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . L L L L || . . . . . 
+6: Broken:F 
+> 
+
+TURN FOR PLAYER:Player1
+SCORE: 0
+Factories:
+0: B B B
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player1:
+1:         . || . . . . . 
+2:       Y Y || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   R R R R || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+
+=== END OF ROUND ===
+
+=== Start Round == 
+TURN FOR PLAYER:Player2
+SCORE: 0
+Factories:
+0: F
+1: Y R B U
+2: U R U U
+3: R Y Y U
+4: Y U R B
+5: U Y U L
+
+Mosaic for Player2:
+1:         . || . . . . . 
+2:       . . || . . . . U 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . L . 
+6: Broken:
+> Tile Couldn't be placed.
+
+TURN FOR PLAYER:Player2
+SCORE: 0
+Factories:
+0: F U Y U L
+1: Y R B U
+2: U R U U
+3: R Y Y U
+4: Y U R B
+5:
+
+Mosaic for Player2:
+1:         . || . . . . . 
+2:       . . || . . . . U 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . L . 
+6: Broken:
+> 
+
+The game is a draw...... Better luck next time!!!
+=== GAME OVER ===
