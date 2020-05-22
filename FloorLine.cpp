@@ -33,7 +33,10 @@ int FloorLine::getNegativePoints(){ // think of a way to make this better.... ni
     // }
     int negativePoints = 0;
     int size = floorLine->getSize();
-    if(size == 1){
+    if (size == 0){
+        negativePoints = 0;
+    }
+    else if(size == 1){
         negativePoints = -1;
     }
     else if(size == 2){
@@ -46,24 +49,31 @@ int FloorLine::getNegativePoints(){ // think of a way to make this better.... ni
         negativePoints = -6;
     }
     else if(size == 5){
-        negativePoints = -9;
+        //negativePoints = -9;
+        negativePoints = -8;
     }
     else if(size == 6){
-        negativePoints = -12;
+        //negativePoints = -12;
+        negativePoints = -11;
+    }
+    else if(size == 7){
+        negativePoints = -14;
     }
     else{
-        negativePoints = 0;
+        negativePoints = (-14-((size -7)*3));
     }
 
-    for(int i=0;i<size;i++){
-        if(floorLine->getTile(i)->getColour() != FIRST_PLAYER){
-            toBoxLid->addBack(floorLine->removeFront());
+    for(int i=0;i < floorLine->getSize();i++){
+        Tile* fp = new Tile(FIRST_PLAYER);
+        if(!(floorLine->getTile(i)->matchTile(fp))){
+            //toBoxLid->addBack(floorLine->removeFront());
+            toBoxLid->addBack(floorLine->getTile(i));
+            floorLine->removeFront();
         }
         else{
             delete floorLine->removeFront();
         }
     }
-
     return negativePoints;
 }
 
