@@ -31,7 +31,7 @@ Tile*** PatternLine::getTilePatternLine(){
     return tilePatternArray;
 }
 
-bool PatternLine::isPatternLineFull(int lineNumber){ //line number here is actual line number -1
+bool PatternLine::isPatternLineFull(int lineNumber){ //line number here is actual line number -1 due to indexing starting at 0.
     bool isFull = true;
     for(int j=0;j<lineNumber+1;j++){
         if(tilePatternArray[lineNumber][j]->getColour() == '.'){

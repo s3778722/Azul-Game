@@ -4,7 +4,8 @@
 FactoryTable::FactoryTable():
     tileFactoryTable()
 {
-
+    //Initialises the factory to dots to begin, before they are changed according to whats drawn from the bag.
+    //This is also done to aid the loading of the factories via file.
     std::vector<Tile*> firstFactory;
     firstFactory.push_back(new Tile(FIRST_PLAYER));
     tileFactoryTable.push_back(firstFactory);

@@ -1,0 +1,225 @@
+Welcome to Azul! -------------------
+Menu
+----
+1. New Game
+2. Load Game
+3. Credits (Show student information)
+4. Quit
+
+> 
+Starting a New Game
+Enter the name for player 1:
+> 
+Enter the name for player 2:
+> Let's Play!
+
+=== Start Round == 
+TURN FOR PLAYER:Player1
+SCORE: 0
+Factories:
+0: F
+1: Y R Y Y
+2: Y R Y R
+3: L L U U
+4: B L R L
+5: L L B B
+
+Mosaic for Player1:
+1:         . || . . . . . 
+2:       . . || . . . . . 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+TURN FOR PLAYER:Player2
+SCORE: 0
+Factories:
+0: F R
+1:
+2: Y R Y R
+3: L L U U
+4: B L R L
+5: L L B B
+
+Mosaic for Player2:
+1:         . || . . . . . 
+2:       . . || . . . . . 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+
+TURN FOR PLAYER:Player1
+SCORE: 0
+Factories:
+0: F R L L
+1:
+2: Y R Y R
+3:
+4: B L R L
+5: L L B B
+
+Mosaic for Player1:
+1:         . || . . . . . 
+2:       . . || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+TURN FOR PLAYER:Player2
+SCORE: 0
+Factories:
+0: R
+1:
+2: Y R Y R
+3:
+4: B L R L
+5: L L B B
+
+Mosaic for Player2:
+1:         . || . . . . . 
+2:       U U || . . . . . 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:
+> 
+
+TURN FOR PLAYER:Player1
+SCORE: 0
+Factories:
+0: R Y Y
+1:
+2:
+3:
+4: B L R L
+5: L L B B
+
+Mosaic for Player1:
+1:         L || . . . . . 
+2:       . . || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:F L 
+> 
+TURN FOR PLAYER:Player2
+SCORE: 0
+Factories:
+0: R
+1:
+2:
+3:
+4: B L R L
+5: L L B B
+
+Mosaic for Player2:
+1:         R || . . . . . 
+2:       U U || . . . . . 
+3:     . . . || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:R 
+> 
+
+TURN FOR PLAYER:Player1
+SCORE: 0
+Factories:
+0: R B R
+1:
+2:
+3:
+4:
+5: L L B B
+
+Mosaic for Player1:
+1:         L || . . . . . 
+2:       Y Y || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:F L 
+> 
+TURN FOR PLAYER:Player2
+SCORE: 0
+Factories:
+0: R B R L L
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player2:
+1:         R || . . . . . 
+2:       U U || . . . . . 
+3:     . L L || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:R 
+> 
+
+TURN FOR PLAYER:Player1
+SCORE: 0
+Factories:
+0: R B R
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player1:
+1:         L || . . . . . 
+2:       Y Y || . . . . . 
+3:     Y Y Y || . . . . . 
+4:   . . B B || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:F L 
+> 
+TURN FOR PLAYER:Player2
+SCORE: 0
+Factories:
+0: B
+1:
+2:
+3:
+4:
+5:
+
+Mosaic for Player2:
+1:         R || . . . . . 
+2:       U U || . . . . . 
+3:     L L L || . . . . . 
+4:   . . . . || . . . . . 
+5: . . . . . || . . . . . 
+6: Broken:R L 
+> 
+
+=== END OF ROUND ===
+
+=== Start Round == 
+TURN FOR PLAYER:Player1
+SCORE: 1
+Factories:
+0: F
+1: B L U L
+2: R L L L
+3: L B B Y
+4: Y R B U
+5: Y B U B
+
+Mosaic for Player1:
+1:         . || . . . . L 
+2:       . . || . . Y . . 
+3:     . . . || . . . Y . 
+4:   . . B B || . . . . . 
+5: . . . R R || . . . . . 
+6: Broken:
+> 
+
+The game is a draw...... Better luck next time!!!
+=== GAME OVER ===
